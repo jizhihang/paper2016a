@@ -180,7 +180,7 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
 	 
       }
       
-      stat_seg.count();
+      cout << stat_seg.count() << endl;
       std::stringstream save_Covs;
       save_Covs << save_folder.str() << "/Cov_" <<  all_people (pe) << "_" << actions(act) << "_segm" << num_covs <<  ".h5";
       mat seg_cov= stat_seg.cov();
