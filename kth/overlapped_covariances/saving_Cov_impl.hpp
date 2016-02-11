@@ -96,7 +96,7 @@ OverlappedCovs_kth::calculate_covariances( field<string> in_all_people, int  in_
     int pe   = atoi( parallel_names(k,2).c_str() );
     int act  = atoi( parallel_names(k,3).c_str() );
     
-    vecNumCovs(k)= one_video_multiple_covs(load_feat_video_i, load_labels_video_i, pe, act );
+    one_video_multiple_covs(load_feat_video_i, load_labels_video_i, pe, act );
 
   }
 
