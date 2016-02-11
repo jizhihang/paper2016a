@@ -157,7 +157,7 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
     cout << labels( 0 ) << " ";
     cout << num_frames << " " << endl;
     
-    int num_covs = 1;
+    int num_covs = 0;
     mat seg_vec;
     
     
@@ -193,8 +193,9 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
       
       cout << save_Covs.str() << endl; 
       
-      seg_cov.save(  save_Covs.str(), hdf5_binary ); 
       num_covs++;
+      seg_cov.save(  save_Covs.str(), hdf5_binary ); 
+      
     	
      }
      
