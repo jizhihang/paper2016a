@@ -189,7 +189,7 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
       //By manual inspection, If the segment contains 
       //a reduced number of pixels, then discard it
      
-      if (stat_seg.count() > 500 )  {
+      if (stat_seg.count() > 100 )  {
       
       
       num_covs++;
