@@ -96,6 +96,7 @@ OverlappedCovs_kth::calculate_covariances( field<string> in_all_people, int  in_
     int pe   = atoi( parallel_names(k,2).c_str() );
     int act  = atoi( parallel_names(k,3).c_str() );
     
+     cout << all_people (pe) << "_" << actions(act) << endl;
     one_video_multiple_covs(load_feat_video_i, load_labels_video_i, pe, act );
 
   }
@@ -184,7 +185,11 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
 	 
       }
       
-      cout << stat_seg.count() << endl;
+     
+      //By manual inspection, If the segment contains 
+      //a reduced number of pixels, then discard it
+     
+      if (stat_seg.count() > 500 )  {
       
       
       num_covs++;
@@ -196,12 +201,16 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
       
       //cout << save_Covs.str() << endl; 
       seg_cov.save(  save_Covs.str(), hdf5_binary ); 
-      
+      }
+      else
+      {
+	 cout << stat_seg.count() << endl;
+      }
     	
      }
      
     
-    //cout << num_covs << endl;
+    cout << num_covs << endl;
     vec vecNumCovs;
     
     vecNumCovs << num_covs << endr;
