@@ -204,22 +204,22 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
       }
       else
       {
-	 cout << stat_seg.count() << " " ;
+	 //cout << stat_seg.count() << " " ;
       }
     	
      }
      cout << endl;
      
     
-    cout << num_covs << endl;
+    //cout << num_covs << endl;
     vec vecNumCovs;
     
     vecNumCovs << num_covs << endr;
     
     std::stringstream save_vecNumCovs;
-    save_vecNumCovs << save_folder.str() << "/NumCov_" <<  all_people (pe) << "_" << actions(act) <<  ".h5";
+    save_vecNumCovs << save_folder.str() << "/NumCov_" <<  all_people (pe) << "_" << actions(act) <<  ".dat";
     
-    vecNumCovs.save( save_vecNumCovs.str() ) ; 
+    vecNumCovs.save( save_vecNumCovs.str(), raw_ascii ) ; 
     //getchar();
      
     
