@@ -103,7 +103,7 @@ OverlappedCovs_kth::calculate_covariances( field<string> in_all_people, int  in_
 
 inline
 void
-CovMeans_mat_kth::one_video_multiple_covs( std::string load_feat_video_i, std::string load_labels_video_i, int pe, int act )
+OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std::string load_labels_video_i, int pe, int act )
 {
   //   #pragma omp critical
   //   {
