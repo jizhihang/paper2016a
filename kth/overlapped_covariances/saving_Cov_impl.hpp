@@ -123,7 +123,7 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
     std::stringstream save_folder;
     
     //Shifting both
-    save_folder << "./Covs/sc" << sc << "/scale" << scale_factor << "-shift"<< shift ;
+    save_folder << "./Covs/sc1" <<  "/scale" << scale_factor << "-shift"<< shift ;
     
     
     {
