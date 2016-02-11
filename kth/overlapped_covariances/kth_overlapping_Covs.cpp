@@ -41,7 +41,7 @@ main(int argc, char** argv)
     cout << Ng << endl;
     
     
-    CovMeans_mat_kth get_CovsperVideo(path, actionNames, scale_factor, shift, total_scenes);
+    CovMeans_mat_kth get_CovsperVideo(path, actionNames, scale_factor, shift);
     get_CovsperVideo.calculate_covariances( all_people, dim );
      }
   
