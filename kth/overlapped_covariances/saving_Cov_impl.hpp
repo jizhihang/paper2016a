@@ -164,6 +164,10 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
 	 
 	 cout << q1.n_elem << endl;
 	 
+	 seg_cov = mat_features_video_i.cols( q1 );
+	 
+	 cout << seg_cov.n_cols << " - " << seg_cov.n_rows << endl;
+	 
 	 getchar();
 	 
 	 
