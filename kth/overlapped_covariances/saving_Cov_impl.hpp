@@ -168,11 +168,12 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
 	 uvec q1 = find(labels == j);
 	 cout << q1.n_elem << endl;
 	 seg_vec = mat_features_video_i.cols( q1 );
-	 //cout << seg_vec.n_cols << " - " << seg_vec.n_rows << endl;
+	 cout << seg_vec.n_cols << " - " << seg_vec.n_rows << endl;
 	 
 	 for (int l=0; l<seg_vec.n_elem; ++l)
 	 {
-	   vec sample = seg_vec.col(l); //Creo que asi no es :(
+	   cout << l << " ";
+	   vec sample = seg_vec.col(l); 
 	   stat_seg (sample);
 	   
 	}
