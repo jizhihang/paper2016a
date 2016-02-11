@@ -28,7 +28,6 @@ OverlappedCovs_kth::calculate_covariances( field<string> in_all_people, int  in_
   
   
   field <std::string> parallel_names(n_peo*n_actions,4); 
-  int sc = total_scenes; //Solo estoy usando 1 
   int k =0;
   
   
