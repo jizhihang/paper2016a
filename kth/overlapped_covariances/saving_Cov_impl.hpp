@@ -151,27 +151,43 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
     num_frames = labels(length_lab-1);
     
     cout << labels( 0 ) << " ";
-    cout << num_frames << " " << endl;;
+    cout << num_frames << " " << endl;
+    
+    int num_covs = 1;
+    mat seg_vec;
+    
     
      for (int i=2; i<=num_frames-seg_length; ++i)
     {
-      mat seg_cov;
+      
+      running_stat_vec<rowvec> stat_seg(true);
        
        for (int j=i; j<i+seg_length; ++j )
        {
 	 
 	 uvec q1 = find(labels == j);
-	 
 	 cout << q1.n_elem << endl;
+	 seg_vec = mat_features_video_i.cols( q1 );
+	 //cout << seg_vec.n_cols << " - " << seg_vec.n_rows << endl;
 	 
-	 seg_cov = mat_features_video_i.cols( q1 );
+	 for (int l=0; l<seg_vec.n_elem; ++l)
+	 {
+	   vec sample = seg_vec.col(l); //Creo que asi no es :(
+	   stat_seg (sample);
+	   
+	}
 	 
-	 cout << seg_cov.n_cols << " - " << seg_cov.n_rows << endl;
-	 
-	 getchar();
-	 
-	 
-       }
+      }
+      
+      stat_seg.count();
+      std::stringstream save_Covs;
+      save_Covs << save_folder.str() << "/Cov_" <<  all_people (pe) << "_" << actions(act) << "_segm" << num_covs <<  ".h5";
+      mat seg_cov= stat_seg.cov();
+      
+      seg_cov.save(  save_Covs.str(), hdf5_binary ); 
+      num_covs++;
+      getchar();
+	
      }
      
     
@@ -189,8 +205,7 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
 //     }
 //     
     
-    std::stringstream save_Covs;
-    save_Covs << save_folder.str() << "/Cov_" <<  all_people (pe) << "_" << actions(act) <<  ".h5";
+    
     
    
     
@@ -202,7 +217,7 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
 //     {
 //       cout << "saving " <<  all_people (pe) << endl;
 //       
-//       cov_i.save(  save_Covs.str(), hdf5_binary ); 
+//       
 //       logM_cov_i.save( save_logMCovs.str(), hdf5_binary ); 
 //       mean_i.save( save_Means.str(), hdf5_binary ); 
 //     }
