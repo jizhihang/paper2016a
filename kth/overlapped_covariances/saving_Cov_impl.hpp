@@ -208,7 +208,9 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
       }
     	
      }
-     cout << endl;
+     
+     
+     //cout << endl;
      
     
     //cout << num_covs << endl;
