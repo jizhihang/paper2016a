@@ -35,15 +35,11 @@ main(int argc, char** argv)
   float scale_factor = 1;
   int shift = 0;
   
-  for (int i = 0; i< vec_Ng.n_elem; ++i)
-  {
-    int Ng = vec_Ng(i);
-    cout << Ng << endl;
+
     
     
     CovMeans_mat_kth get_CovsperVideo(path, actionNames, scale_factor, shift);
     get_CovsperVideo.calculate_covariances( all_people, dim );
-     }
   
   
   return 0;
