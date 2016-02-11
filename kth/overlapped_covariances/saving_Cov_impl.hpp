@@ -194,14 +194,14 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
       
       seg_cov = mehrtash_suggestion( seg_cov );
       
-      cout << save_Covs.str() << endl; 
+      //cout << save_Covs.str() << endl; 
       seg_cov.save(  save_Covs.str(), hdf5_binary ); 
       
     	
      }
      
     
-    cout << num_covs << endl;
+    //cout << num_covs << endl;
     vec vecNumCovs;
     
     vecNumCovs << num_covs << endr;
@@ -210,7 +210,7 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
     save_vecNumCovs << save_folder.str() << "/NumCov_" <<  all_people (pe) << "_" << actions(act) <<  ".h5";
     
     vecNumCovs.save( save_vecNumCovs.str() ) ; 
-    getchar();
+    //getchar();
      
     
     
