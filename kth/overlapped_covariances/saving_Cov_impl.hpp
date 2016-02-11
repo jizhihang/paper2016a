@@ -154,21 +154,23 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
     cout << num_frames << " " << endl;;
     
      for (int i=2; i<=num_frames-seg_length; ++i)
+    {
+      mat seg_cov;
        
-     {
-       
-       cout << i << endl;
        for (int j=i; j<i+seg_length; ++j )
        {
 	 
-	 cout << "   " << j << endl; 
-       
+	 uvec q1 = find(labels == j);
+	 
+	 cout << q1.n_elem << endl;
+	 
+	 getchar();
 	 
 	 
        }
      }
      
-     getchar();
+    
       
       
     
