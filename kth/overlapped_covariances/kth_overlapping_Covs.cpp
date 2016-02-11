@@ -38,7 +38,7 @@ main(int argc, char** argv)
 
     
     
-    CovMeans_mat_kth get_CovsperVideo(path, actionNames, scale_factor, shift);
+    OverlappedCovs_kth get_CovsperVideo(path, actionNames, scale_factor, shift);
     get_CovsperVideo.calculate_covariances( all_people, dim );
   
   
