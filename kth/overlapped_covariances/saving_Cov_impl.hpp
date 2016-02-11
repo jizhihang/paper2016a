@@ -85,6 +85,8 @@ OverlappedCovs_kth::calculate_covariances( field<string> in_all_people, int  in_
   
   omp_set_num_threads(1); //Use only 8 processors
   
+  
+  
   #pragma omp parallel for 
   for (int k = 0; k< parallel_names.n_rows; ++k)
   {
@@ -94,9 +96,11 @@ OverlappedCovs_kth::calculate_covariances( field<string> in_all_people, int  in_
     int pe   = atoi( parallel_names(k,2).c_str() );
     int act  = atoi( parallel_names(k,3).c_str() );
     
-    one_video_multiple_covs(load_feat_video_i, load_labels_video_i, pe, act );
-    //getchar();
+    vecNumCovs(k)= one_video_multiple_covs(load_feat_video_i, load_labels_video_i, pe, act );
+
   }
+
+  
   
 }
 
@@ -166,9 +170,9 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
        {
 	 
 	 uvec q1 = find(labels == j);
-	 cout << q1.n_elem << endl;
+	 //cout << q1.n_elem << endl;
 	 seg_vec = mat_features_video_i.cols( q1 );
-	 cout << seg_vec.n_cols << " - " << seg_vec.n_rows << endl;
+	 //cout << seg_vec.n_cols << " - " << seg_vec.n_rows << endl;
 	 
 	 for (int l=0; l<seg_vec.n_cols; ++l)
 	 {
@@ -180,49 +184,31 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
 	 
       }
       
-      cout << stat_seg.count() << endl;
+      //cout << stat_seg.count() << endl;
       std::stringstream save_Covs;
       save_Covs << save_folder.str() << "/Cov_" <<  all_people (pe) << "_" << actions(act) << "_segm" << num_covs <<  ".h5";
       mat seg_cov= stat_seg.cov();
       
+      seg_cov = mehrtash_suggestion( seg_cov );
+      
+      cout << save_Covs.str() << endl; 
+      
       seg_cov.save(  save_Covs.str(), hdf5_binary ); 
       num_covs++;
-      getchar();
-	
+    	
      }
      
     
-      
-      
+    cout << num_covs << endl;
+    vec vecNumCovs;
     
-//     running_stat_vec<rowvec> stat_seg(true);
-//     
-//     for (int l=0; l<n_vec; ++l)
-//     {
-//       
-//       vec sample = mat_features_video_i.col(l);
-//       stat_seg (sample);
-//       
-//     }
-//     
+    vecNumCovs << num_covs << endr;
     
+    std::stringstream save_vecNumCovs;
+    save_vecNumCovs << save_folder.str() << "/NumCov_" <<  all_people (pe) << "_" << actions(act) <<  ".h5";
     
-    
-   
-    
-
-    
-    
-    
-//     #pragma omp critical
-//     {
-//       cout << "saving " <<  all_people (pe) << endl;
-//       
-//       
-//       logM_cov_i.save( save_logMCovs.str(), hdf5_binary ); 
-//       mean_i.save( save_Means.str(), hdf5_binary ); 
-//     }
-//     
+    vecNumCovs.save( save_vecNumCovs.str() ) ; 
+     
     
     
 }
