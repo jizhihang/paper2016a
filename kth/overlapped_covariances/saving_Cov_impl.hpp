@@ -148,7 +148,7 @@ OverlappedCovs_kth::one_video_multiple_covs( std::string load_feat_video_i, std:
     int num_frames;
     
     int length_lab = labels.n_elem;
-    int num_frames = labels(length_lab-1);
+    num_frames = labels(length_lab-1);
     
     cout << num_frames << " ";
     
