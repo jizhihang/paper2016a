@@ -34,6 +34,7 @@ main(int argc, char** argv)
   
   float scale_factor = 1;
   int shift = 0;
+  dim = 14;
   
 
     
