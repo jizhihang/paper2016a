@@ -1,4 +1,4 @@
-function get_centers_parfor (cluster_list, n_points_cl, path, load_sub_path, K, dim)
+function get_centers_parfor (cluster_list, n_points_cl, path, load_sub_path, K, dim,folder_name)
 
 matlabpool(8) 
 
@@ -17,7 +17,7 @@ for k = 1:K
         pause
     end
    
-   new_cluster_k = zeros(num_points_k,dim,dim);
+   new_cluster_k = zeros(dim,dim,num_points_k);
     
     parfor p=1:num_points_k
         
@@ -38,7 +38,7 @@ for k = 1:K
     
     new_cluster_k = inv(new_cluster_k/num_points_k);
     
-    save_cluster =  strcat('./par_for_clusters_spd/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
+    save_cluster =  strcat('./', folder_name, '/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
     hdf5write(save_cluster, '/dataset1', new_cluster_k);
     
 end

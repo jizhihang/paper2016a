@@ -1,4 +1,4 @@
-function save_initial_clusters_parfor(path, load_sub_path, K, cluster_idx_pac)
+function save_initial_clusters_parfor(path, load_sub_path, K, cluster_idx_pac, folder_name)
 
 
 
@@ -15,7 +15,7 @@ for k=1: K
     cov = hdf5read(data_one_cov.GroupHierarchy.Datasets(1));
     
     
-    save_cov =  strcat('./par_for_clusters_spd/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
+    save_cov =  strcat('./', folder_name, '/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
     hdf5write(save_cov, '/dataset1', cov);
       
       

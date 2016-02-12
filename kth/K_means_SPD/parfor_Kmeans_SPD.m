@@ -3,6 +3,11 @@ clc
 dbstop error;
 %dbstop in assign_points at 38;
 
+prompt = 'Folder name to save clusters ';
+%folder_name = input(prompt, 's');
+folder_name = strcat(input(prompt, 's'),date);
+%parent_dir = pwd;
+mkdir(pwd, folder_name);
 
 %%Change this
 K = 10;
@@ -27,7 +32,7 @@ n_actions = length(actions);
 [list_pac total_num_covs] = get_list(n_people, n_actions, path, all_people, actions, load_sub_path);
 
 cluster_idx_pac = initial_centers (list_pac, K); %
-save_initial_clusters_parfor(path, load_sub_path, K, cluster_idx_pac);
+save_initial_clusters_parfor(path, load_sub_path, K, cluster_idx_pac,folder_name );
 
 
 

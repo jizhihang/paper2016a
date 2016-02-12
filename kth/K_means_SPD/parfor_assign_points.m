@@ -1,4 +1,4 @@
-function [cluster_list n_points_cl] = parfor_assign_points(list_pac, K,path, load_sub_path,total_num_covs)
+function [cluster_list n_points_cl] = parfor_assign_points(list_pac, K,path, load_sub_path,total_num_covs,folder_name)
 
 cluster_list =  cell(total_num_covs,K);
 n_points_cl  =  zeros(1,K);
@@ -27,7 +27,7 @@ for i=1: length(list_pac)
         
         
         parfor k=1:K
-            load_cluster =  strcat('./par_for_clusters_spd/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
+            load_cluster =  strcat('./',folder_name,'/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
             Sc = char(load_cluster);
             data_one_cluster= hdf5info(Sc);
             cluster = hdf5read(data_one_cluster.GroupHierarchy.Datasets(1));
