@@ -32,7 +32,7 @@ for i=1: length(list_pac)
         n_points_cl(posi) =  n_points_cl(posi) + 1;
         new_list_pac_cov = {list_pac{i,:}};
         new_list_pac_cov{3}  = c;
-        cluster_list{ n_points_cl(posi), posi} = {new_list_pac_cov};
+        cluster_list{ n_points_cl(posi), posi} = new_list_pac_cov;
         
         
     end
