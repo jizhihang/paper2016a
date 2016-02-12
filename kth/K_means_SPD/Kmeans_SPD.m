@@ -13,7 +13,7 @@ shift = 0;
 
 
 n_people  = length(all_people);
-n_actions = length(actionNames);
+n_actions = length(actions);
 
 %pac : people, action, cells
 list_pac = cell(n_people*n_actions,3);
