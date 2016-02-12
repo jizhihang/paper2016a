@@ -35,6 +35,7 @@ save_initial_clusters(path, load_sub_path, K, cluster_idx_pac);
 
 for i=i:n_iter
 
+    n_iter
 tic
 [cluster_list n_points_cl] = assign_points(list_pac, K,path, load_sub_path, total_num_covs);
 toc
