@@ -1,4 +1,4 @@
-function [cluster_list n_points_cl] = assign_points(list_pac, K,path, load_sub_path)
+function [cluster_list n_points_cl] = assign_points(list_pac, K,path, load_sub_path,total_num_covs)
 
 cluster_list =  cell(total_num_covs,K);
 n_points_cl  =  zeros(1,K);
