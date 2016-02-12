@@ -1,4 +1,4 @@
-function [cluster_list n_points_cl] = parfor_assign_points(list_pac, K,path, load_sub_path,total_num_covs,folder_name)
+function [cluster_list n_points_cl] = parfor_assign_points(list_pac, K,path, load_sub_path,total_num_covs, folder_name)
 
 cluster_list =  cell(total_num_covs,K);
 n_points_cl  =  zeros(1,K);

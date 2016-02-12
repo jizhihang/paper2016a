@@ -42,11 +42,11 @@ for i=1:n_iter
     
     i
     tic
-    [cluster_list n_points_cl] = parfor_assign_points(list_pac, K,path, load_sub_path, total_num_covs);
+    [cluster_list n_points_cl] = parfor_assign_points(list_pac, K,path, load_sub_path, total_num_covs,folder_name);
     toc
     
     tic
-    get_centers_parfor (cluster_list, n_points_cl, path, load_sub_path, K, dim)
+    get_centers_parfor (cluster_list, n_points_cl, path, load_sub_path, K, dim,folder_name)
     toc
     
 end
