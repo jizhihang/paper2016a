@@ -33,7 +33,7 @@ save_initial_clusters(path, load_sub_path, K, cluster_idx_pac);
 
 
 
-for i=i:n_iter
+for i=1:n_iter
     
     i
     tic
