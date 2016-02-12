@@ -14,7 +14,7 @@ scale_factor = 1;
 shift = 0;
 
 
-load_sub_path =strcat('./overlapped_covariances/Covs/sc1/scale', int2str(scale_factor), '-shift',  int2str(shift));
+load_sub_path =strcat('overlapped_covariances/Covs/sc1/scale', int2str(scale_factor), '-shift',  int2str(shift));
 
 
 n_people  = length(all_people);
