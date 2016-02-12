@@ -1,7 +1,7 @@
 clear all
 clc
 dbstop error;
-dbstop in assign_points at 33;
+dbstop in assign_points at 36;
 
 
 %%Change this
