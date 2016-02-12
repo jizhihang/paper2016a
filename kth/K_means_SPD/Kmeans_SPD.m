@@ -3,9 +3,11 @@ clc
 dbstop error;
 
 
-%Change this
+%%Change this
 K = 10;
+n_iter =10;
 
+%%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 dim = 14;
 actions = importdata('actionNames.txt');
@@ -21,11 +23,12 @@ n_people  = length(all_people);
 n_actions = length(actions);
 
 %pac : people, action, cells
-list_pac = get_list(n_people, n_actions, path, all_people, actions, load_sub_path);
+ [list_pac total_num_covs] = get_list(n_people, n_actions, path, all_people, actions, load_sub_path);
 
 cluster_idx_pac = initial_centers (list_pac, K); % 
 
 save_initial_clusters(path, load_sub_path, K, cluster_idx_pac);
+
 
 
 %cluster_list =  cell(5,2)
