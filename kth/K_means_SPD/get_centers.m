@@ -40,9 +40,3 @@ for k = 1:K
     
 end
 
-
-
-
-
-
-% And Save!!!!!!!
