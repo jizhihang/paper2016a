@@ -20,7 +20,7 @@ n_actions = length(actions);
 %pac : people, action, cells
 list_pac = get_list(n_people, n_actions, path, all_people, actions , scale_factor, shift);
 
-cluster_idx_pac = cell(K,3); % 
+cluster_idx_pac = initial_centers (list_pac, K); % 
 
 
 %cluster_list =  cell(5,2)
