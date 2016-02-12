@@ -16,7 +16,7 @@ n_people  = length(all_people);
 n_actions = length(actions);
 
 %pac : people, action, cells
-list_pac = get_list(n_people, n_actions, path)
+list_pac = get_list(n_people, n_actions, path, scale_factor, shift);
 
 
 

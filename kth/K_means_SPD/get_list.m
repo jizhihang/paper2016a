@@ -1,4 +1,4 @@
-function list_pac = get_list(n_people, n_actions, path)
+function list_pac = get_list(n_people, n_actions, path, scale_factor, shift)
 
 list_pac = cell(n_people*n_actions,3);
 k =1;
