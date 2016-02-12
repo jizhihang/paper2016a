@@ -26,7 +26,7 @@ n_actions = length(actions);
 %pac : people, action, cells
 [list_pac total_num_covs] = get_list(n_people, n_actions, path, all_people, actions, load_sub_path);
 
-cluster_idx_pac = initial_centers (list_pac, K); % 
+cluster_idx_pac = initial_centers (list_pac, K); %
 save_initial_clusters(path, load_sub_path, K, cluster_idx_pac);
 
 
@@ -34,8 +34,10 @@ save_initial_clusters(path, load_sub_path, K, cluster_idx_pac);
 
 
 %for i=i:n_iter
-    
-  [cluster_list n_points_cl] = assign_points(list_pac, K,path, load_sub_path, total_num_covs);
-  get_centers (cluster_list, n_points_cl, path, load_sub_path, K, dim)
-    
+
+tic
+[cluster_list n_points_cl] = assign_points(list_pac, K,path, load_sub_path, total_num_covs);
+toc
+get_centers (cluster_list, n_points_cl, path, load_sub_path, K, dim)
+
 %end
