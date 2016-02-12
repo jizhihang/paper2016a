@@ -2,7 +2,7 @@ function [cluster_list n_points_cl] = parfor_assign_points(list_pac, K,path, loa
 
 cluster_list =  cell(total_num_covs,K);
 n_points_cl  =  zeros(1,K);
-
+matlabpool(5) 
 
 for i=1: length(list_pac)
     
@@ -25,7 +25,7 @@ for i=1: length(list_pac)
         cov = hdf5read(data_one_cov.GroupHierarchy.Datasets(1));
         dist = zeros(1,K);
         
-        matlabpool(5) 
+        
         parfor k=1:K
             load_cluster =  strcat('./clusters_spd/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
             Sc = char(load_cluster);
@@ -49,3 +49,4 @@ for i=1: length(list_pac)
 
     
 end
+matlabpool close
