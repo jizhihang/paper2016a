@@ -22,5 +22,7 @@ list_pac = get_list(n_people, n_actions, path, all_people, actions , scale_facto
 
 cluster_idx_pac = initial_centers (list_pac, K); % 
 
+save_initial_clusters(list_pac);
+
 
 %cluster_list =  cell(5,2)
