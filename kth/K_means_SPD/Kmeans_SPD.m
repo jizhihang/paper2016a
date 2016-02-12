@@ -28,6 +28,7 @@ for pe = 1: n_people
       load_Numcov =  strcat( path, load_sub_path, '/NumCov_', all_people(pe), '_', actions(act),  '.dat');
       num_cov = load( char(load_Numcov) );
       list_pac{k,3}  = num_cov;
+      list_pac{k,:}
       k=k+1;
       pause
         
