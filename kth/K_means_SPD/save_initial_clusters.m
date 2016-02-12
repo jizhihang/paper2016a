@@ -9,7 +9,7 @@ for k=1: K
     idx_cov = cluster_idx_pac{k,3};
     
     
-    load_cov =  strcat( path, load_sub_path, '/Cov_', person, '_', action,  '_segm', idx_cov , '.h5' )
+    load_cov =  strcat( path, load_sub_path, '/Cov_', person, '_', action,  '_segm', num2str(idx_cov) , '.h5' )
     S = char(load_cov);
     data_one_cov= hdf5info(S);
     cov = hdf5read(data_one_cov.GroupHierarchy.Datasets(1));
