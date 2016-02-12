@@ -21,7 +21,7 @@ k =1;
 load_sub_path =strcat('./overlapped_covariances/Covs/sc1/scale', int2str(scale_factor), '-shift',  int2str(shift));
 
 
-for pe = 1: actions
+for pe = 1: n_people
     for act=1: n_actions
       list_pac{k,1}  = all_people(pe);      
       list_pac{k,2}  = actions(act);
