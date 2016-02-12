@@ -13,8 +13,9 @@ for k=1: K
     S = char(load_cov);
     data_one_cov= hdf5info(S);
     cov = hdf5read(data_one_cov.GroupHierarchy.Datasets(1));
+    
+    
     save_cov =  strcat('./clusters_spd/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
-
     hdf5write(save_cov, '/dataset1', cov);
       
       

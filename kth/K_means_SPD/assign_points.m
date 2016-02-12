@@ -6,9 +6,14 @@ n_points_cl  =  zeros(1,K);
 
 for i=1: length(list_pac)
     
+   
+    
     person =  list_pac{i,1};
     action =  list_pac{i,2};
     num_covs = list_pac{i,3};
+     
+    show_you = strcat(person,  '_', action);
+    disp(show_you);
     
     for c = 1:num_covs
         

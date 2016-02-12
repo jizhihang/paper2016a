@@ -1,7 +1,7 @@
 clear all
 clc
 dbstop error;
-%dbstop in assign_points at 38;
+dbstop in assign_points at 38;
 
 
 %%Change this
@@ -29,12 +29,13 @@ n_actions = length(actions);
 cluster_idx_pac = initial_centers (list_pac, K); % 
 save_initial_clusters(path, load_sub_path, K, cluster_idx_pac);
 
-[cluster_list n_points_cl] = assign_points(list_pac, K,path, load_sub_path, total_num_covs);
+
 
 
 
 %for i=i:n_iter
     
-    
+  [cluster_list n_points_cl] = assign_points(list_pac, K,path, load_sub_path, total_num_covs);
+  
     
 %end
