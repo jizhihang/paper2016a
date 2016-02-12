@@ -4,7 +4,7 @@ matlabpool(8)
 
 for k = 1:K
     
-    load_cluster =  strcat('./par_for_clusters_spd/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
+    load_cluster =  strcat('./',folder_name,'/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
     Sc = char(load_cluster);
     data_one_cluster= hdf5info(Sc);
     old_cluster_k = hdf5read(data_one_cluster.GroupHierarchy.Datasets(1));
