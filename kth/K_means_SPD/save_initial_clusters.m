@@ -1,4 +1,4 @@
-function save_initial_clusters(path, load_sub_path, K)
+function save_initial_clusters(path, load_sub_path, K, cluster_idx_pac)
 
 
 
