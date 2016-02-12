@@ -12,7 +12,7 @@ scale_factor = 1;
 shift = 0;
 
 
-n_people  = length(people);
+n_people  = length(all_people);
 n_actions = length(actionNames);
 
 %pac : people, action, cells
