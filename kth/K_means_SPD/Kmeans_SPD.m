@@ -3,7 +3,9 @@ clc
 dbstop error;
 
 
-%Check this path
+%Change this
+K = 10;
+
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 dim = 14;
 actions = importdata('actionNames.txt');
@@ -18,7 +20,7 @@ n_actions = length(actions);
 %pac : people, action, cells
 list_pac = get_list(n_people, n_actions, path, all_people, actions , scale_factor, shift);
 
+cluster_idx_pac = cell(K,3); % 
 
 
-
-cluster_list =  cell(5,2)
+%cluster_list =  cell(5,2)
