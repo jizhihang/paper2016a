@@ -28,8 +28,8 @@ n_actions = length(actions);
 cluster_idx_pac = initial_centers (list_pac, K); % 
 save_initial_clusters(path, load_sub_path, K, cluster_idx_pac);
 
-cluster_list =  cell(total_num_covs,K);
-n_points_cl  =  zeros(1,K);
+[cluster_list n_points_cl] = assign_points(list_pac, K,path, load_sub_path);
+
 
 
 %for i=i:n_iter
