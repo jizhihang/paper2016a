@@ -45,3 +45,35 @@ for i=1:n_iter
     toc
     
 end
+
+% i =     1
+% 
+% Elapsed time is 1792.050082 seconds.
+% Elapsed time is 185.476685 seconds.
+% 
+% i =     2
+% 
+% Elapsed time is 1798.734165 seconds.
+% Elapsed time is 183.089404 seconds.
+% 
+% i =     3
+% 
+% Elapsed time is 3690.375156 seconds.
+% Elapsed time is 894.102499 seconds.
+% 
+% i =     4
+% 
+% Elapsed time is 10720.193069 seconds.
+% Elapsed time is 1117.689026 seconds.
+% 
+% i =     5
+% 
+% Elapsed time is 13623.868074 seconds.
+% Elapsed time is 1350.799642 seconds.
+% 
+% i =    6
+% 
+% Elapsed time is 17498.234280 seconds.
+% Elapsed time is 1836.512534 seconds.
+% 
+% i =   7
