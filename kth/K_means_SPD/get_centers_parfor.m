@@ -30,7 +30,7 @@ for k = 1:K
         data_one_cov= hdf5info(S);
         cov_p = hdf5read(data_one_cov.GroupHierarchy.Datasets(1));
         
-        new_cluster_k(p,:,:) = inv(0.5*(cov_p + old_cluster_k ));
+        new_cluster_k(:,:,p) = inv(0.5*(cov_p + old_cluster_k ));
 
     end
     
