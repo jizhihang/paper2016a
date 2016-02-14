@@ -21,6 +21,12 @@ mkdir(pwd, folder_name);
 %K = 10;
 %n_iter =10;
 
+
+show_you = strcat('Folder', folder_name);
+disp(show_you);
+    
+    
+    
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 dim = 14;
