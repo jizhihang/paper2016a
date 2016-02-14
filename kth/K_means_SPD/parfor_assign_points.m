@@ -1,9 +1,11 @@
-function [cluster_list n_points_cl] = parfor_assign_points(list_pac, K,path, load_sub_path,total_num_covs, folder_name)
+function [cluster_list n_points_cl, all_distances] = parfor_assign_points(list_pac, K,path, load_sub_path,total_num_covs, folder_name)
 
 cluster_list =  cell(total_num_covs,K);
 n_points_cl  =  zeros(1,K);
 matlabpool(8) 
 
+
+all_distances =  zeros(1,K);
 for i=1: length(list_pac)
     
    
@@ -34,6 +36,8 @@ for i=1: length(list_pac)
             dist(k) = cluster_distance (cluster, cov);
         end
         
+        
+        all_distances = all_distances + dist(k);
         
         
         [mini posi ] = min( dist ); % Storing the closest cluster idx in posi
