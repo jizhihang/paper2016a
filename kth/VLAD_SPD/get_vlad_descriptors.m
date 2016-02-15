@@ -16,7 +16,7 @@ for k = 1:K
     
     num_points_k = n_points_cl(k);
     
-    vi = zeros(dim_spdvec);
+    vi = zeros(1,dim_spdvec);
     for p=1:num_points_k
         
         person =  cluster_list{ p, k}{1};
