@@ -62,6 +62,10 @@ for i=1:n_iter
     all_distances_iter(i,:) = all_distances;
     toc
     
+    if length(find(n_points_cl==0)) > 0
+        
+    end
+    
     tic
     get_centers_parfor (cluster_list, n_points_cl, path, load_sub_path, K, dim,folder_name)
     toc
