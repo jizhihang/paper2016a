@@ -33,11 +33,10 @@ vec_Clusters(path, folder_name_cl, K, dim);
 
 
 for i=1:length(list_pac_te)
-    
-one_video_pac = {list_pac_te{i,:}};  
-[cluster_list n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl);
-
-get_vlad_descriptors (cluster_list, n_points_cl, dim);
+    i
+    one_video_pac = {list_pac_te{i,:}};  
+    [cluster_list n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl);
+    get_vlad_descriptors (cluster_list, n_points_cl, dim);
 
 end
 
