@@ -6,7 +6,7 @@ action =  one_video_pac{1,2};
 num_covs = one_video_pac{1,3};
 cluster_list =  cell(num_covs,K);
 n_points_cl  =  zeros(1,K);
-matlabpool(8)
+%matlabpool(8)
 
 
 
@@ -41,4 +41,4 @@ for c = 1:num_covs
     
 end
 
-matlabpool close
+%matlabpool close
