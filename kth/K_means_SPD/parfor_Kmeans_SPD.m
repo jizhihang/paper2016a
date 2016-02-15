@@ -45,9 +45,9 @@ n_people  = length(all_people);
 n_actions = length(actions);
 
 %pac : people, action, cells
-[list_pac total_num_covs] = get_list( n_actions, path, all_people, actions, load_sub_path, people_train);
+[list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path, people_train);
 
-cluster_idx_pac = initial_centers (list_pac, K); %
+cluster_idx_pac = initial_centers (list_pac_tr, K); %
 save_initial_clusters_parfor(path, load_sub_path, K, cluster_idx_pac,folder_name );
 
 
@@ -58,7 +58,7 @@ for i=1:n_iter
     
     i
     tic
-    [cluster_list n_points_cl all_distances] = parfor_assign_points(list_pac, K,path, load_sub_path, total_num_covs,folder_name);
+    [cluster_list n_points_cl all_distances] = parfor_assign_points(list_pac_tr, K,path, load_sub_path, total_num_covs_tr,folder_name);
     all_distances_iter(i,:) = all_distances;
     toc
     
