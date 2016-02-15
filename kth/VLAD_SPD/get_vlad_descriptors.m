@@ -42,5 +42,5 @@ for k = 1:K
 end
 
 save_vlad=  strcat('./vlad/vlad_',person, '_', action, '.h5' );
-hdf5write(save_vlad, '/dataset1', vlad);
+hdf5write(char(save_vlad), '/dataset1', vlad);
 %matlabpool close
