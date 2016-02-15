@@ -2,6 +2,7 @@ clear all
 clc
 dbstop error;
 %dbstop in vec_TestingSet at 10
+dbstop in vec_Clusters at 5
 
 K = 256;
 folder_name_cl = 'clusters_pruebas_vlda_borrar';
@@ -26,7 +27,7 @@ n_actions = length(actions);
 %pac : people, action, cells
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path, people_test);
 
-vec_TestingSet (path, load_sub_path, list_pac_te, dim );
+%vec_TestingSet (path, load_sub_path, list_pac_te, dim );
 vec_Clusters(path, folder_name_cl, K, dim);
 
 
