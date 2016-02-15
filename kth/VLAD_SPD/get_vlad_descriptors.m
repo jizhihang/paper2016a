@@ -1,6 +1,6 @@
 function get_vlad_descriptors (cluster_list, n_points_cl)
 
-matlabpool(8) 
+%matlabpool(8) 
 
 dim_spdvec  = dim*( dim + 1 )/2;
 
@@ -44,4 +44,4 @@ for k = 1:K
     hdf5write(save_vlad, '/dataset1', vlad);
     
 end
-matlabpool close
+%matlabpool close
