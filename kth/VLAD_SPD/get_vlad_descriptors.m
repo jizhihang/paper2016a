@@ -1,4 +1,4 @@
-function get_vlad_descriptors (list_pac_te, cluster_list_one_video, n_points_cl, dim, K)
+function get_vlad_descriptors (one_video_pac, cluster_list_one_video, n_points_cl, dim, K)
 
 %matlabpool(8) 
 
@@ -7,11 +7,11 @@ dim_spdvec  = dim*( dim + 1 )/2;
 
 vlad = zeros(K,dim_spdvec);
 
-person =  list_pac_te{1,1};
-action =  list_pac_te{1,2};
+person =  one_video_pac{1,1};
+action =  one_video_pac{1,2};
 
 for k = 1:K
-    k
+    %k
     load_vec_cluster =  strcat('./vec_Clusters/vec_cluster_', num2str(k), '_out_', num2str(K), '.h5' );
     Sc = char(load_vec_cluster);
     data_one_cluster= hdf5info(Sc);
@@ -23,7 +23,7 @@ for k = 1:K
     
     for p=1:num_points_k
         
-        
+        %p
         idx_cov = cluster_list_one_video( p, k );
         
         load_vec_cov =  strcat('./vec_TestingSet/vecSPD_', person, '_', action,  '_segm', num2str(idx_cov) , '.h5' );
@@ -31,7 +31,7 @@ for k = 1:K
         data_one_cov= hdf5info(S);
         vec_cov_p = hdf5read(data_one_cov.GroupHierarchy.Datasets(1));
         sub = (vec_cov_p - cluster_k);
-        vi = vi + sub;
+        vi = vi + sub';
 
     end
     
@@ -41,6 +41,6 @@ for k = 1:K
     
 end
 
-save_vlad=  strcat('./vlad/vlad_',person, '_', action,  '_segm', num2str(c) , '.h5' );
+save_vlad=  strcat('./vlad/vlad_',person, '_', action, '.h5' );
 hdf5write(save_vlad, '/dataset1', vlad);
 %matlabpool close
