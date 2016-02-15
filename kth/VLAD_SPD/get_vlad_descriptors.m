@@ -16,12 +16,6 @@ for k = 1:K
     
     num_points_k = n_points_cl(k);
     
-    if (num_points_k ==0)
-        disp('You have a serious problem')
-        pause
-    end
-   
- 
     vi = zeros(dim_spdvec);
     for p=1:num_points_k
         
