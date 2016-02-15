@@ -36,7 +36,7 @@ for i=1:length(list_pac_te)
     i
     one_video_pac = {list_pac_te{i,:}};  
     [cluster_list_one_video n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl);
-    get_vlad_descriptors (list_pac_te, cluster_list, n_points_cl, dim, K);
+    get_vlad_descriptors (one_video_pac, cluster_list_one_video, n_points_cl, dim, K);
 
 end
 
