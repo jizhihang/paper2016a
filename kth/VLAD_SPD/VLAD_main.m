@@ -7,7 +7,7 @@ K = 256;
 folder_name_cl = 'clusters_pruebas_vlda_borrar';
 
 
-show_you = strcat('Folder', folder_name_cl);
+show_you = strcat('Folder: ', folder_name_cl);
 disp(show_you);
     
 dim = 14;
