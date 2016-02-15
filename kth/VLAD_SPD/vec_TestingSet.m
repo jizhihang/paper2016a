@@ -26,7 +26,7 @@ for i=1: length(list_pac_te)
          
          
         save_vec_cov =  strcat('./vec_TestingSet/vecSPD_', person, '_', action,  '_segm', num2str(c) , '.h5' );
-        hdf5write(save_vec_cov, '/dataset1', vec_spd);
+        hdf5write(char(save_vec_cov), '/dataset1', vec_spd);
         
     end
 end
