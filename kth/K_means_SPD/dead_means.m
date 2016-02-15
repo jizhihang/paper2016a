@@ -34,3 +34,31 @@ for i=1: length(idx_clusters_no_points)
     
 end
 
+
+%Comparing new clusters :)
+% for nn=1:5
+% [one_cluster_list{1,nn}{1} one_cluster_list{1,nn}{2} one_cluster_list{1,nn}{3}]
+% end
+% 
+% 
+% k1 = 183
+% k2 = 151
+% for nn=1:303
+% [my_cluster_list{nn,k1}{1} my_cluster_list{nn,k1}{2} my_cluster_list{nn,k1}{3};
+% new_cluster_list{nn,k2}{1} new_cluster_list{nn,k2}{2} new_cluster_list{nn,k2}{3}]
+% %pause
+% end
+% 
+% 
+% k1 = 183
+% k2 = 183
+% c =1;
+% for nn=304:606
+% [my_cluster_list{nn,k1}{1} my_cluster_list{nn,k1}{2} my_cluster_list{nn,k1}{3};
+% new_cluster_list{c,k2}{1} new_cluster_list{c,k2}{2} new_cluster_list{c,k2}{3}]
+% c = c+1;
+% pause
+% end
+
+
+
