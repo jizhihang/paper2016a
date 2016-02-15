@@ -37,7 +37,7 @@ for i=1: length(list_pac)
         end
         
         
-        all_distances = all_distances + dist(k);
+        all_distances = all_distances + dist;
         
         
         [mini posi ] = min( dist ); % Storing the closest cluster idx in posi
