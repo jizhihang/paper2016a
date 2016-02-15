@@ -2,7 +2,7 @@ clear all
 clc
 dbstop error;
 %dbstop in vec_TestingSet at 10
-dbstop in vec_Clusters at 5
+%dbstop in vec_Clusters at 5
 
 K = 256;
 folder_name_cl = 'clusters_pruebas_vlda_borrar';
@@ -34,7 +34,7 @@ vec_Clusters(path, folder_name_cl, K, dim);
 
 for i=1:length(list_pac_te)
     
-one_video_pac = {list_pac{i,:}};  
+one_video_pac = {list_pac_te{i,:}};  
 [cluster_list n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl);
 
 get_vlad_descriptors (cluster_list, n_points_cl);
