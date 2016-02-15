@@ -1,6 +1,7 @@
 clear all
 clc
 dbstop error;
+dbstop in vec_TestingSet at 10
 
 K = 256;
 folder_name_cl = 'clusters_pruebas_vlda_borrar';
