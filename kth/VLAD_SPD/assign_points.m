@@ -22,7 +22,7 @@ for c = 1:num_covs
     
     %parfor k=1:K
     for  k=1:K
-        load_cluster =  strcat('./',folder_name,'/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
+        load_cluster =  strcat(path, 'K_means_SPD/', folder_name_cl, '/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
         Sc = char(load_cluster);
         data_one_cluster= hdf5info(Sc);
         cluster = hdf5read(data_one_cluster.GroupHierarchy.Datasets(1));
