@@ -1,4 +1,4 @@
-function [cluster_list n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name)
+function [cluster_list n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl)
 
 
 person =  one_video_pac{1,1};
