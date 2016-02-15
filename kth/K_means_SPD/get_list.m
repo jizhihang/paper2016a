@@ -11,7 +11,9 @@ total_num_covs = 0;
 
 
 for pe = 1: n_people
-    idx = people_train(pe);
+    idx = people_train(pe)
+    pause
+    
     for act=1: n_actions
         
       list_pac{k,1}  = all_people(idx);      
