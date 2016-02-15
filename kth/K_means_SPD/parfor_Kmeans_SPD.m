@@ -35,6 +35,8 @@ all_people = importdata('people_list.txt');
 scale_factor = 1;
 shift = 0;
 
+people_test =   [ 2 3 5  6  7  8  9  10 22 ];
+people_train = [ 1 4 11 12 13 14 15 16 17 18 19 20 21 23 24 25];
 
 load_sub_path =strcat('overlapped_covariances/Covs/sc1/scale', int2str(scale_factor), '-shift',  int2str(shift));
 
@@ -43,7 +45,7 @@ n_people  = length(all_people);
 n_actions = length(actions);
 
 %pac : people, action, cells
-[list_pac total_num_covs] = get_list(n_people, n_actions, path, all_people, actions, load_sub_path);
+[list_pac total_num_covs] = get_list( n_actions, path, all_people, actions, load_sub_path, people_train);
 
 cluster_idx_pac = initial_centers (list_pac, K); %
 save_initial_clusters_parfor(path, load_sub_path, K, cluster_idx_pac,folder_name );
