@@ -1,4 +1,4 @@
-function get_vlad_descriptors (cluster_list, n_points_cl, dim)
+function get_vlad_descriptors (cluster_list, n_points_cl, dim, K)
 
 %matlabpool(8) 
 
