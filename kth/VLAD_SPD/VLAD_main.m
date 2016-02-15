@@ -28,15 +28,15 @@ n_actions = length(actions);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path, people_test);
 
 %vec_TestingSet (path, load_sub_path, list_pac_te, dim );
-vec_Clusters(path, folder_name_cl, K, dim);
+%vec_Clusters(path, folder_name_cl, K, dim);
 
 
 
 for i=1:length(list_pac_te)
     i
     one_video_pac = {list_pac_te{i,:}};  
-    [cluster_list n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl);
-    get_vlad_descriptors (one_video_pac, n_points_cl(i), dim, K);
+    [cluster_list_one_video n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl);
+    get_vlad_descriptors (list_pac_te, cluster_list, n_points_cl, dim, K);
 
 end
 

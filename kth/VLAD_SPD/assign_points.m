@@ -1,10 +1,10 @@
-function [cluster_list n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl)
+function [cluster_list_one_video n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl)
 
 
 person =  one_video_pac{1,1};
 action =  one_video_pac{1,2};
 num_covs = one_video_pac{1,3};
-cluster_list =  cell(num_covs,K);
+cluster_list_one_video =  zeros(num_covs,K);
 n_points_cl  =  zeros(1,K);
 %matlabpool(8)
 
@@ -34,9 +34,8 @@ for c = 1:num_covs
     
     [mini posi ] = min( dist ); % Storing the closest cluster idx in posi
     n_points_cl(posi) =  n_points_cl(posi) + 1;
-    new_list_pac_cov = {one_video_pac{1,:}};
-    new_list_pac_cov{3}  = c;
-    cluster_list{ n_points_cl(posi), posi} = new_list_pac_cov;
+   
+    cluster_list_one_video( n_points_cl(posi), posi) = c;
     
     
 end

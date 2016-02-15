@@ -1,4 +1,4 @@
-function get_vlad_descriptors (cluster_list, n_points_cl, dim, K)
+function get_vlad_descriptors (list_pac_te, cluster_list, n_points_cl, dim, K)
 
 %matlabpool(8) 
 
@@ -6,6 +6,9 @@ dim_spdvec  = dim*( dim + 1 )/2;
 
 
 vlad = zeros(K,dim_spdvec);
+
+person =  list_pac_te{1,1};
+action =  list_pac_te{1,2};
 
 for k = 1:K
     
@@ -17,11 +20,11 @@ for k = 1:K
     num_points_k = n_points_cl(k);
     
     vi = zeros(1,dim_spdvec);
+    
     for p=1:num_points_k
         
-        person =  cluster_list{ p, k}{1};
-        action =  cluster_list{ p, k}{2};
-        idx_cov = cluster_list{ p, k}{3};
+        
+        idx_cov = cluster_list( p, k );
         
         load_vec_cov =  strcat('./vec_TestingSet/vecSPD_', person, '_', action,  '_segm', num2str(idx_cov) , '.h5' );
         S = char(load_vec_cov);
@@ -34,8 +37,10 @@ for k = 1:K
     
     vlad(k,:) = vi;
     
-    save_vlad=  strcat('./vlad/vlad_',person, '_', action,  '_segm', num2str(c) , '.h5' );
-    hdf5write(save_vlad, '/dataset1', vlad);
+   
     
 end
+
+save_vlad=  strcat('./vlad/vlad_',person, '_', action,  '_segm', num2str(c) , '.h5' );
+hdf5write(save_vlad, '/dataset1', vlad);
 %matlabpool close
