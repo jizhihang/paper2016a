@@ -11,14 +11,15 @@ total_num_covs = 0;
 
 
 for pe = 1: n_people
-    idx = people_train(pe)
-    pause
+    idx = people_train(pe);
+    %pause
     
     for act=1: n_actions
         
-      list_pac{k,1}  = all_people(idx);      
+      list_pac{k,1}  = all_people(idx)
+      pause
       list_pac{k,2}  = actions(act);
-      load_Numcov =  strcat( path, load_sub_path, '/NumCov_', all_people(pe), '_', actions(act),  '.dat');
+      load_Numcov =  strcat( path, load_sub_path, '/NumCov_', all_people(idx), '_', actions(act),  '.dat');
       num_cov = load( char(load_Numcov) );
       total_num_covs = total_num_covs + num_cov;
       list_pac{k,3}  = num_cov;
