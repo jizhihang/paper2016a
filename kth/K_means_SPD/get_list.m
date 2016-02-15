@@ -22,11 +22,11 @@ for pe = 1: n_people
       num_cov = load( char(load_Numcov) );
       total_num_covs = total_num_covs + num_cov;
       list_pac{k,3}  = num_cov;
-      [list_pac{k,:}]
+      %[list_pac{k,:}]
       k=k+1;
       
         
     end
-    pause
+    %pause
     
 end
