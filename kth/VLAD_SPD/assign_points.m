@@ -6,7 +6,7 @@ action =  one_video_pac{1,2};
 num_covs = one_video_pac{1,3};
 cluster_list_one_video =  zeros(num_covs,K);
 n_points_cl  =  zeros(1,K);
-%matlabpool(8)
+matlabpool(8)
 
 
 
@@ -20,8 +20,8 @@ for c = 1:num_covs
     dist = zeros(1,K);
     
     
-    %parfor k=1:K
-    for  k=1:K
+    parfor k=1:K
+    %for  k=1:K
         load_cluster =  strcat(path, 'K_means_SPD/', folder_name_cl, '/cluster_', num2str(k), '_out_', num2str(K), '.h5' );
         Sc = char(load_cluster);
         data_one_cluster= hdf5info(Sc);
@@ -40,4 +40,4 @@ for c = 1:num_covs
     
 end
 
-%matlabpool close
+matlabpool close

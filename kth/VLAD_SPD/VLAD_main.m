@@ -5,7 +5,7 @@ dbstop error;
 %dbstop in vec_Clusters at 5
 
 K = 256;
-folder_name_cl = 'clusters_pruebas_vlda_borrar';
+folder_name_cl = 'clustersSPD_15-Feb-2016_K_256';
 
 
 show_you = strcat('Folder: ', folder_name_cl);
@@ -27,16 +27,22 @@ n_actions = length(actions);
 %pac : people, action, cells
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path, people_test);
 
-%vec_TestingSet (path, load_sub_path, list_pac_te, dim );
-%vec_Clusters(path, folder_name_cl, K, dim);
+vec_TestingSet (path, load_sub_path, list_pac_te, dim );
+vec_Clusters(path, folder_name_cl, K, dim);
 
 
 
 for i=1:length(list_pac_te)
     i
     one_video_pac = {list_pac_te{i,:}};  
+    tic
     [cluster_list_one_video n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl);
+    toc
+    
+    disp('Get VLAD descriptors')
+    tic
     get_vlad_descriptors (one_video_pac, cluster_list_one_video, n_points_cl, dim, K);
+    toc
 
 end
 
