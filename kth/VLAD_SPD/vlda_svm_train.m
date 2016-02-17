@@ -6,7 +6,7 @@ dim_vlad = K * dim_spdvec;
 
 n_samples_train = length(list_pac_tr);
 X_train = zeros(dim_vlad,n_samples_train);
-labels_train = zeros(n_samples_train,1);
+%labels_train = zeros(n_samples_train,1);
     
 
 for i=1: n_samples_train     
