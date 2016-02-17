@@ -55,25 +55,29 @@ n_actions = length(actions);
 people_train = [ 1 4 11 12 13 14 15 16 17 18 19 20 21 23 24 25];
 
 %pac : people, action, cells
-[list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path, people_train);
+% [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path, people_train);
+% 
+% vec_TrainingSet (path, load_sub_path, list_pac_tr, dim );
+% 
+% 
+% 
+% 
+% for i=1:length(list_pac_tr)
+%     i
+%     one_video_pac = {list_pac_tr{i,:}};  
+%     tic
+%     [cluster_list_one_video n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl);
+%     toc
+%     
+%     disp('Get VLAD descriptors')
+%     tic
+%     get_vlad_descriptors (one_video_pac, cluster_list_one_video, n_points_cl, dim, K);
+%     toc
+% 
+% end
 
-vec_TrainingSet (path, load_sub_path, list_pac_tr, dim );
+%% Train and Test with SVM
+vlda_svm_train(K, dim, list_pac_tr)
 
-
-
-
-for i=1:length(list_pac_tr)
-    i
-    one_video_pac = {list_pac_tr{i,:}};  
-    tic
-    [cluster_list_one_video n_points_cl] = assign_points(one_video_pac, K,path, load_sub_path, folder_name_cl);
-    toc
-    
-    disp('Get VLAD descriptors')
-    tic
-    get_vlad_descriptors (one_video_pac, cluster_list_one_video, n_points_cl, dim, K);
-    toc
-
-end
 
 
