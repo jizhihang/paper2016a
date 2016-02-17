@@ -1,4 +1,4 @@
-function inter_kernel(X,Y)
+function K = inter_kernel(X,Y)
 
 % X,Y --> [K num_hists]
 
