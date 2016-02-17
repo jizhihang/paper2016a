@@ -1,13 +1,12 @@
-function  [predicted_label, accuracy, prob_estimates] = vlda_svm_test(K, dim, list_pac_te)
+function  [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te)
 
-load_svm_model =strcat( './svm_models/linear_svm_vlad.mat');
-load(load_svm_model);
+load_svm_model =strcat( './svm_models/inter_kernel_svm_BoW.mat');
+load(load_svm_model); % Loading Model and X_train
 
-dim_spdvec  = dim*( dim + 1 )/2;
-dim_vlad = K * dim_spdvec;
+
 
 n_samples_test = length(list_pac_te);
-X_test = zeros(dim_vlad,n_samples_test);
+X_test = zeros(K,n_samples_test);
 labels_test = zeros(n_samples_test,1);
     
 
@@ -18,21 +17,15 @@ for i=1: n_samples_test
     action   = list_pac_te{i,2};
     act      = list_pac_te{i,4};
     
-    load_vlad=  strcat('./vlad/vlad_',person, '_', action, '.h5' );
-    data_one_vlad= hdf5info( char(load_vlad) );
-    vlad_i = hdf5read(data_one_vlad.GroupHierarchy.Datasets(1));
-    vlad_i = vec(vlad_i);
-    % power "normalisation"
-    vlad_i = sign(vlad_i) .* sqrt(abs(vlad_i));
-    %L2 normalization 
-    vlad_i = vlad_i / sqrt(vlad_i'*vlad_i);
+    load_hist=  strcat('./BoW_hist/hist_',person, '_', action, '.h5' );
+    data_one_hist= hdf5info( char(load_hist) );
+    hist_i = hdf5read(data_one_hist.GroupHierarchy.Datasets(1));
+    hist_i = hist_i./norm(hist_i,1) ;
     
-    
-    X_test(:,i) = vlad_i; 
+    X_test(:,i) = hist_i; 
     labels_test(i) = act;
     
 end
 
-
- data_test = X_test';
- [predicted_label, accuracy, prob_estimates] = svmpredict(labels_test, X_test', model, ['-b 1']);
+ K_test = inter_kernel(X_test,X_train);
+ [predict_label, accuracy, dec_values] = svmpredict(labels_test,[[1:size(K_test,1)]' K_test], model);
