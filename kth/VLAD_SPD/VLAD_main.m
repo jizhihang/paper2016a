@@ -3,7 +3,7 @@ clc
 dbstop error;
 %dbstop in vec_TestingSet at 10
 %dbstop in vec_Clusters at 5
-
+dbstop in vlda_svm_train at 35
 K = 256;
 folder_name_cl = 'clustersSPD_15-Feb-2016_K_256';
 
