@@ -1,4 +1,4 @@
-function vlda_svm_test(K, dim, list_pac_te)
+function  [predicted_label, accuracy, prob_estimates] = vlda_svm_test(K, dim, list_pac_te)
 
 load_svm_model =strcat( './svm_models/linear_svm_vlad.mat');
 load(load_svm_model);

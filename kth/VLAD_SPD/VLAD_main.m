@@ -75,6 +75,6 @@ people_train = [ 1 4 11 12 13 14 15 16 17 18 19 20 21 23 24 25];
 
 %% Train and Test with SVM
 %vlda_svm_train(K, dim, list_pac_tr);
-vlda_svm_test(K, dim, list_pac_te);
+[predicted_label, accuracy, prob_estimates] = vlda_svm_test(K, dim, list_pac_te);
 
 
