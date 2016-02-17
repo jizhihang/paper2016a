@@ -39,6 +39,7 @@ for c = 1:num_covs
     
     
 end
-
+save_hist=  strcat('./BoW_hist/hist_',person, '_', action, '.h5' );
+hdf5write(char(save_hist), '/dataset1', hist_i);
 % Guardar Aqui!!!!!
 matlabpool close
