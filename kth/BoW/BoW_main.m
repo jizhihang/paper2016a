@@ -3,7 +3,7 @@ clc
 addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 
 dbstop error;
-dbstop in get_BoW_histograms at 43
+%dbstop in get_BoW_histograms at 43
 K = 256;
 folder_name_cl = 'clustersSPD_15-Feb-2016_K_256';
 
