@@ -28,4 +28,4 @@ for i=1: n_samples_test
 end
 
  K_test = inter_kernel(X_test,X_train);
- [predict_label, accuracy, dec_values] = svmpredict(labels_test,[[1:size(K_test,1)]' K_test], model);
+ [predicted_label, accuracy, dec_values] = svmpredict(labels_test,[[1:size(K_test,1)]' K_test], model);
