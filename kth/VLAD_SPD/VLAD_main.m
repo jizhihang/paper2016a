@@ -1,5 +1,7 @@
 clear all
 clc
+addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
+
 dbstop error;
 %dbstop in vec_TestingSet at 10
 %dbstop in vec_Clusters at 5
