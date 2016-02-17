@@ -28,4 +28,4 @@ K_train = inter_kernel(X_train,X_train);
 
  model = svmtrain(labels_train, [[1:size(K_train,1)]' K_train], '-t 4 -q ');
  save_svm_model = strcat( './svm_models/inter_kernel_svm_BoW.mat');
- save(save_svm_model, 'model', 'K_train');
+ save(save_svm_model, 'model', 'X_train');
