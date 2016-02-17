@@ -35,4 +35,4 @@ end
 
 
  data_test = X_test';
- [predicted_label, accuracy, prob_estimates] = svmpredict([act_ts], X_test', model, ['-b 1']);
+ [predicted_label, accuracy, prob_estimates] = svmpredict(labels_test, X_test', model, ['-b 1']);
