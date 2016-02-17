@@ -37,40 +37,37 @@ people_test =   [ 2 3 5 6 7  8  9  10 22 ];
 %pac : people, action, cells
 
  
- for i=1:length(list_pac_tr)
-     i
-     one_video_pac = {list_pac_tr{i,:}};
-     tic
-     [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
-     toc
-
-     
-
- end
+%  for i=1:length(list_pac_tr)
+%      i
+%      one_video_pac = {list_pac_tr{i,:}};
+%      tic
+%      [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
+%      toc
+%  end
 
 
 
 %% Getting descriptors for Testing Set
 
 % 
- for i=1:length(list_pac_te)
-     i
-     one_video_pac = {list_pac_te{i,:}};
-     tic
-     [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
-     toc
-
-     
-
- end
-
+%  for i=1:length(list_pac_te)
+%      i
+%      one_video_pac = {list_pac_te{i,:}};
+%      tic
+%      [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
+%      toc
+% 
+%      
+% 
+%  end
+% 
 
 %%
 
 
 
 %% Train and Test with SVM
-%BoW_svm_train(K, dim, list_pac_tr);
+BoW_svm_train(K, list_pac_tr);
 %[predicted_label, accuracy, prob_estimates] = BoW_svm_test(K, dim, list_pac_te);
 
 

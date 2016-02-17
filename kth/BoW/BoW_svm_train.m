@@ -1,11 +1,7 @@
-function vlda_svm_train(K, dim, list_pac_tr)
-
-
-dim_spdvec  = dim*( dim + 1 )/2;
-dim_vlad = K * dim_spdvec;
+function BoW_svm_train(K, list_pac_tr)
 
 n_samples_train = length(list_pac_tr);
-X_train = zeros(dim_vlad,n_samples_train);
+X_train = zeros(K,n_samples_train);
 labels_train = zeros(n_samples_train,1);
     
 
@@ -16,23 +12,20 @@ for i=1: n_samples_train
     action   = list_pac_tr{i,2};
     act      = list_pac_tr{i,4};
     
-    load_vlad=  strcat('./vlad/vlad_',person, '_', action, '.h5' );
-    data_one_vlad= hdf5info( char(load_vlad) );
-    vlad_i = hdf5read(data_one_vlad.GroupHierarchy.Datasets(1));
-    vlad_i = vec(vlad_i);
-    % power "normalisation"
-    vlad_i = sign(vlad_i) .* sqrt(abs(vlad_i));
-    %L2 normalization 
-    vlad_i = vlad_i / sqrt(vlad_i'*vlad_i);
+    load_hist=  strcat('./BoW_hist/hist_',person, '_', action, '.h5' );
+    data_one_hist= hdf5info( char(load_hist) );
+    hist_i = hdf5read(data_one_hist.GroupHierarchy.Datasets(1));
+    hist_i = hist_i./norm(histo_i,1) ;
     
     
-    X_train(:,i) = vlad_i; 
+    
+    X_train(:,i) = hist_i; 
     labels_train(i) = act;
     
 end
 
+K_train = inter_kernel(X_train,X_train);
 
- data_train = X_train';
- model = svmtrain(labels_train, data_train, ['-s 0 -t 0 -b 1' ]);
- save_svm_model =strcat( './svm_models/linear_svm_vlad.mat')
+ model = svmtrain(labels_train, [[1:size(K_train,1)]' K_train], '-t 4 -q ');
+ save_svm_model = strcat( './svm_models/inter_kernel_svm_BoW.mat');
  save(save_svm_model, 'model');
