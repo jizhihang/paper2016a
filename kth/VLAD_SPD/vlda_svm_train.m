@@ -1,4 +1,4 @@
-function vlda_svm_train(K, dim, list_pac_tr, actions)
+function vlda_svm_train(K, dim, list_pac_tr)
 
 
 dim_spdvec  = dim*( dim + 1 )/2;
