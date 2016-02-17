@@ -15,7 +15,7 @@ for i=1: n_samples_train
     load_hist=  strcat('./BoW_hist/hist_',person, '_', action, '.h5' );
     data_one_hist= hdf5info( char(load_hist) );
     hist_i = hdf5read(data_one_hist.GroupHierarchy.Datasets(1));
-    hist_i = hist_i./norm(histo_i,1) ;
+    hist_i = hist_i./norm(hist_i,1) ;
     
     
     
