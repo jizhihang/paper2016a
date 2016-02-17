@@ -30,8 +30,6 @@ people_test =   [ 2 3 5 6 7  8  9  10 22 ];
 
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path, people_test);
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path, people_train);
-vec_TrainingSet (path, load_sub_path, list_pac_tr, dim );
-vec_TestingSet (path, load_sub_path, list_pac_te, dim );
 
 %% Getting descriptors for Testing Set
 
