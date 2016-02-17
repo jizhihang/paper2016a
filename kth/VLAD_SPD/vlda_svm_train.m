@@ -18,6 +18,12 @@ for i=1: n_samples_train
     data_one_vlad= hdf5info( char(load_vlad) );
     vlad_i = hdf5read(data_one_vlad.GroupHierarchy.Datasets(1));
     vlad_i = vec(vlad_i);
+    % power "normalisation"
+    vlad_i = sign(vlad_i) .* sqrt(abs(vlad_i));
+    %L2 normalization 
+    vlad_i = vlad_i / sqrt(vlad_i'*vlad_i);
+    
+    
     X_train(:,i) = vlad_i; 
     labels_train(i) = action;
 end
