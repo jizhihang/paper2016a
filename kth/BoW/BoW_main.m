@@ -68,6 +68,4 @@ people_test =   [ 2 3 5 6 7  8  9  10 22 ];
 
 %% Train and Test with SVM
 BoW_svm_train(K, list_pac_tr);
-[predicted_label, accuracy, dec_values] = BoW_svm_test(K, dim, list_pac_te);
-
-
+[predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te);
