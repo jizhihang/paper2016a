@@ -14,6 +14,8 @@ for i=1: n_samples_train
     
     person   = list_pac_tr{i,1};
     action   = list_pac_tr{i,2};
+    act      = list_pac_tr{i,4};
+    
     load_vlad=  strcat('./vlad/vlad_',person, '_', action, '.h5' );
     data_one_vlad= hdf5info( char(load_vlad) );
     vlad_i = hdf5read(data_one_vlad.GroupHierarchy.Datasets(1));
@@ -25,8 +27,8 @@ for i=1: n_samples_train
     
     
     X_train(:,i) = vlad_i; 
-    labels_train(i) = find( strncmp(actions, action, length(action)) );
-    labels_train(i) 
+    labels_train(i) = act;
+    
 end
 
 
