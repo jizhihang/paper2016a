@@ -11,7 +11,7 @@ X_test = zeros(dim_vlad,n_samples_test);
 labels_test = zeros(n_samples_test,1);
     
 
-for i=1: n_samples_train     
+for i=1: n_samples_test    
    
     
     person   = list_pac_te{i,1};
