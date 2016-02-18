@@ -1,6 +1,6 @@
 function  [predicted_label, accuracy, prob_estimates] = vlda_svm_test(K, dim, list_pac_te)
 
-load_svm_model =strcat( './svm_models/linear_svm_vlad.mat');
+load_svm_model = strcat( './svm_models/linear_svm_vlad_K', num2str(K), '.mat');
 load(load_svm_model);
 
 dim_spdvec  = dim*( dim + 1 )/2;
@@ -18,7 +18,7 @@ for i=1: n_samples_test
     action   = list_pac_te{i,2};
     act      = list_pac_te{i,4};
     
-    load_vlad=  strcat('./vlad/vlad_',person, '_', action, '.h5' );
+    load_vlad=  strcat('./vlad_K', num2str(K), '/vlad_',person, '_', action, '.h5' );
     data_one_vlad= hdf5info( char(load_vlad) );
     vlad_i = hdf5read(data_one_vlad.GroupHierarchy.Datasets(1));
     vlad_i = vec(vlad_i);

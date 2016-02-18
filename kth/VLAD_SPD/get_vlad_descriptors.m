@@ -12,7 +12,8 @@ action =  one_video_pac{1,2};
 
 for k = 1:K
     %k
-    load_vec_cluster =  strcat('./vec_Clusters/vec_cluster_', num2str(k), '_out_', num2str(K), '.h5' );
+   
+    load_vec_cluster =   strcat('./vec_Clusters_K', num2str(K), '/vec_cluster_', num2str(k), '_out_', num2str(K), '.h5' );
     Sc = char(load_vec_cluster);
     data_one_cluster= hdf5info(Sc);
     cluster_k = hdf5read(data_one_cluster.GroupHierarchy.Datasets(1));
@@ -26,7 +27,7 @@ for k = 1:K
         %p
         idx_cov = cluster_list_one_video( p, k );
         
-        load_vec_cov =  strcat('./vec_TrainTestSet/vecSPD_', person, '_', action,  '_segm', num2str(idx_cov) , '.h5' );
+        load_vec_cov =   strcat('./vec_TrainTestSet_K', num2str(K),'/vecSPD_', person, '_', action,  '_segm', num2str(c) , '.h5' );
         S = char(load_vec_cov);
         data_one_cov= hdf5info(S);
         vec_cov_p = hdf5read(data_one_cov.GroupHierarchy.Datasets(1));
@@ -41,6 +42,6 @@ for k = 1:K
     
 end
 
-save_vlad=  strcat('./vlad/vlad_',person, '_', action, '.h5' );
+save_vlad=  strcat('./vlad_K', num2str(K), '/vlad_',person, '_', action, '.h5' );
 hdf5write(char(save_vlad), '/dataset1', vlad);
 %matlabpool close

@@ -5,7 +5,7 @@ addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 dbstop error;
 %dbstop in vec_TestingSet at 10
 %dbstop in vec_Clusters at 5
-dbstop in vlda_svm_train at 35
+%dbstop in vlda_svm_train at 35
 K = 256;
 folder_name_cl = 'clustersSPD_15-Feb-2016_K_256';
 
@@ -74,7 +74,7 @@ people_train = [ 1 4 11 12 13 14 15 16 17 18 19 20 21 23 24 25];
 % end
 
 %% Train and Test with SVM
-%vlda_svm_train(K, dim, list_pac_tr);
+vlda_svm_train(K, dim, list_pac_tr);
 [predicted_label, accuracy, prob_estimates] = vlda_svm_test(K, dim, list_pac_te);
 
 

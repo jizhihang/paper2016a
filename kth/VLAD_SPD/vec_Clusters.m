@@ -12,7 +12,7 @@ for k=1: K
      
      vec_spd = vecSPD (cluster_k, dim, dim_spdvec);
      
-     save_vec_cov =  strcat('./vec_Clusters/vec_cluster_', num2str(k), '_out_', num2str(K), '.h5' );
+     save_vec_cov =  strcat('./vec_Clusters_K', num2str(K), '/vec_cluster_', num2str(k), '_out_', num2str(K), '.h5' );
      hdf5write(save_vec_cov, '/dataset1', vec_spd);
         
 end
