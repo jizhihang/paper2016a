@@ -63,7 +63,7 @@ for i=1:n_iter
     toc
     
     if length(find(n_points_cl==0)) > 0
-        displ('Dead Means in')
+        disp('Dead Means in')
         find(n_points_cl==0)
         [cluster_list n_points_cl] = dead_means(cluster_list, n_points_cl);
     end
