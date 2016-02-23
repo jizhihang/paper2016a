@@ -48,14 +48,4 @@ disp(show_you);
 
 random_idx_pac = random_points (list_pac_tr, r_points); 
 
-%Stein Divergence Kernel
-beta  = 0.5;
-SD_Kernel = @(X,Y,beta) exp( -beta*( log(det( 0.5*(X + Y) )) - 0.5*log(det(X*Y )) ) );
-
-
-
-Ks= compute_kernel(X_train,X_train, RIEMANNIAN_KERNEL, gamma);
-
-
-R = chol(Ks); 
 
