@@ -14,7 +14,7 @@ R = input(prompt);
 
 
 prompt = 'Folder name to save Projected Space ';
-folder_name = strcat(input(prompt, 's'),date,'_R_',num2str(K));
+folder_name = strcat(input(prompt, 's'),date,'_R_',num2str(R));
 %parent_dir = pwd;
 mkdir(pwd, folder_name);
 
