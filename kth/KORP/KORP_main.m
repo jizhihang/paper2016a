@@ -48,4 +48,5 @@ disp(show_you);
 
 random_idx_pac = random_points (list_pac_tr, r_points); 
 
+random_projection(random_idx_pac, r_points, path, load_sub_path, folder_name, dim);
 
