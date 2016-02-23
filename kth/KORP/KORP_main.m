@@ -36,17 +36,26 @@ n_actions = length(actions);
 %pac : people, action, #covs
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path, people_train);
 
-R = floor(total_num_covs_tr*10/100);
+%# of random points
+r_points = floor(total_num_covs_tr*10/100);
 
 
 prompt = 'Folder name to save Projected Space ';
-folder_name = strcat(input(prompt, 's'),date,'_R_',num2str(R));
+folder_name = strcat(input(prompt, 's'),date,'_R_',num2str(r_points));
 mkdir(pwd, folder_name);
 show_you = strcat('Folder', folder_name);
 disp(show_you);
 
-random_idx_pac = random_points (list_pac_tr, R); %
+random_idx_pac = random_points (list_pac_tr, r_points); 
+
+%Stein Divergence Kernel
+beta  = 0.5;
+SD_Kernel = @(X,Y,beta) exp( -beta*( log(det( 0.5*(X + Y) )) - 0.5*log(det(X*Y )) ) );
 
 
 
+Ks= compute_kernel(X_train,X_train, RIEMANNIAN_KERNEL, gamma);
+
+
+R = chol(Ks); 
 
