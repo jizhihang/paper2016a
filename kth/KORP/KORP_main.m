@@ -14,16 +14,16 @@ R = input(prompt);
 
 
 prompt = 'Folder name to save Projected Space ';
-folder_name = strcat(input(prompt, 's'),date,'_R_',num2str(R));
-%parent_dir = pwd;
-mkdir(pwd, folder_name);
+%folder_name = strcat(input(prompt, 's'),date,'_R_',num2str(R));
+%%parent_dir = pwd;
+%mkdir(pwd, folder_name);
 
 %K = 10;
 %n_iter =10;
 
 
-show_you = strcat('Folder', folder_name);
-disp(show_you);
+%show_you = strcat('Folder', folder_name);
+%disp(show_you);
     
     
     
@@ -49,6 +49,6 @@ n_actions = length(actions);
 
 random_idx_pac = random_points (list_pac_tr, R); %
 
-all_distances_iter = zeros(n_iter,K);
+
 
 
