@@ -32,7 +32,7 @@ for i=1: length(list_pac)
    
     %pp = projected point
     save_pp =  strcat('./', folder_name, '/pp_', person, '_', action,  '_segm', num2str(c) , '.h5' );
-    hdf5write(save_pp, '/dataset1', x_i);
+    hdf5write(char(save_pp), '/dataset1', x_i);
     
     end
 end
