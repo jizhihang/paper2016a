@@ -35,6 +35,6 @@ Ks = compute_kernel(X_train,X_train, SD_Kernel, beta);
 
 %To project each point, it means to project each covariance matrix.
 
-save('random_projection_data',V, X_train);
+save('random_projection_data','V', 'X_train');
 
 

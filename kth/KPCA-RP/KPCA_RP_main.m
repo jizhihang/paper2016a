@@ -36,22 +36,23 @@ n_actions = length(actions);
 %pac : people, action, #covs
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path, people_test);
+
+%% Run the following only once. It's to create the random_space and it's RANDOM ;). 
 %# of random points
-r_points = floor(total_num_covs_tr*10/100);
+%r_points = floor(total_num_covs_tr*10/100);
 
+%random_idx_pac = random_points (list_pac_tr, r_points); 
 
-prompt = 'Folder name to save Projected Space ';
-folder_name = strcat(input(prompt, 's'),date,'_R_',num2str(r_points));
-mkdir(pwd, folder_name);
-show_you = strcat('Folder', folder_name);
-disp(show_you);
-
-random_idx_pac = random_points (list_pac_tr, r_points); 
-
-random_projection(random_idx_pac, r_points, path, load_sub_path, folder_name, dim);
+%random_projection(random_idx_pac, r_points, path, load_sub_path, folder_name, dim);
 
 % Get projected points for Training and Testing Set
-project_points (list_pac_tr)
-project_points (list_pac_te)
+disp('project_points for Training Set');
+tic
+project_points (list_pac_tr);
+toc
 
+disp('project_points for Testing Set');
+tic
+project_points (list_pac_te);
+toc
 
