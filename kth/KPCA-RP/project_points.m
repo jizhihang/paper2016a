@@ -1,5 +1,6 @@
 function project_points (list_pac, path, load_sub_path)
 
+matlabpool(8) 
 folder_name = 'projected_points';
 load('random_projection_data') % Loading V & X_train. See random_projection
 
@@ -9,7 +10,7 @@ SD_Kernel = @(X,Y,beta) exp( -beta*( log(det( 0.5*(X + Y) )) - 0.5*log(det(X*Y )
 
 
 
-matlabpool(8) 
+
 
 for i=1: length(list_pac)
     
