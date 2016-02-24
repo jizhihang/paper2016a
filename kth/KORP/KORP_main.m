@@ -3,7 +3,7 @@
 clear all
 clc
 dbstop error;
-dbstop in random_projection at 39;
+dbstop in random_projection at 34;
 
 %% INPUTS
 % prompt = 'Number of Iterations ';
