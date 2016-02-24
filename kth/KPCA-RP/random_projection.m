@@ -34,11 +34,6 @@ Ks = compute_kernel(X_train,X_train, SD_Kernel, beta);
 [V, D] = eig(Ks); % matrix V whose columns are the corresponding eigenvectors
 
 %To project each point, it means to project each covariance matrix.
-% for i=1: r_points 
-%      Xi = X_train(:,:,i);
-%      K_hat = compute_kernel(Xi,X_train, SD_Kernel, beta);
-%      x_i = K_hat*V;
-% end
 
 save('random_projection_data',V, X_train);
 

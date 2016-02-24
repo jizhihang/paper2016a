@@ -35,7 +35,7 @@ n_actions = length(actions);
 
 %pac : people, action, #covs
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path, people_train);
-
+[list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path, people_test);
 %# of random points
 r_points = floor(total_num_covs_tr*10/100);
 
@@ -49,4 +49,9 @@ disp(show_you);
 random_idx_pac = random_points (list_pac_tr, r_points); 
 
 random_projection(random_idx_pac, r_points, path, load_sub_path, folder_name, dim);
+
+% Get projected points for Training and Testing Set
+project_points (list_pac_tr)
+project_points (list_pac_te)
+
 
