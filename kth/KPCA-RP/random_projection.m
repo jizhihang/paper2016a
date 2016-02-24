@@ -31,10 +31,10 @@ matlabpool close
 
 
 Ks = compute_kernel(X_train,X_train, SD_Kernel, beta);
-[V, D] = eig(Ks); % matrix V whose columns are the corresponding eigenvectors
+[U,S,V] = svd(Ks); % use matrix V 
 
 %To project each point, it means to project each covariance matrix.
 
-save('random_projection_data','V', 'X_train');
+save('random_projection_data','V', 'Ks', 'X_train');
 
 
