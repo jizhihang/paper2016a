@@ -3,7 +3,7 @@ function  random_projection(list_pac, r_points, path, load_sub_path, folder_name
 
 
 %Stein Divergence Kernel
-beta  =1;
+beta  = 1;
 SD_Kernel = @(X,Y,beta) exp( -beta*( log(det( 0.5*(X + Y) )) - 0.5*log(det(X*Y )) ) );
 
 
