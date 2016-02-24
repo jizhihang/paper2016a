@@ -25,7 +25,7 @@ for i=1: length(list_pac)
     S = char(load_cov);
     data_one_cov= hdf5info(S);
     Xi = hdf5read(data_one_cov.GroupHierarchy.Datasets(1)); % One covariance point
-    
+    size(X_train)
     K_hat = compute_kernel(Xi,X_train, SD_Kernel, beta);
     x_i = K_hat*V;
    
