@@ -31,6 +31,13 @@ matlabpool close
 
 
 Ks = compute_kernel(X_train,X_train, SD_Kernel, beta);
-R = chol(Ks); 
+[V, D] = eig(Ks); % matrix V whose columns are the corresponding eigenvectors
+
+for i=1: r_points 
+     Xi = X_train(:,:,i);
+     K_hat = compute_kernel(Xi,X_train, SD_Kernel, beta);
+
+    
+end
 
 
