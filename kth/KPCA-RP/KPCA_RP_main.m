@@ -48,11 +48,11 @@ n_actions = length(actions);
 % Get projected points for Training and Testing Set
 disp('project_points for Training Set');
 tic
-project_points (list_pac_tr);
+project_points (list_pac_tr,path, load_sub_path );
 toc
 
 disp('project_points for Testing Set');
 tic
-project_points (list_pac_te);
+project_points (list_pac_te, path, load_sub_path);
 toc
 

@@ -1,4 +1,4 @@
-function project_points (list_pac)
+function project_points (list_pac, path, load_sub_path)
 
 folder_name = 'projected_points';
 load('random_projection_data') % Loading V & X_train. See random_projection
