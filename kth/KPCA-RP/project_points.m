@@ -1,6 +1,6 @@
 function project_points (list_pac, path, load_sub_path)
 
-matlabpool(8) 
+%matlabpool(8) 
 folder_name = 'projected_points';
 load('random_projection_data') % Loading V & X_train. See random_projection
 
@@ -20,13 +20,13 @@ for i=1: length(list_pac)
     %show_you = strcat(person,  '_', action);
     %disp(show_you);
     
-    parfor c  = 1:num_covs 
-    %for c = 1:num_covs 
+    %parfor c  = 1:num_covs 
+    for c = 1:num_covs 
     load_cov =  strcat( path, load_sub_path, '/Cov_', person, '_', action,  '_segm', num2str(c) , '.h5' );
     S = char(load_cov);
     data_one_cov= hdf5info(S);
     Xi = hdf5read(data_one_cov.GroupHierarchy.Datasets(1)); % One covariance point
-    size(X_train)
+    %size(X_train)
     K_hat = compute_kernel(Xi,X_train, SD_Kernel, beta);
     x_i = K_hat*V;
    
@@ -37,6 +37,6 @@ for i=1: length(list_pac)
     end
 end
 
-matlabpool close
+%matlabpool close
 
 
