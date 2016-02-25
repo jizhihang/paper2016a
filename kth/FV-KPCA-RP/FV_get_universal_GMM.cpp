@@ -79,7 +79,7 @@ main(int argc, char** argv)
       
       int num_points = conv_to< int >::from(vecNumCovs);
       
-      //cout << num_points << endl;
+      cout << num_points << endl;
       
       mat vectors_video_i;
       vectors_video_i.zeros(dim,num_points);
