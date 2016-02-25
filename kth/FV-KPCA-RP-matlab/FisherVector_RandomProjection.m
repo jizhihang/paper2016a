@@ -9,7 +9,10 @@ dbstop error;
    
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
-dim = 4237; % AFter the random projection
+dim = 4237; % After the random projection
+K = 256;
+num_iter = 10; %  forKmeans
+n_iterGMM = 5; % For GMM
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
 scale_factor = 1;
