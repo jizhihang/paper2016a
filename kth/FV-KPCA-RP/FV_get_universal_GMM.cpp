@@ -93,8 +93,8 @@ main(int argc, char** argv)
 	//pac : people, action, projected_point (cov_c)
 	rowvec vector_pac;
 	vector_pac.load( load_projected_point_i.str(), hdf5_binary );
-	cout << "Vector Size:" << vector_pac.n_elem << endl;
-	vectors_video_i.col(i) = vector_pac.t();
+	//cout << "Vector Size:" << vector_pac.n_elem << endl;
+	vectors_video_i.col(i-1) = vector_pac.t();
       }
       
       cout << vectors_video_i.n_rows << " - " << vectors_video_i.n_cols << endl;
