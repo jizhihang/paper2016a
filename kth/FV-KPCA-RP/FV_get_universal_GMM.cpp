@@ -82,7 +82,7 @@ main(int argc, char** argv)
       cout << num_points << endl;
       
       mat vectors_video_i;
-      vectors_video_i.zeros(num_points);
+      vectors_video_i.zeros(dim,num_points);
       
       for (int i = 1; i <= num_points; ++i )
       {
