@@ -42,6 +42,6 @@ for i=1:length(list_pac_tr)
     i
     one_video_pac = {list_pac_tr{i,:}};
     tic
-    [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
+    get_BoW_histograms(one_video_pac, K,path, dim);    
     toc
 end

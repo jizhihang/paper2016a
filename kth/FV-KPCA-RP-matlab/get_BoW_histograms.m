@@ -1,11 +1,9 @@
-function [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, dim)
+function get_BoW_histograms(one_video_pac, K,path, dim)
 
 
 person =  one_video_pac{1,1};
 action =  one_video_pac{1,2};
 num_covs = one_video_pac{1,3};
-cluster_list_one_video =  zeros(num_covs,K);
-n_points_cl  =  zeros(1,K);
 %matlabpool(8)
 
 hist_i = zeros(K,1);
