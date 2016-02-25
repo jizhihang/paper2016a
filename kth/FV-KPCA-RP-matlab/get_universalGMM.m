@@ -31,5 +31,8 @@ toc
 
 disp('GMM');
 tic
-vl_gmm(X, K,  'MaxNumIterations', n_iterGMM, 'InitMeans', C);
+[means, covariances, priors] = vl_gmm(X, K,  'MaxNumIterations', n_iterGMM, 'InitMeans', C);
 toc
+
+save_gmm_model =  strcat( './universal_GMM/gmm_model_K', num2str(K), '_dim',num2str(dim) );
+save(char(save_gmm_model), 'means','covariances','priors');
