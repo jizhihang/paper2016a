@@ -84,6 +84,8 @@ main(int argc, char** argv)
       mat vectors_video_i;
       vectors_video_i.zeros(dim,num_points);
       
+      int k = 0;
+      
       for (int i = 1; i <= num_points; ++i )
       {
 	cout << i << endl;
