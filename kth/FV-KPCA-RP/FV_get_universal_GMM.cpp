@@ -91,7 +91,7 @@ main(int argc, char** argv)
 	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim" << dim <<"/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << i << ".h5"; 
 	
 	//pac : people, action, projected_point (cov_c)
-	vec vector_pac;
+	rowvec vector_pac;
 	vector_pac.load( load_projected_point_i.str(), hdf5_binary );
 	cout << "Vector Size:" << vector_pac.n_elem << endl;
 	vectors_video_i.col(i) = vector_pac;
