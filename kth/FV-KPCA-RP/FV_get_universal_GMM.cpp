@@ -85,11 +85,11 @@ main(int argc, char** argv)
       mat vectors_video_i;
       vectors_video_i.zeros(num_points);
       
-      for (int c = 1; c <= num_points; ++c )
+      for (int i = 1; i <= num_points; ++i )
       {
-	cout << c << endl;
+	cout << i << endl;
 	std::stringstream load_projected_point_i;
-	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim" << dim <<"/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << c << '.h5'; 
+	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim" << dim <<"/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << i << '.h5'; 
 	
 	//pac : people, action, projected_point (cov_c)
 	vec vector_pac;
