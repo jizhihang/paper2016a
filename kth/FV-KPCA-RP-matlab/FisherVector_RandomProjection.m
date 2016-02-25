@@ -1,5 +1,4 @@
-%% Si es mas rapido
-
+run('/home/johanna/toolbox/vlfeat-0.9.20/toolbox/vl_setup');
 clear all
 clc
 dbstop error;
