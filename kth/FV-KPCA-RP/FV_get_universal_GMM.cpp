@@ -82,7 +82,7 @@ main(int argc, char** argv)
     mat vectors_video_i;
     vectors_video_i.zeros(num_points);
 
-    for (inc c =0; c < num_points; ++c )
+    for (int c =0; c < num_points; ++c )
     {
       std::stringstream load_projected_point_i;
       load_projected_point_i << path <<  "KPCA-RP/projected_points_dim/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << c << '.h5'; 
