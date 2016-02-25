@@ -89,7 +89,7 @@ main(int argc, char** argv)
       
       //pac : people, action, projected_point (cov_c)
       vec vector_pac;
-     vector_pac.load( load_feat_video_i.str(), hdf5_binary );
+      vector_pac.load( load_projected_point_i.str(), hdf5_binary );
       vectors_video_i.col(i) = vector_pac;
   }
   
