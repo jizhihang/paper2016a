@@ -87,6 +87,7 @@ main(int argc, char** argv)
       
       for (int c = 0; c < num_points; ++c )
       {
+	cout << c << endl;
 	std::stringstream load_projected_point_i;
 	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << c << '.h5'; 
 	
