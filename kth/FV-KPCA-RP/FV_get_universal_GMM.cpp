@@ -72,12 +72,14 @@ main(int argc, char** argv)
     for (int act=0; act<n_actions; ++act)
     {
       
-      
+      cout << all_people(idx) << "_" << actions(act) << endl;
       std::stringstream load_vecNumCovs;
       load_vecNumCovs << load_folder_covs.str() << "/NumCov_" <<  all_people(idx) << "_" << actions(act) <<  ".dat";
       vecNumCovs.load( load_vecNumCovs.str(), raw_ascii ) ; 
       
       int num_points = conv_to< int >::from(vecNumCovs);
+      
+      cout << num_points << endl;
       
       mat vectors_video_i;
       vectors_video_i.zeros(num_points);
