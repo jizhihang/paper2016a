@@ -79,14 +79,14 @@ main(int argc, char** argv)
       
       int num_points = conv_to< int >::from(vecNumCovs);
       
-      cout << num_points << endl;
+      //cout << num_points << endl;
       
       mat vectors_video_i;
       vectors_video_i.zeros(dim,num_points);
       
       for (int i = 1; i <= num_points; ++i )
       {
-	cout << i << endl;
+	//cout << i << endl;
 	std::stringstream load_projected_point_i;
 	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim" << dim <<"/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << i << ".h5"; 
 	
@@ -96,6 +96,8 @@ main(int argc, char** argv)
 	cout << "Vector Size:" << vector_pac.n_elem << endl;
 	vectors_video_i.col(i) = vector_pac.t();
       }
+      
+      cout << vectors_video_i.n_rows << " - " << vectors_video_i.n_cols << endl;
       
       uni_features	 = join_rows( uni_features, vectors_video_i );
       
