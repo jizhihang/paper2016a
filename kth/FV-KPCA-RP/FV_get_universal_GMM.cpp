@@ -64,7 +64,6 @@ main(int argc, char** argv)
   std::stringstream load_folder_covs;
   load_folder_covs << path << "overlapped_covariances/Covs/sc1/scale1-shift0";
   vec vecNumCovs;
-  vec 
   
   for (int pe = 0; pe< n_peo_tr; ++pe)
   {
