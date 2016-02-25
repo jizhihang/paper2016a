@@ -9,7 +9,7 @@ num_covs = one_video_pac{1,3};
 hist_i = zeros(K,1);
 
 load_Kmeans =  strcat( './Kmeans/means_K', num2str(K), '_dim',num2str(dim) );
-save(char(load_Kmeans ));  % C i size(dim,K), each column is a Centroid
+load(char(load_Kmeans ));  % C i size(dim,K), each column is a Centroid
 
 for c = 1:num_covs
     
