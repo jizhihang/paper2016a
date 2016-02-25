@@ -72,7 +72,7 @@ main(int argc, char** argv)
     for (int act=0; act<n_actions; ++act)
     {
       
-      cout << all_people(idx) << "_" << actions(act) << endl;
+      cout << all_people(idx-1) << "_" << actions(act) << endl;
       std::stringstream load_vecNumCovs;
       load_vecNumCovs << load_folder_covs.str() << "/NumCov_" <<  all_people(idx) << "_" << actions(act) <<  ".dat";
       vecNumCovs.load( load_vecNumCovs.str(), raw_ascii ) ; 
@@ -85,7 +85,7 @@ main(int argc, char** argv)
       mat vectors_video_i;
       vectors_video_i.zeros(num_points);
       
-      for (int c = 0; c < num_points; ++c )
+      for (int c = 1; c <= num_points; ++c )
       {
 	cout << c << endl;
 	std::stringstream load_projected_point_i;
