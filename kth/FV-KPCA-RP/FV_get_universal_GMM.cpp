@@ -89,12 +89,12 @@ main(int argc, char** argv)
       {
 	cout << i << endl;
 	std::stringstream load_projected_point_i;
-	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim" << dim <<"/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << i << '.h5'; 
+	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim" << dim <<"/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << i << ".h5"; 
 	
 	//pac : people, action, projected_point (cov_c)
 	vec vector_pac;
 	vector_pac.load( load_projected_point_i.str(), hdf5_binary );
-	vectors_video_i.col(c) = vector_pac;
+	vectors_video_i.col(i) = vector_pac;
       }
       
       uni_features	 = join_rows( uni_features, vectors_video_i );
