@@ -103,7 +103,7 @@ main(int argc, char** argv)
 	}
       }
       
-      cout << k << end;
+      cout << k << endl;
       cout << vectors_video_i.n_rows << " - " << vectors_video_i.n_cols << endl;
       
       uni_features	 = join_rows( uni_features, vectors_video_i );
