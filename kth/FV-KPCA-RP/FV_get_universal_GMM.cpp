@@ -89,7 +89,7 @@ main(int argc, char** argv)
       {
 	cout << c << endl;
 	std::stringstream load_projected_point_i;
-	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << c << '.h5'; 
+	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim" << dim <<"/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << c << '.h5'; 
 	
 	//pac : people, action, projected_point (cov_c)
 	vec vector_pac;
