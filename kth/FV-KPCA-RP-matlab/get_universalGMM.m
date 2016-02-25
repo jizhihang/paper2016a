@@ -29,6 +29,9 @@ tic
 C = vl_kmeans(X,K,'NumRepetitions',num_iter);
 toc
 
+save_Kmeans =  strcat( './Kmeans/means_K', num2str(K), '_dim',num2str(dim) );
+save(char(save_Kmeans ), 'C');
+
 disp('GMM');
 tic
 [means, covariances, priors] = vl_gmm(X, K,  'MaxNumIterations', n_iterGMM, 'InitMeans', C);
