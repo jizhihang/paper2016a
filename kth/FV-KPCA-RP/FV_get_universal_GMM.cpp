@@ -75,7 +75,7 @@ main(int argc, char** argv)
       
     std::stringstream load_vecNumCovs;
     load_vecNumCovs << load_folder_covs.str() << "/NumCov_" <<  all_people(idx) << "_" << actions(act) <<  ".dat";
-    vecNumCovs.load( save_vecNumCovs.str(), raw_ascii ) ; 
+    vecNumCovs.load( load_vecNumCovs.str(), raw_ascii ) ; 
     
     int num_points = conv_to< int >::from(vecNumCovs);
     
