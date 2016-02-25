@@ -46,10 +46,15 @@ n_actions = length(actions);
 
 %% Getting descriptors for Testing Set
 
-for i=1:length(list_pac_te)
-    i
-    one_video_pac = {list_pac_te{i,:}};
-    tic
-    get_BoW_histograms(one_video_pac, K,path, dim);    
-    toc
-end
+% for i=1:length(list_pac_te)
+%     i
+%     one_video_pac = {list_pac_te{i,:}};
+%     tic
+%     get_BoW_histograms(one_video_pac, K,path, dim);    
+%     toc
+% end
+
+
+%% Train and Test with SVM
+BoW_svm_train(K, list_pac_tr);
+[predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te);
