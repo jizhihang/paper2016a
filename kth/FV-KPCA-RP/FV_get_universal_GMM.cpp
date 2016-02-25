@@ -80,7 +80,6 @@ main(int argc, char** argv)
       int num_points = conv_to< int >::from(vecNumCovs);
       
       cout << num_points << endl;
-      getchar();
       
       mat vectors_video_i;
       vectors_video_i.zeros(num_points);
@@ -94,6 +93,7 @@ main(int argc, char** argv)
 	//pac : people, action, projected_point (cov_c)
 	vec vector_pac;
 	vector_pac.load( load_projected_point_i.str(), hdf5_binary );
+	cout << "Vector Size:" << vector_pac.n_elem << endl;
 	vectors_video_i.col(i) = vector_pac;
       }
       
