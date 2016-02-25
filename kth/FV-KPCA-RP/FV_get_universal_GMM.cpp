@@ -98,9 +98,11 @@ main(int argc, char** argv)
       }
       
       cout << vectors_video_i.n_rows << " - " << vectors_video_i.n_cols << endl;
-      getchar();
       
       uni_features	 = join_rows( uni_features, vectors_video_i );
+      
+      cout << uni_features.n_rows << " - " << uni_features.n_cols << endl;
+      getchar();
       
     }
   }
