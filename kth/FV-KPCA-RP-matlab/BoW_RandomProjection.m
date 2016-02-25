@@ -4,13 +4,13 @@ clc
 dbstop error;
 %dbstop in random_projection at 38;
 
-   
-   
+
+
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 dim = 4237; % After the random projection
 K = 256;
-n_iterGMM = 5; % For GMM
+num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
 scale_factor = 1;
@@ -29,6 +29,19 @@ n_actions = length(actions);
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
-% Get the Kmeans and the Universal GMM
-get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM);
+%% Get Kmeans (Vocabulary)
+%get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter)
 
+%% Getting descriptors for Training Set
+
+
+%pac : people, action, cells
+
+
+for i=1:length(list_pac_tr)
+    i
+    one_video_pac = {list_pac_tr{i,:}};
+    tic
+    [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
+    toc
+end

@@ -1,4 +1,4 @@
-function get_universalGMM(path, list_pac, total_num_covs_tr, K, dim, n_iterGMM)
+function get_Kmeans(path, list_pac, total_num_covs_tr, K, dim, num_iter)
 
 
 X = zeros(dim, total_num_covs_tr);
@@ -24,11 +24,11 @@ for i=1: length(list_pac)
     end
 end
 
-
-disp('GMM');
+disp('Kmeans');
 tic
-[means, covariances, priors] = vl_gmm(X, K,  'MaxNumIterations', n_iterGMM);
+C = vl_kmeans(X,K,'NumRepetitions',num_iter);
 toc
 
-save_gmm_model =  strcat( './universal_GMM/gmm_model_K', num2str(K), '_dim',num2str(dim) );
-save(char(save_gmm_model), 'means','covariances','priors');
+save_Kmeans =  strcat( './Kmeans/means_K', num2str(K), '_dim',num2str(dim) );
+save(char(save_Kmeans ), 'C');
+
