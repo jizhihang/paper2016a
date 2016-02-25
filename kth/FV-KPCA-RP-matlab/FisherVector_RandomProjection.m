@@ -32,5 +32,5 @@ n_actions = length(actions);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
 
-get_universalGMM(path, list_pac, total_num_covs_tr, K, dim, num_iter, n_iterGMM);
+get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter, n_iterGMM);
 
