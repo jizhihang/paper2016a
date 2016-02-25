@@ -34,7 +34,7 @@ int
 main(int argc, char** argv)
 {
   
-
+  
   int dim = 4237; 
   int N_cent = 256; // as per Improved Trajectories Features
   
@@ -49,9 +49,9 @@ main(int argc, char** argv)
   
   vec people_train;
   people_train 	<<  1  <<  4  <<  11 <<  12 <<  13 << 14 << 15 <<  16 
-		<<  17 <<  18 <<  19 <<  20 <<  21 << 23 << 24 <<  25 << endr;
-
- int n_peo_tr = people_train.n_elem;
+  <<  17 <<  18 <<  19 <<  20 <<  21 << 23 << 24 <<  25 << endr;
+  
+  int n_peo_tr = people_train.n_elem;
   
   mat uni_features;
   
@@ -68,48 +68,51 @@ main(int argc, char** argv)
   for (int pe = 0; pe< n_peo_tr; ++pe)
   {
     idx = people_train(pe);
-
+    
     for (int act=0; act<n_actions; ++act)
     {
-
       
-    std::stringstream load_vecNumCovs;
-    load_vecNumCovs << load_folder_covs.str() << "/NumCov_" <<  all_people(idx) << "_" << actions(act) <<  ".dat";
-    vecNumCovs.load( load_vecNumCovs.str(), raw_ascii ) ; 
-    
-    int num_points = conv_to< int >::from(vecNumCovs);
-    
-    mat vectors_video_i;
-    vectors_video_i.zeros(num_points);
-
-    for (int c = 0; c < num_points; ++c )
-    {
-      std::stringstream load_projected_point_i;
-      load_projected_point_i << path <<  "KPCA-RP/projected_points_dim/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << c << '.h5'; 
       
-      //pac : people, action, projected_point (cov_c)
-      vec vector_pac;
-      vector_pac.load( load_projected_point_i.str(), hdf5_binary );
-      vectors_video_i.col(c) = vector_pac;
+      std::stringstream load_vecNumCovs;
+      load_vecNumCovs << load_folder_covs.str() << "/NumCov_" <<  all_people(idx) << "_" << actions(act) <<  ".dat";
+      vecNumCovs.load( load_vecNumCovs.str(), raw_ascii ) ; 
+      
+      int num_points = conv_to< int >::from(vecNumCovs);
+      
+      mat vectors_video_i;
+      vectors_video_i.zeros(num_points);
+      
+      for (int c = 0; c < num_points; ++c )
+      {
+	std::stringstream load_projected_point_i;
+	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << c << '.h5'; 
+	
+	//pac : people, action, projected_point (cov_c)
+	vec vector_pac;
+	vector_pac.load( load_projected_point_i.str(), hdf5_binary );
+	vectors_video_i.col(c) = vector_pac;
+      }
+      
+      uni_features	 = join_rows( uni_features, vectors_video_i );
+      
+    }
   }
   
-  uni_features	 = join_rows( uni_features, vectors_video_i );
-
   
   
   cout << "Final r&c "<<  uni_features.n_rows << " & " << uni_features.n_cols << endl;
   
   // **************************universal GMM*******************************
   
-   bool is_finite = uni_features.is_finite();
- 
-    if (!is_finite )
-    {
-      cout << "is_finite?? " << is_finite << endl;
-      cout << uni_features.n_rows << " " << uni_features.n_cols << endl;
-      getchar();
+  bool is_finite = uni_features.is_finite();
+  
+  if (!is_finite )
+  {
+    cout << "is_finite?? " << is_finite << endl;
+    cout << uni_features.n_rows << " " << uni_features.n_cols << endl;
+    getchar();
     
-    }
+  }
   
   
   cout << "universal GMM" << endl;
