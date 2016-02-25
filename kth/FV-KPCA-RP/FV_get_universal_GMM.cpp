@@ -94,7 +94,7 @@ main(int argc, char** argv)
 	rowvec vector_pac;
 	vector_pac.load( load_projected_point_i.str(), hdf5_binary );
 	cout << "Vector Size:" << vector_pac.n_elem << endl;
-	vectors_video_i.col(i) = vector_pac;
+	vectors_video_i.col(i) = vector_pac.t();
       }
       
       uni_features	 = join_rows( uni_features, vectors_video_i );
