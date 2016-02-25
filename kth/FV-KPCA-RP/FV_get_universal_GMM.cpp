@@ -80,7 +80,7 @@ main(int argc, char** argv)
     int num_points = conv_to< int >::from(vecNumCovs);
     
     mat vectors_video_i;
-    vect_video_i.zeros(num_points);
+    vectors_video_i.zeros(num_points);
 
     for (inc c =0; c < num_points; ++c )
     {
