@@ -24,7 +24,7 @@ for i=1: length(list_pac)
     end
 end
 
-disp('Kmeans');
+
 tic
 C = vl_kmeans(X,K,'NumRepetitions',num_iter);
 toc
