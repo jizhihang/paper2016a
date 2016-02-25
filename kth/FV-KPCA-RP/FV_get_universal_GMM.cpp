@@ -74,7 +74,7 @@ main(int argc, char** argv)
       
       cout << all_people(idx-1) << "_" << actions(act) << endl;
       std::stringstream load_vecNumCovs;
-      load_vecNumCovs << load_folder_covs.str() << "/NumCov_" <<  all_people(idx) << "_" << actions(act) <<  ".dat";
+      load_vecNumCovs << load_folder_covs.str() << "/NumCov_" <<  all_people(idx-1) << "_" << actions(act) <<  ".dat";
       vecNumCovs.load( load_vecNumCovs.str(), raw_ascii ) ; 
       
       int num_points = conv_to< int >::from(vecNumCovs);
@@ -88,7 +88,7 @@ main(int argc, char** argv)
       {
 	//cout << i << endl;
 	std::stringstream load_projected_point_i;
-	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim" << dim <<"/pp_" << all_people(idx) << "_" << actions(act) << "_segm" << i << ".h5"; 
+	load_projected_point_i << path <<  "KPCA-RP/projected_points_dim" << dim <<"/pp_" << all_people(idx-1) << "_" << actions(act) << "_segm" << i << ".h5"; 
 	
 	//pac : people, action, projected_point (cov_c)
 	rowvec vector_pac;
