@@ -1,3 +1,7 @@
+//No funciono. hay unos archivos (vectores) en formato .h5 que armadillo
+//es incapaz de cargar, peor en Matlab si puedo cargarlos. No se porque!!!!
+
+
 #include <omp.h>
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
@@ -84,7 +88,6 @@ main(int argc, char** argv)
       mat vectors_video_i;
       vectors_video_i.zeros(dim,num_points);
       
-      int k = 0;
       
       for (int i = 1; i <= num_points; ++i )
       {
@@ -95,15 +98,10 @@ main(int argc, char** argv)
 	//pac : people, action, projected_point (cov_c)
 	rowvec vector_pac;
 	vector_pac.load( load_projected_point_i.str(), hdf5_binary );
-	//cout << "Vector Size:" << vector_pac.n_elem << endl;
-	if (vector_pac.n_elem >0)
-	{
-	vectors_video_i.col(k) = vector_pac.t();
-	++k;
-	}
+	cout << "Vector Size:" << vector_pac.n_elem << endl;
+	vectors_video_i.col(i-1) = vector_pac.t();
       }
       
-      cout << k << endl;
       cout << vectors_video_i.n_rows << " - " << vectors_video_i.n_cols << endl;
       
       uni_features	 = join_rows( uni_features, vectors_video_i );

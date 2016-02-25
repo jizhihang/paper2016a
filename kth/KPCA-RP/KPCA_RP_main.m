@@ -1,5 +1,3 @@
-%% Si es mas rapido
-
 clear all
 clc
 dbstop error;
