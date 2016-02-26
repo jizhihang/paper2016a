@@ -1,70 +1,58 @@
-function FV_kth_all_videos(Ncent, DIM, scale_factor, shift)
+function FV_kth_all_videos(one_video_pac, K,path, dim)
 %%Calcular FV for all videos
 
 
-path  = '/home/johanna/codes/codes-git/manifolds/trunk/kth/';
-fprintf('Ng %d \n',Ncent);
+
+person =  one_video_pac{1,1};
+action =  one_video_pac{1,2};
+num_covs = one_video_pac{1,3};
+%matlabpool(8)
+
+X = zeros (dim,num_covs);
 
 
-Ng = int2str(Ncent);
-dim = int2str(DIM);
+load_gmm =  strcat( './universal_GMM/gmm_model_K', num2str(K), '_dim',num2str(dim) );
+load(char(load_gmm)) % Loading means, covariances, priors
 
-
-w  =    load(strcat('./universal_GMM/weights_Ng', Ng, '_dim', dim,'_sc1.dat'));
-mu =    load(strcat('./universal_GMM/means_Ng'  , Ng, '_dim', dim,  '_sc1.dat'));
-sigma = load(strcat('./universal_GMM/covs_Ng'   , Ng, '_dim', dim,'_sc1.dat'));
-
-
-sc = int2str(1); %Using only scenario 1
-
-people= importdata(strcat('people_list.txt'));
-actionNames = importdata('actionNames.txt');
-n_people  = length(people);
-n_actions = length(actionNames);
-
-for i=1:n_people
-    for j=1:n_actions
-        
-
-        folder_feat = strcat( path, 'dim_', dim, '/features/kth-features_dim', dim, '_openMP/sc', sc, '/scale',num2str(scale_factor), '-shift',  int2str(shift) );
-        name_feat = strcat(folder_feat, '/',  people (i),  '_', actionNames(j), '_dim', dim, '.h5');
-          
-        %show_you = strcat(people (i),  '_', actionNames(j));
-        %disp(show_you);
-        
-        S = char(name_feat);
-        data_onevideo = hdf5info(S);
-        one_video = hdf5read(data_onevideo.GroupHierarchy.Datasets(1));
-        one_video= {one_video};
-        v = compute_fisher_joha (single(w), single(mu), single(sigma), one_video);
-        
-        d_fisher = size (v, 1);              % dimension of the Fisher vectors
-        
-        % power "normalisation"
-        v = sign(v) .* sqrt(abs(v));
-        
-        %L2 normalization (may introduce NaN vectors)
-        vn = yael_fvecs_normalize (v);
-        
-        % replace NaN vectors with a large value that is far from everything else
-        % For normalized vectors in high dimension, vector (0, ..., 0) is *close* to
-        % many vectors.
-        %vn(find(isnan(vn))) = 123;
-        
-        if ( length( find( isnan(vn) ) )> 0 )
-            disp('Que hago??????');
-            
-        end
-        %to save
-        
-        save_name = strcat('./FV_training/scale',num2str(scale_factor), '-shift',  int2str(shift),  '/FV_', people(i),'_',actionNames(j),'_sc', sc, '_Ng', Ng, '.txt');
-        sSave = char(save_name);
-        %display(sSave);
-        fid1=fopen(sSave,'wt');
-        fprintf(fid1,'%8.8f\n',vn);
-        fclose(fid1);
-    end
+for c = 1:num_covs
     
+    
+    %Loading Projected Point
+    load_pp_vector =  strcat( path, 'KPCA-RP/projected_points_dim', num2str(dim),'/pp_', person, '_', action,  '_segm', num2str(c) , '.h5' );
+    S = char(load_pp_vector);
+    data_one_cov= hdf5info(S);
+    X(:,c) = hdf5read(data_one_cov.GroupHierarchy.Datasets(1)); % One covariance point
+
 end
+
+v = compute_fisher_joha (single(priors), single(means), single(covariances), {X});
+d_fisher = size (v, 1);              % dimension of the Fisher vectors
+
+% power "normalisation"
+v = sign(v) .* sqrt(abs(v));
+
+%L2 normalization (may introduce NaN vectors)
+vn = yael_fvecs_normalize (v);
+
+%Saving the histograms for the projected points
+save_FV=  strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '.h5' );
+hdf5write(char(save_FV), '/dataset1', vn);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
