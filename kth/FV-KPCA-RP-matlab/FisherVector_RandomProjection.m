@@ -16,7 +16,7 @@ dbstop error;
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 dim = 4237; % After the random projection
-K = 256;
+K = 128;
 n_iterGMM = 10; % For GMM
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
