@@ -12,11 +12,11 @@ addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 dbstop error;
 %dbstop in get_BoW_histograms at 43
 
-K = 256;
-folder_name_cl = 'clustersSPD_15-Feb-2016_K_256';
+%K = 256;
+%folder_name_cl = 'clustersSPD_15-Feb-2016_K_256';
 
-%K = 128;
-%folder_name_cl = 'clustersSPD_18-Feb-2016_K_128';
+K = 128;
+folder_name_cl = 'clustersSPD_18-Feb-2016_K_128';
 
 show_you = strcat('Folder: ', folder_name_cl);
 disp(show_you);
