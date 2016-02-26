@@ -49,7 +49,7 @@ for i=1:length(list_pac_tr)
    toc
 end
 
-%% Getting descriptors for Testing Set
+%% Getting FV for Testing Set
 
 for i=1:length(list_pac_te)
     i
