@@ -64,8 +64,8 @@ n_actions = length(actions);
 
 %% Train and Test with SVM
 
-FV_svm_train(K, list_pac_tr)
-[predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te);
+FV_svm_train(K, list_pac_tr, dim)
+[predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim);
 
 
 
