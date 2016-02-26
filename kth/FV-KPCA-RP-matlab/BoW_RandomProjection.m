@@ -10,7 +10,7 @@ dbstop error;
 addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 dim = 4237; % After the random projection
-K = 4000;
+K = 256;
 num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
@@ -37,23 +37,23 @@ n_actions = length(actions);
 %% Getting descriptors for Training Set
 
 
-%for i=1:length(list_pac_tr)
-%    i
-%    one_video_pac = {list_pac_tr{i,:}};
-%    tic
-%    get_BoW_histograms(one_video_pac, K,path, dim);    
-%    toc
-%end
+for i=1:length(list_pac_tr)
+   i
+   one_video_pac = {list_pac_tr{i,:}};
+   tic
+   get_BoW_histograms(one_video_pac, K,path, dim);    
+   toc
+end
 
 %% Getting descriptors for Testing Set
 
-% for i=1:length(list_pac_te)
-%     i
-%     one_video_pac = {list_pac_te{i,:}};
-%     tic
-%     get_BoW_histograms(one_video_pac, K,path, dim);    
-%     toc
-% end
+for i=1:length(list_pac_te)
+    i
+    one_video_pac = {list_pac_te{i,:}};
+    tic
+    get_BoW_histograms(one_video_pac, K,path, dim);    
+    toc
+end
 
 
 %% Train and Test with SVM
