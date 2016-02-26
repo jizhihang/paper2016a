@@ -1,12 +1,12 @@
-function  [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te)
+function  [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim)
 
 load_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
 save(load_svm_model, 'model');
 
 
-
+FV_dim =  K*dim*2;
 n_samples_test = length(list_pac_te);
-X_test = zeros(K,n_samples_test);
+X_test = zeros(FV_dim,n_samples_test);
 labels_test = zeros(n_samples_test,1);
     
 

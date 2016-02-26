@@ -1,7 +1,9 @@
-function FV_svm_train(K, list_pac_tr)
+function FV_svm_train(K, list_pac_tr, dim)
 
+
+FV_dim  =  K*dim*2;
 n_samples_train = length(list_pac_tr);
-X_train = zeros(K,n_samples_train);
+X_train = zeros(FV_dim,n_samples_train);
 labels_train = zeros(n_samples_train,1);
     
 
