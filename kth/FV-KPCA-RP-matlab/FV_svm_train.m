@@ -26,6 +26,6 @@ for i=1: n_samples_train
 end
 
 data_train = X_train';
-model = svmtrain(labels_train, data_train, ['-s 0 -t 0 -c 0.1' ]);
+model = svmtrain(labels_train, data_train, ['-s 0 -t 0 -c 10' ]);
 save_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
 save(save_svm_model, 'model');
