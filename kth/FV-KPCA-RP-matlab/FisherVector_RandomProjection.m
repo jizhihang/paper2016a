@@ -13,7 +13,7 @@ addpath('/home/johanna/toolbox/yael/matlab');
 clear all
 clc
 dbstop error;
-dbstop in FV_svm_train at 36;
+%dbstop in FV_svm_train at 36;
 
       
 %%
