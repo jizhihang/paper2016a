@@ -12,8 +12,7 @@ clc
 dbstop error;
 %dbstop in random_projection at 38;
 
-   
-   
+      
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 dim = 4237; % After the random projection
