@@ -34,6 +34,6 @@ data_train = X_train';
 
 %% libLinear
 sparse_X_train =  sparse(X_train');      
-model = train(labels_train, sparse_X_train, ['-s 1 -c 0.01' ]);
+model = train(labels_train, sparse_X_train, ['-s 2 -c 0.01' ]);
 save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '.mat')
 save(save_svm_model, 'model');
