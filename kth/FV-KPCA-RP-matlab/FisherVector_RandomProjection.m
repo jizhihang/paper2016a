@@ -37,8 +37,8 @@ n_actions = length(actions);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
 %% Get the Universal GMM
-disp('GMM');
-get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM);
+%disp('GMM');
+%get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM);
 
 
  %% Getting FV for Training Set
