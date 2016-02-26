@@ -12,11 +12,11 @@ addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 dbstop error;
 %dbstop in get_BoW_histograms at 43
 
-%K = 256;
-%folder_name_cl = 'clustersSPD_15-Feb-2016_K_256';
+K = 256;
+folder_name_cl = 'clustersSPD_15-Feb-2016_K_256';
 
-K =128;
-folder_name_cl = 'clustersSPD_18-Feb-2016_K_128';
+%K = 128;
+%folder_name_cl = 'clustersSPD_18-Feb-2016_K_128';
 
 show_you = strcat('Folder: ', folder_name_cl);
 disp(show_you);
@@ -46,26 +46,26 @@ people_test =   [ 2 3 5 6 7  8  9  10 22 ];
 %pac : people, action, cells
 
   
-   for i=1:length(list_pac_tr)
-       i
-       one_video_pac = {list_pac_tr{i,:}};
-       tic
-       [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
-       toc
-   end
+%    for i=1:length(list_pac_tr)
+%        i
+%        one_video_pac = {list_pac_tr{i,:}};
+%        tic
+%        [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
+%        toc
+%    end
 
 
 
 %% Getting descriptors for Testing Set
 
  
-  for i=1:length(list_pac_te)
-      i
-      one_video_pac = {list_pac_te{i,:}};
-      tic
-      [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
-      toc
-  end
+%   for i=1:length(list_pac_te)
+%       i
+%       one_video_pac = {list_pac_te{i,:}};
+%       tic
+%       [cluster_list_one_video n_points_cl] = get_BoW_histograms(one_video_pac, K,path, load_sub_path, folder_name_cl);
+%       toc
+%   end
  
 
 
