@@ -34,5 +34,5 @@ data_train = X_train';
 
 %% libLinear
 model = train(labels_train, data_train, ['-s 0 -t 0 -c 1' ]);
-save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp', num2str(K), '.mat');
+save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp', num2str(K), '.mat')
 save(save_svm_model, 'model');
