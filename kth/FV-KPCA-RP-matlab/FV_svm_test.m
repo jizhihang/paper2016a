@@ -1,7 +1,12 @@
 function  [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim)
 
-load_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
-load(load_svm_model, 'model');
+%% libSVM
+%load_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
+%load(load_svm_model, 'model');
+
+%% libLinear
+load_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp', num2str(K), '.mat');
+load(load_svm_model) % Loading  model obtained with libLinear
 
 
 FV_dim =  K*dim*2;

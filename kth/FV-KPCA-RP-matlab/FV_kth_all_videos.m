@@ -37,22 +37,3 @@ vn = yael_fvecs_normalize (v);
 %Saving the histograms for the projected points
 save_FV=  strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '.h5' );
 hdf5write(char(save_FV), '/dataset1', vn);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
