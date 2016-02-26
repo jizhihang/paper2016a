@@ -7,6 +7,7 @@ dbstop error;
 
 
 %%
+addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 dim = 4237; % After the random projection
 K = 4000;
