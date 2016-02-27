@@ -42,7 +42,7 @@ r_points = floor(total_num_covs_tr*20/100);
 
 random_idx_pac = random_points (list_pac_tr, r_points); 
 
-random_projection(random_idx_pac, r_points, path, load_sub_path, folder_name, dim);
+random_projection(random_idx_pac, r_points, path, load_sub_path, dim);
 
 % Get projected points for Training and Testing Set
 disp('project_points for Training Set');

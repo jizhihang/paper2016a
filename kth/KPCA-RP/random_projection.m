@@ -1,4 +1,4 @@
-function  random_projection(list_pac, r_points, path, load_sub_path, folder_name, dim)
+function  random_projection(list_pac, r_points, path, load_sub_path, dim)
 %r_points == length(list_pac)
 
 
