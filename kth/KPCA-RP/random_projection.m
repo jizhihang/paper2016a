@@ -34,7 +34,7 @@ Ks = compute_kernel(X_train,X_train, SD_Kernel, beta);
 [U,S,V] = svd(Ks); % use matrix V 
 
 %To project each point, it means to project each covariance matrix.
-
-save('random_projection_data','V', 'Ks', 'X_train');
+save_rp_data = strcat('random_projection_data_dim',  num2str(r_points));
+save(char(save_rp_data),'V', 'Ks', 'X_train');
 
 

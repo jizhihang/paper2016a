@@ -1,8 +1,10 @@
-function project_points (list_pac, path, load_sub_path)
+function project_points (list_pac, path, load_sub_path,r_points)
 
 %matlabpool(8) 
-folder_name = 'projected_points';
-load('random_projection_data') % Loading V & X_train. See random_projection
+folder_name = strcat('projected_points_dim', num2str(r_points));
+
+load_rp_data = strcat('random_projection_data_dim',  num2str(r_points));
+load( char(load_rp_data)); % Loading V & X_train. See random_projection
 
 %Stein Divergence Kernel
 beta  = 1;

@@ -38,20 +38,20 @@ n_actions = length(actions);
 
 %% Run the following only once. It's to create the random_space and it's RANDOM ;). 
 %# of random points
-%r_points = floor(total_num_covs_tr*10/100);
+r_points = floor(total_num_covs_tr*20/100);
 
-%random_idx_pac = random_points (list_pac_tr, r_points); 
+random_idx_pac = random_points (list_pac_tr, r_points); 
 
-%random_projection(random_idx_pac, r_points, path, load_sub_path, folder_name, dim);
+random_projection(random_idx_pac, r_points, path, load_sub_path, folder_name, dim);
 
 % Get projected points for Training and Testing Set
 disp('project_points for Training Set');
 tic
-project_points (list_pac_tr,path, load_sub_path );
+project_points (list_pac_tr,path, load_sub_path, r_points);
 toc
 
 disp('project_points for Testing Set');
 tic
-project_points (list_pac_te, path, load_sub_path);
+project_points (list_pac_te, path, load_sub_path,r_points);
 toc
 
