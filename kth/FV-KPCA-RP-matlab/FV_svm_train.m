@@ -14,7 +14,7 @@ for i=1: n_samples_train
     action   = list_pac_tr{i,2};
     act      = list_pac_tr{i,4};
     
-    load_FV=  strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '.h5' );
+    load_FV=  strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '_dim', num2srtr(dim),'.h5' );
     data_one_hist= hdf5info( char(load_FV) );
     FV_i = hdf5read(data_one_hist.GroupHierarchy.Datasets(1));
     
@@ -34,6 +34,6 @@ data_train = X_train';
 
 %% libLinear
 sparse_X_train =  sparse(X_train');      
-model = train(labels_train, sparse_X_train, ['-s 1 -c 1' ]);
-save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '.mat')
+model = train(labels_train, sparse_X_train, ['-s 2 -c 1' ]);
+save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2srtr(dim), '.mat')
 save(save_svm_model, 'model');

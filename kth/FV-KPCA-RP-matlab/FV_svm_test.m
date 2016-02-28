@@ -11,7 +11,7 @@ labels_test = zeros(n_samples_test,1);
 %load(load_svm_model, 'model');
 
 %% libLinear
-load_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '.mat')
+load_svm_model = trcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2srtr(dim), '.mat')
 load(load_svm_model) % Loading  model obtained with libLinear
 
 
@@ -25,7 +25,7 @@ for i=1: n_samples_test
     action   = list_pac_te{i,2};
     act      = list_pac_te{i,4};
     
-    load_FV =   strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '.h5' );
+    load_FV =   strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '_dim', num2srtr(dim),'.h5' );
     data_one_FV = hdf5info( char(load_FV) );
     FV_i = hdf5read(data_one_FV.GroupHierarchy.Datasets(1));
     

@@ -15,7 +15,7 @@ for c = 1:num_covs
     
     
     %Loading Projected Point
-    load_pp_vector =  strcat( path, 'KPCA-RP/projected_points_dim', num2str(dim),'/pp_', person, '_', action,  '_segm', num2str(c) , '.h5' );
+    load_pp_vector =  strcat( path, 'KPCA-RP/projected_points_strcat( './Kmeans/means_K', num2str(K), '_dim',num2str(dim) );
     S = char(load_pp_vector);
     data_one_cov= hdf5info(S);
     xi = hdf5read(data_one_cov.GroupHierarchy.Datasets(1)); % One covariance point
@@ -38,7 +38,7 @@ for c = 1:num_covs
     
 end
 %Saving the histograms for the projected points.
-save_hist=  strcat('./BoW_hist_K', num2str(K), '/pp_hist_', person, '_', action, '.h5' );
+save_hist=  strcat('./BoW_hist_K', num2str(K), '/pp_hist_', person, '_', action, '_dim',num2str(dim),  '.h5' );
 hdf5write(char(save_hist), '/dataset1', hist_i);
 % Guardar Aqui!!!!!
 %matlabpool close

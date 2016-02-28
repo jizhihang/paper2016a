@@ -1,6 +1,6 @@
 function  [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te)
 
-load_svm_model = strcat( './svm_models/inter_kernel_svm_BoW_pp', num2str(K), '.mat');
+load_svm_model = strcat( './svm_models/inter_kernel_svm_BoW_pp', num2str(K), '_dim',num2str(dim), '.mat');
 load(load_svm_model); % Loading Model and X_train
 
 
@@ -17,7 +17,7 @@ for i=1: n_samples_test
     action   = list_pac_te{i,2};
     act      = list_pac_te{i,4};
     
-    load_hist =   strcat('./BoW_hist_K', num2str(K), '/pp_hist_', person, '_', action, '.h5' );
+    load_hist =  strcat('./BoW_hist_K', num2str(K), '/pp_hist_', person, '_', action, '_dim',num2str(dim),  '.h5' );
     data_one_hist= hdf5info( char(load_hist) );
     hist_i = hdf5read(data_one_hist.GroupHierarchy.Datasets(1));
     hist_i = hist_i./norm(hist_i,1) ;
