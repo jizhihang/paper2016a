@@ -15,11 +15,11 @@ clc
 dbstop error;
 %dbstop in FV_svm_train at 36;
 
-      
+
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 %dim = 4237; % After the random projection
-dim = 8475 
+dim = 8475
 %K = 4000;
 n_iterGMM = 10; % For GMM
 actions = importdata('actionNames.txt');
@@ -39,39 +39,40 @@ n_actions = length(actions);
 %pac : people, action, #covs
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
- 
+
 vec_K = [128 256 512 4000];
- 
- for k =1:length(vec_K)
-%% Get the Universal GMM
-disp('GMM');
-get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM);
 
-
- %% Getting FV for Training Set
-
-
-     
-     K = vec_K(k)
-   for i=1:length(list_pac_tr)
-      %i
-      one_video_pac = {list_pac_tr{i,:}};
-      %tic
-      FV_kth_all_videos(one_video_pac, K,path, dim);  
-      %toc
-   end
-
-%% Getting FV for Testing Set
-
-   for i=1:length(list_pac_te)
-       %i
-       one_video_pac = {list_pac_te{i,:}};
-       %tic
-       FV_kth_all_videos(one_video_pac, K,path, dim);     
-       %toc
-   end
-
- end
+for k =1:length(vec_K)
+    K = vec_K(k)
+    %% Get the Universal GMM
+    disp('GMM');
+    get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM);
+    
+    
+    %% Getting FV for Training Set
+    
+    
+    
+    
+    for i=1:length(list_pac_tr)
+        %i
+        one_video_pac = {list_pac_tr{i,:}};
+        %tic
+        FV_kth_all_videos(one_video_pac, K,path, dim);
+        %toc
+    end
+    
+    %% Getting FV for Testing Set
+    
+    for i=1:length(list_pac_te)
+        %i
+        one_video_pac = {list_pac_te{i,:}};
+        %tic
+        FV_kth_all_videos(one_video_pac, K,path, dim);
+        %toc
+    end
+    
+end
 %% Train and Test with SVM
 
 %FV_svm_train(K, list_pac_tr, dim)
