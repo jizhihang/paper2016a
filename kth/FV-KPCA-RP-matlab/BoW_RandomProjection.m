@@ -13,8 +13,9 @@ dbstop error;
 
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
-dim = 8475; % After the random projection
-K = 256;
+dim = 4237
+%dim = 8475; % After the random projection
+%K = 256;
 num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
@@ -34,32 +35,38 @@ n_actions = length(actions);
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
-%% Get Kmeans (Vocabulary)
-disp('Kmeans');
-get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter)
+vec_K = [128 256 512 4000];
 
-%% Getting descriptors for Training Set
-
-
-for i=1:length(list_pac_tr)
-   i
-   one_video_pac = {list_pac_tr{i,:}};
-   tic
-   get_BoW_histograms(one_video_pac, K,path, dim);    
-   toc
+for k =1:length(vec_K)
+    K = vec_K(k)
+    
+    %% Get Kmeans (Vocabulary)
+    %disp('Kmeans');
+    %get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter)
+    
+    %% Getting descriptors for Training Set
+    
+    
+    for i=1:length(list_pac_tr)
+        %i
+        one_video_pac = {list_pac_tr{i,:}};
+        %tic
+        get_BoW_histograms(one_video_pac, K,path, dim);
+        %toc
+    end
+    
+    %% Getting descriptors for Testing Set
+    
+    for i=1:length(list_pac_te)
+        %i
+        one_video_pac = {list_pac_te{i,:}};
+        %tic
+        get_BoW_histograms(one_video_pac, K,path, dim);
+        %toc
+    end
+    
 end
-
-%% Getting descriptors for Testing Set
-
-for i=1:length(list_pac_te)
-    i
-    one_video_pac = {list_pac_te{i,:}};
-    tic
-    get_BoW_histograms(one_video_pac, K,path, dim);    
-    toc
-end
-
 
 %% Train and Test with SVM
-BoW_svm_train(K, list_pac_tr);
-[predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te);
+%BoW_svm_train(K, list_pac_tr);
+%[predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te);
