@@ -11,7 +11,7 @@ labels_test = zeros(n_samples_test,1);
 %load(load_svm_model, 'model');
 
 %% libLinear
-load_svm_model = trcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2srtr(dim), '.mat')
+load_svm_model = trcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2str(dim), '.mat')
 load(load_svm_model) % Loading  model obtained with libLinear
 
 
