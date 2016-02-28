@@ -13,8 +13,8 @@ dbstop error;
 
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
-dim = 4237
-%dim = 8475; % After the random projection
+%dim = 4237
+dim = 8475 % After the random projection
 %K = 256;
 num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
@@ -41,8 +41,8 @@ for k =1:length(vec_K)
     K = vec_K(k)
     
     %% Get Kmeans (Vocabulary)
-    %disp('Kmeans');
-    %get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter)
+    disp('Kmeans');
+    get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter)
     
     %% Getting descriptors for Training Set
     
