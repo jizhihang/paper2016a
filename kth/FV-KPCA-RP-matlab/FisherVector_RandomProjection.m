@@ -39,7 +39,10 @@ n_actions = length(actions);
 %pac : people, action, #covs
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
-
+ 
+vec_K = [128 256 512 4000];
+ 
+ for k =1:length(vec_K)
 %% Get the Universal GMM
 disp('GMM');
 get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM);
@@ -47,9 +50,7 @@ get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM);
 
  %% Getting FV for Training Set
 
- vec_K = [128 256 512 4000];
- 
- for k =1:length(vec_K)
+
      
      K = vec_K(k)
    for i=1:length(list_pac_tr)
