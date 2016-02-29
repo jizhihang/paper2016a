@@ -1,11 +1,23 @@
 %VL
 run('/home/johanna/toolbox/vlfeat-0.9.20/toolbox/vl_setup');
 
-%libSVM
-addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
+
+svm_type = 'linear'; %liblinear
+%svm_type = 'svm';    %libsvm
 
 %libLinear
-%addpath('/home/johanna/toolbox/liblinear-2.1/matlab');
+if strcmp( svm_type, 'linear')
+addpath('/home/johanna/toolbox/liblinear-2.1/matlab');
+end
+
+%libSVM
+if strcmp( svm_type, 'svm')
+addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
+end
+
+
+
+
 
 %Fisher Vector
 addpath('/home/johanna/toolbox/yael/matlab');
@@ -78,9 +90,9 @@ all_accuracy = zeros(1,length(vec_K));
 
 for k =1:length(vec_K)
     K = vec_K(k)
-    FV_svm_train(K, list_pac_tr, dim);
-    [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim);
-     all_accuracy(k) = accuracy(1)
+    FV_svm_train(K, list_pac_tr, dim, svm_type);
+    [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type);
+    all_accuracy(k) = accuracy(1)
 end
 
 
