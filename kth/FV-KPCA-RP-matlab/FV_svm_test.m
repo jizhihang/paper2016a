@@ -25,7 +25,7 @@ for i=1: n_samples_test
     action   = list_pac_te{i,2};
     act      = list_pac_te{i,4};
     
-    load_FV =   strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '_dim', num2srtr(dim),'.h5' );
+    load_FV =   strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '_dim', num2str(dim),'.h5' );
     data_one_FV = hdf5info( char(load_FV) );
     FV_i = hdf5read(data_one_FV.GroupHierarchy.Datasets(1));
     
