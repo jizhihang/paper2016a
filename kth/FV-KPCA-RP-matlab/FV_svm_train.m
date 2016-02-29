@@ -28,7 +28,7 @@ end
 data_train = X_train';
 
 %% libSVM
-model = svmtrain(labels_train, data_train, ['-s 0 -t 0 -c 1 -q' ]);
+model = svmtrain(labels_train, data_train, ['-s 0 -t 0 -c 10 -q' ]);
 save_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
 save(save_svm_model, 'model');
 
