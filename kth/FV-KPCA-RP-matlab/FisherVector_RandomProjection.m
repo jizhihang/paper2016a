@@ -97,7 +97,7 @@ for i = 1: length(vec_s_linear)
         
         c = vec_c (j);
         s = vec_s_linear(i);
-        params_linear =  sprintf('-s %f -c %f', s, c)
+        params_linear =  sprintf('-s %f -c %f -q', s, c)
         FV_svm_train(K, list_pac_tr, dim, svm_type, params_linear);
         [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type);
         all_accuracy(i,j) = accuracy(1)
