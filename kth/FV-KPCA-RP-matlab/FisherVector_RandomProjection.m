@@ -2,10 +2,10 @@
 run('/home/johanna/toolbox/vlfeat-0.9.20/toolbox/vl_setup');
 
 %libSVM
-%addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
+addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 
 %libLinear
-addpath('/home/johanna/toolbox/liblinear-2.1/matlab');
+%addpath('/home/johanna/toolbox/liblinear-2.1/matlab');
 
 %Fisher Vector
 addpath('/home/johanna/toolbox/yael/matlab');
