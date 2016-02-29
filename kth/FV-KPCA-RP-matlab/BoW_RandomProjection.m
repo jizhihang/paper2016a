@@ -35,7 +35,7 @@ n_actions = length(actions);
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
-vec_K = [128 256 512 4000];
+%vec_K = [128 256 512 4000];
 %vec_K = [512 4000 ];
 
 % for k =1:length(vec_K)
@@ -70,6 +70,7 @@ vec_K = [128 256 512 4000];
 
 %% Train and Test with SVM
 
+vec_K = [128 256];
 all_accuracy = zeros(1,length(vec_K));
 for k =1:length(vec_K)
     K = vec_K(k)
