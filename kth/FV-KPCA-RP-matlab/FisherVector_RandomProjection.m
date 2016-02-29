@@ -15,10 +15,6 @@ if strcmp( svm_type, 'svm')
     addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 end
 
-
-
-
-
 %Fisher Vector
 addpath('/home/johanna/toolbox/yael/matlab');
 
@@ -32,7 +28,7 @@ dbstop error;
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 %dim = 4237; % After the random projection
 dim = 8475
-K = 256;
+K = 256
 n_iterGMM = 10; % For GMM
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
