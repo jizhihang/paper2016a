@@ -7,12 +7,12 @@ svm_type = 'linear'; %liblinear
 
 %libLinear
 if strcmp( svm_type, 'linear')
-addpath('/home/johanna/toolbox/liblinear-2.1/matlab');
+    addpath('/home/johanna/toolbox/liblinear-2.1/matlab');
 end
 
 %libSVM
 if strcmp( svm_type, 'svm')
-addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
+    addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 end
 
 
@@ -32,7 +32,7 @@ dbstop error;
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 %dim = 4237; % After the random projection
 dim = 8475
-%K = 4000;
+K = 256;
 n_iterGMM = 10; % For GMM
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
@@ -52,7 +52,7 @@ n_actions = length(actions);
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
-vec_K = [128 256 512 4000];
+%vec_K = [128 256 512 4000];
 
 % for k =1:length(vec_K)
 %     K = vec_K(k)
@@ -86,15 +86,38 @@ vec_K = [128 256 512 4000];
 %
 % end
 %% Train and Test with SVM
-all_accuracy = zeros(1,length(vec_K));
 
-for k =1:length(vec_K)
-    K = vec_K(k)
-    FV_svm_train(K, list_pac_tr, dim, svm_type);
-    [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type);
-    all_accuracy(k) = accuracy(1)
+% For libLinear Example
+vec_c = [ 0.01 0.1 1 10];
+vec_s_linear = [0 1 2];
+
+all_accuracy = zeros(length(vec_s_linear), length(vec_c) );
+
+for i = 1: length(vec_s_linear)
+    for j = 1: length(vec_c)
+        
+        c = vec_c (j);
+        s = vec_s_linear(i);
+        params_linear =  sprintf('-s %f -c %f', s, c);
+        FV_svm_train(K, list_pac_tr, dim, params_linear);
+        [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim);
+        all_accuracy(i,j) = accuracy(1)
+
+    end
 end
 
+
+
+%For libSVM Example
+%vec_c = [ 0.01 0.1 1 10];
+%all_accuracy = zeros(1, length(vec_c) );
+%for j = 1: length(vec_c)
+% c = vec_c (j);
+% params_svm=  sprintf('-s 0 -t 0 -c %f', c);
+% FV_svm_train(K, list_pac_tr, dim, params_linear);
+% [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim);
+% all_accuracy(j) = accuracy(1)
+%end
 
 
 

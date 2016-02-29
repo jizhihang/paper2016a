@@ -6,20 +6,14 @@ X_test = zeros(FV_dim,n_samples_test);
 labels_test = zeros(n_samples_test,1);
 
 
-%% libSVM
-load_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
-load(load_svm_model, 'model');
-
-%% libLinear
-%load_svm_model = trcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2str(dim), '.mat')
-%load(load_svm_model) % Loading  model obtained with libLinear
 
 
-%% 
+
+%%
+
+
+for i=1: n_samples_test
     
-
-for i=1: n_samples_test    
-   
     
     person   = list_pac_te{i,1};
     action   = list_pac_te{i,2};
@@ -29,14 +23,25 @@ for i=1: n_samples_test
     data_one_FV = hdf5info( char(load_FV) );
     FV_i = hdf5read(data_one_FV.GroupHierarchy.Datasets(1));
     
-    X_test(:,i) = FV_i; 
+    X_test(:,i) = FV_i;
     labels_test(i) = act;
     
 end
 
+
 %% libSVM
-[predicted_label, accuracy, dec_values] = svmpredict(labels_test, X_test', model);
+if strcmp( svm_type, 'svm')
+    load_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
+    load(load_svm_model, 'model');
+    [predicted_label, accuracy, dec_values] = svmpredict(labels_test, X_test', model);
+    
+end
 
 %% libLinear
-%sparse_X_test =  sparse(X_test');  
-%[predicted_label, accuracy, dec_values] = predict(labels_test,sparse_X_test , model);
+if strcmp( svm_type, 'linear')
+    load_svm_model = trcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2str(dim), '.mat')
+    load(load_svm_model) % Loading  model obtained with libLinear
+    sparse_X_test =  sparse(X_test');
+    [predicted_label, accuracy, dec_values] = predict(labels_test,sparse_X_test , model);
+end
+

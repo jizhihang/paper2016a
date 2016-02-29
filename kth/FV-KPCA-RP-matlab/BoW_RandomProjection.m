@@ -13,9 +13,9 @@ dbstop error;
 
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
-dim = 4237
-%dim = 8475 % After the random projection
-%K = 256;
+%dim = 4237
+dim = 8475 % After the random projection
+K = 256;
 num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
@@ -40,14 +40,14 @@ n_actions = length(actions);
 
 % for k =1:length(vec_K)
 %     K = vec_K(k)
-%     
+%
 %     %% Get Kmeans (Vocabulary)
 %     disp('Kmeans');
 %     get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter)
-%     
+%
 %     %% Getting descriptors for Training Set
-%     
-%     
+%
+%
 %     for i=1:length(list_pac_tr)
 %         %i
 %         one_video_pac = {list_pac_tr{i,:}};
@@ -55,9 +55,9 @@ n_actions = length(actions);
 %         get_BoW_histograms(one_video_pac, K,path, dim);
 %         %toc
 %     end
-%     
+%
 %     %% Getting descriptors for Testing Set
-%     
+%
 %     for i=1:length(list_pac_te)
 %         %i
 %         one_video_pac = {list_pac_te{i,:}};
@@ -65,16 +65,14 @@ n_actions = length(actions);
 %         get_BoW_histograms(one_video_pac, K,path, dim);
 %         %toc
 %     end
-%     
+%
 % end
 
 %% Train and Test with SVM
 
-vec_K = [128 256];
-all_accuracy = zeros(1,length(vec_K));
-for k =1:length(vec_K)
-    K = vec_K(k)
-    BoW_svm_train(K, list_pac_tr, dim);
-    [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te, dim);
-    all_accuracy(k) = accuracy(1)
-end
+%vec_K = [128 256];
+%all_accuracy = zeros(1,length(vec_K));
+
+BoW_svm_train(K, list_pac_tr, dim);
+[predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te, dim);
+

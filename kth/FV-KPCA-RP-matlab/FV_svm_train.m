@@ -1,4 +1,4 @@
-function FV_svm_train(K, list_pac_tr, dim, svm_type)
+function FV_svm_train(K, list_pac_tr, dim, svm_type, params)
 
 
 FV_dim  =  K*dim*2;
@@ -29,15 +29,17 @@ data_train = X_train';
 
 %% libSVM
 if strcmp( svm_type, 'svm')
-    model = svmtrain(labels_train, data_train, ['-s 0 -t 0 -c 100 -q' ]);
+    svm_type
+    model = svmtrain(labels_train, data_train, [params ]);
     save_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
     save(save_svm_model, 'model');
 end
 
 %% libLinear
 if strcmp( svm_type, 'linear')
+    svm_type
     sparse_X_train =  sparse(X_train');
-    model = train(labels_train, sparse_X_train, ['-s 2 -c 1' ]);
+    model = train(labels_train, sparse_X_train, [params]);
     save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2srtr(dim), '.mat')
     save(save_svm_model, 'model');
 end
