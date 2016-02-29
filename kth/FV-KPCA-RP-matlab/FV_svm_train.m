@@ -28,12 +28,12 @@ end
 data_train = X_train';
 
 %% libSVM
-%model = svmtrain(labels_train, data_train, ['-s 0 -t 0 -c 1' ]);
-%save_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
-%save(save_svm_model, 'model');
+model = svmtrain(labels_train, data_train, ['-s 0 -t 0 -c 0.1' ]);
+save_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
+save(save_svm_model, 'model');
 
 %% libLinear
-sparse_X_train =  sparse(X_train');      
-model = train(labels_train, sparse_X_train, ['-s 2 -c 1' ]);
-save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2srtr(dim), '.mat')
-save(save_svm_model, 'model');
+%sparse_X_train =  sparse(X_train');      
+%model = train(labels_train, sparse_X_train, ['-s 2 -c 1' ]);
+%save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2srtr(dim), '.mat')
+%save(save_svm_model, 'model');

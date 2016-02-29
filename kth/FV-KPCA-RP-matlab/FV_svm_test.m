@@ -7,12 +7,12 @@ labels_test = zeros(n_samples_test,1);
 
 
 %% libSVM
-%load_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
-%load(load_svm_model, 'model');
+load_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
+load(load_svm_model, 'model');
 
 %% libLinear
-load_svm_model = trcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2str(dim), '.mat')
-load(load_svm_model) % Loading  model obtained with libLinear
+%load_svm_model = trcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2str(dim), '.mat')
+%load(load_svm_model) % Loading  model obtained with libLinear
 
 
 %% 

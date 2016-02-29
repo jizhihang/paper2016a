@@ -42,41 +42,46 @@ n_actions = length(actions);
 
 vec_K = [128 256 512 4000];
 
+% for k =1:length(vec_K)
+%     K = vec_K(k)
+%     %% Get the Universal GMM
+%     disp('GMM');
+%     get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM);
+%
+%
+%     %% Getting FV for Training Set
+%
+%
+%
+%
+%     for i=1:length(list_pac_tr)
+%         %i
+%         one_video_pac = {list_pac_tr{i,:}};
+%         %tic
+%         FV_kth_all_videos(one_video_pac, K,path, dim);
+%         %toc
+%     end
+%
+%     %% Getting FV for Testing Set
+%
+%     for i=1:length(list_pac_te)
+%         %i
+%         one_video_pac = {list_pac_te{i,:}};
+%         %tic
+%         FV_kth_all_videos(one_video_pac, K,path, dim);
+%         %toc
+%     end
+%
+% end
+%% Train and Test with SVM
+all_accuracy = zeros(1,length(vec_K));
+
 for k =1:length(vec_K)
     K = vec_K(k)
-    %% Get the Universal GMM
-    disp('GMM');
-    get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM);
-    
-    
-    %% Getting FV for Training Set
-    
-    
-    
-    
-    for i=1:length(list_pac_tr)
-        %i
-        one_video_pac = {list_pac_tr{i,:}};
-        %tic
-        FV_kth_all_videos(one_video_pac, K,path, dim);
-        %toc
-    end
-    
-    %% Getting FV for Testing Set
-    
-    for i=1:length(list_pac_te)
-        %i
-        one_video_pac = {list_pac_te{i,:}};
-        %tic
-        FV_kth_all_videos(one_video_pac, K,path, dim);
-        %toc
-    end
-    
+    FV_svm_train(K, list_pac_tr, dim);
+    [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim);
+     all_accuracy(k) = accuracy
 end
-%% Train and Test with SVM
-
-%FV_svm_train(K, list_pac_tr, dim)
-%[predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim);
 
 
 

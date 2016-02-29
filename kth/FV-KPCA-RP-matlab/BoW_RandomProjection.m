@@ -35,39 +35,45 @@ n_actions = length(actions);
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
-%vec_K = [128 256 512 4000];
-vec_K = [512 4000 ];
+vec_K = [128 256 512 4000];
+%vec_K = [512 4000 ];
 
-for k =1:length(vec_K)
-    K = vec_K(k)
-    
-    %% Get Kmeans (Vocabulary)
-    disp('Kmeans');
-    get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter)
-    
-    %% Getting descriptors for Training Set
-    
-    
-    for i=1:length(list_pac_tr)
-        %i
-        one_video_pac = {list_pac_tr{i,:}};
-        %tic
-        get_BoW_histograms(one_video_pac, K,path, dim);
-        %toc
-    end
-    
-    %% Getting descriptors for Testing Set
-    
-    for i=1:length(list_pac_te)
-        %i
-        one_video_pac = {list_pac_te{i,:}};
-        %tic
-        get_BoW_histograms(one_video_pac, K,path, dim);
-        %toc
-    end
-    
-end
+% for k =1:length(vec_K)
+%     K = vec_K(k)
+%     
+%     %% Get Kmeans (Vocabulary)
+%     disp('Kmeans');
+%     get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter)
+%     
+%     %% Getting descriptors for Training Set
+%     
+%     
+%     for i=1:length(list_pac_tr)
+%         %i
+%         one_video_pac = {list_pac_tr{i,:}};
+%         %tic
+%         get_BoW_histograms(one_video_pac, K,path, dim);
+%         %toc
+%     end
+%     
+%     %% Getting descriptors for Testing Set
+%     
+%     for i=1:length(list_pac_te)
+%         %i
+%         one_video_pac = {list_pac_te{i,:}};
+%         %tic
+%         get_BoW_histograms(one_video_pac, K,path, dim);
+%         %toc
+%     end
+%     
+% end
 
 %% Train and Test with SVM
-%BoW_svm_train(K, list_pac_tr);
-%[predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te);
+
+all_accuracy = zeros(1,length(vec_K));
+for k =1:length(vec_K)
+    K = vec_K(k)
+    BoW_svm_train(K, list_pac_tr);
+    [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te);
+    all_accuracy(k) = accuracy
+end
