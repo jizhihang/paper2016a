@@ -40,6 +40,6 @@ if strcmp( svm_type, 'linear')
     svm_type
     sparse_X_train =  sparse(X_train');
     model = train(labels_train, sparse_X_train, [params]);
-    save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2srtr(dim), '.mat')
+    save_svm_model = strcat( './svm_models_liblinear/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2str(dim), '.mat')
     save(save_svm_model, 'model');
 end
