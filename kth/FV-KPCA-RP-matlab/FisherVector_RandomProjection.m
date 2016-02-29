@@ -1,3 +1,9 @@
+clear all
+clc
+dbstop error;
+%dbstop in FV_svm_train at 36;
+
+
 %VL
 run('/home/johanna/toolbox/vlfeat-0.9.20/toolbox/vl_setup');
 
@@ -18,10 +24,7 @@ end
 %Fisher Vector
 addpath('/home/johanna/toolbox/yael/matlab');
 
-clear all
-clc
-dbstop error;
-%dbstop in FV_svm_train at 36;
+
 
 
 %%
