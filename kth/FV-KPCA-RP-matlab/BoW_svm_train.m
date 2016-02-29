@@ -1,4 +1,4 @@
-function BoW_svm_train(K, list_pac_tr)
+function BoW_svm_train(K, list_pac_tr, dim)
 
 n_samples_train = length(list_pac_tr);
 X_train = zeros(K,n_samples_train);

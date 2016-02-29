@@ -1,4 +1,4 @@
-function  [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te)
+function  [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te, dim)
 
 load_svm_model = strcat( './svm_models/inter_kernel_svm_BoW_pp', num2str(K), '_dim',num2str(dim), '.mat');
 load(load_svm_model); % Loading Model and X_train
