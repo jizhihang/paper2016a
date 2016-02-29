@@ -13,8 +13,8 @@ dbstop error;
 
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
-%dim = 4237
-dim = 8475 % After the random projection
+dim = 4237
+%dim = 8475 % After the random projection
 %K = 256;
 num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
@@ -36,7 +36,7 @@ n_actions = length(actions);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
 %vec_K = [128 256 512 4000];
-vec_K = [512 4000];
+vec_K = [512 ];
 
 for k =1:length(vec_K)
     K = vec_K(k)
