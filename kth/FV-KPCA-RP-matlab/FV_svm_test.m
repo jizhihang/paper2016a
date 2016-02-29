@@ -1,4 +1,4 @@
-function  [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim)
+function  [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type)
 
 FV_dim =  K*dim*2;
 n_samples_test = length(list_pac_te);
