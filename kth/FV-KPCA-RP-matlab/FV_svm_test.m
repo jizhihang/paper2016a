@@ -35,8 +35,8 @@ for i=1: n_samples_test
 end
 
 %% libSVM
-%[predicted_label, accuracy, dec_values] = svmpredict(labels_test, X_test', model);
+[predicted_label, accuracy, dec_values] = svmpredict(labels_test, X_test', model);
 
 %% libLinear
-sparse_X_test =  sparse(X_test');  
-[predicted_label, accuracy, dec_values] = predict(labels_test,sparse_X_test , model);
+%sparse_X_test =  sparse(X_test');  
+%[predicted_label, accuracy, dec_values] = predict(labels_test,sparse_X_test , model);
