@@ -19,8 +19,8 @@ dim = input(prompt);
 
 
 % Kernel Type. For The KPCA-RP
-kernel_type = 'poly';
-%kernel_type = 'stein';
+%kernel_type = 'poly';
+kernel_type = 'stein';
 
 num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
@@ -74,8 +74,8 @@ for k =1:length(vec_K)
     
     
     % Get Kmeans (Vocabulary)
-    disp('Kmeans');
-    get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter, Kmeans_folder, folder_pp)
+    %disp('Kmeans');
+    %get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter, Kmeans_folder, folder_pp)
     
     % Get Descriptors for Training and Testing Set
     disp('Getting Descriptors');
