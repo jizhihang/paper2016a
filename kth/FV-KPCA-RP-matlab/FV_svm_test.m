@@ -1,4 +1,4 @@
-function  [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type)
+function  [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type, FV_folder, svm_folder)
 
 FV_dim =  K*dim*2;
 n_samples_test = length(list_pac_te);
@@ -19,7 +19,7 @@ for i=1: n_samples_test
     action   = list_pac_te{i,2};
     act      = list_pac_te{i,4};
     
-    load_FV =   strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '_dim', num2str(dim),'.h5' );
+    load_FV =   strcat('./', FV_folder, '/FV_', person, '_', action, '_dim', num2str(dim),'.h5' );
     data_one_FV = hdf5info( char(load_FV) );
     FV_i = hdf5read(data_one_FV.GroupHierarchy.Datasets(1));
     
@@ -31,7 +31,7 @@ end
 
 %% libSVM
 if strcmp( svm_type, 'svm')
-    load_svm_model = strcat( './svm_models/linear_kernel_svm_FV_pp', num2str(K), '.mat');
+    load_svm_model = strcat( './', svm_folder, '/linear_kernel_svm_FV_pp', num2str(K), '.mat');
     load(load_svm_model, 'model');
     [predicted_label, accuracy, dec_values] = svmpredict(labels_test, X_test', model);
     
