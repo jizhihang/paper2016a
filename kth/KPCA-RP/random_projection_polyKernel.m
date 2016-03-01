@@ -4,7 +4,7 @@ function  random_projection_polyKernel(list_pac, r_points, path, load_sub_path, 
 
 %Polynomial Kernel - See mlsda paper on Manifolds
 best_n = 12;
-gamma = 1/n;
+gamma = 1/best_n;
 
 LED_POLY_KERNEL = @(X,Y,gamma,best_n)( ( gamma*( trace(logm(X)'*logm(Y)) ) )^best_n );
 X_train = zeros( dim, dim, r_points);
