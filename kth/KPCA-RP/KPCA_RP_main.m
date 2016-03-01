@@ -14,7 +14,9 @@ dbstop error;
 
     
     
-    
+ kernel_type = 'poly';
+ %kernel_type = 'stein';
+   
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 dim = 14;
@@ -42,24 +44,30 @@ r_points = floor(total_num_covs_tr*5/100);
 
 random_idx_pac = random_points (list_pac_tr, r_points); 
 
-random_projection(random_idx_pac, r_points, path, load_sub_path, dim);
+%Using Stein Divergen Kernel as per Queena's paper
+%if strcmp( kernel_type, 'stein') 
+%folder_name = strcat('projected_points_dim', num2str(r_points))
+%random_projection(random_idx_pac, r_points, path, load_sub_path, dim);
+%end
 
+%Using Polynomial Kernel. Best_n found in mlsda paper 2016.
+if strcmp( kernel_type, 'poly') 
+folder_name = strcat('PolyKernel_projected_points_dim', num2str(r_points))
+random_projection_polyKernel(list_pac, r_points, path, load_sub_path, dim)
+end
 
-
-folder_name = strcat('projected_points_dim', num2str(r_points))
 
 if ~exist(folder_name, 'dir')
     mkdir(folder_name);
 end
 
+
+
+
 % Get projected points for Training and Testing Set
 disp('project_points for Training Set');
-tic
-project_points (list_pac_tr,path, load_sub_path, r_points, folder_name);
-toc
+project_points (list_pac_tr,path, load_sub_path, r_points, folder_name, kernel_type);
 
 disp('project_points for Testing Set');
-tic
-project_points (list_pac_te, path, load_sub_path,r_points, folder_name);
-toc
+project_points (list_pac_te, path, load_sub_path,r_points, folder_name, kernel_type);
 
