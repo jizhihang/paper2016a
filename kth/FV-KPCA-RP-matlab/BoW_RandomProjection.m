@@ -17,7 +17,6 @@ path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 prompt = 'Random projected Dimensionality? ';
 dim = input(prompt);
 
-
 num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
