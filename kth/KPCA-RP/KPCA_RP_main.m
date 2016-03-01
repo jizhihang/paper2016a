@@ -46,7 +46,7 @@ random_projection(random_idx_pac, r_points, path, load_sub_path, dim);
 
 
 
-folder_name = strcat('projected_points_dim', num2str(r_points));
+folder_name = strcat('projected_points_dim', num2str(r_points))
 
 if ~exist(folder_name, 'dir')
     mkdir(folder_name);
