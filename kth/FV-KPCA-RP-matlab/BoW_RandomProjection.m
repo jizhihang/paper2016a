@@ -1,21 +1,23 @@
+clear all
+clc
+dbstop error;
+%dbstop in random_projection at 38;
+
 %VL
 run('/home/johanna/toolbox/vlfeat-0.9.20/toolbox/vl_setup');
 
 %LIBSVM
 addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 
-clear all
-clc
-dbstop error;
-%dbstop in random_projection at 38;
-
-
-
-%%
+%General Path
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
-dim = 4237
-%dim = 8475 % After the random projection
-%K = 512
+
+
+% User Inputs
+prompt = 'Random projected Dimensionality? ';
+dim = input(prompt);
+
+
 num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
