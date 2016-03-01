@@ -1,4 +1,4 @@
-function FV_kth_all_videos(one_video_pac, K,path, dim)
+function FV_kth_all_videos(one_video_pac, K,path, dim, GMM_folder, FV_folder)
 %%Calcular FV for all videos
 
 
@@ -11,7 +11,7 @@ num_covs = one_video_pac{1,3};
 X = zeros (dim,num_covs);
 
 
-load_gmm =  strcat( './universal_GMM/gmm_model_K', num2str(K), '_dim',num2str(dim) );
+load_gmm =   strcat( './',GMM_folder, '/gmm_model_K', num2str(K), '_dim',num2str(dim) );
 load(char(load_gmm)) % Loading means, covariances, priors
 
 for c = 1:num_covs
@@ -35,5 +35,5 @@ v = sign(v) .* sqrt(abs(v));
 vn = yael_fvecs_normalize (v);
 
 %Saving the histograms for the projected points
-save_FV=  strcat('./FV_K', num2str(K), '/FV_', person, '_', action, '_dim', num2str(dim),'.h5' );
+save_FV=  strcat('./', FV_folder, '/FV_', person, '_', action, '_dim', num2str(dim),'.h5' );
 hdf5write(char(save_FV), '/dataset1', vn);

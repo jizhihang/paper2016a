@@ -1,4 +1,4 @@
-function get_universalGMM(path, list_pac, total_num_covs_tr, K, dim, n_iterGMM)
+function get_universalGMM(path, list_pac, total_num_covs_tr, K, dim, n_iterGMM, GMM_folder)
 
 
 X = zeros(dim, total_num_covs_tr);
@@ -30,5 +30,5 @@ tic
 [means, covariances, priors] = vl_gmm(X, K,  'MaxNumIterations', n_iterGMM);
 toc
 
-save_gmm_model =  strcat( './universal_GMM/gmm_model_K', num2str(K), '_dim',num2str(dim) );
+save_gmm_model =  strcat( './',GMM_folder, '/gmm_model_K', num2str(K), '_dim',num2str(dim) );
 save(char(save_gmm_model), 'means','covariances','priors');
