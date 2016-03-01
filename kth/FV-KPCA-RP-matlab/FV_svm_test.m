@@ -31,7 +31,7 @@ end
 
 %% libSVM
 if strcmp( svm_type, 'svm')
-    load_svm_model = strcat( './', svm_folder, '/linear_kernel_svm_FV_pp', num2str(K), '.mat');
+    load_svm_model = strcat( './',svm_folder, '/linear_kernel_svm_FV_pp_K', num2str(K), '_dim', num2str(dim), '.mat')
     load(load_svm_model, 'model');
     [predicted_label, accuracy, dec_values] = svmpredict(labels_test, X_test', model);
     
