@@ -78,7 +78,7 @@ all_accuracy = zeros(1,length(vec_K));
      K = vec_K(k)
      BoW_svm_train(K, list_pac_tr, dim);
      [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te, dim);
-     all_accuracy(k) = accuracy(i);
+     all_accuracy(k) = accuracy(1);
 
 end
 
