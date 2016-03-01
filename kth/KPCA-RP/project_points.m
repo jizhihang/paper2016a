@@ -1,7 +1,7 @@
-function project_points (list_pac, path, load_sub_path,r_points)
+function project_points (list_pac, path, load_sub_path,r_points, folder_name)
 
 %matlabpool(8) 
-folder_name = strcat('projected_points_dim', num2str(r_points));
+
 
 load_rp_data = strcat('random_projection_data_dim',  num2str(r_points));
 load( char(load_rp_data)); % Loading V & X_train. See random_projection
