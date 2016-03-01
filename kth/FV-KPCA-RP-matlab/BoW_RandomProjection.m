@@ -17,6 +17,11 @@ path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 prompt = 'Random projected Dimensionality? ';
 dim = input(prompt);
 
+
+% Kernel Type. For The KPCA-RP
+kernel_type = 'poly';
+%kernel_type = 'stein';
+
 num_iter = 10; %  forKmeans
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
@@ -46,19 +51,35 @@ for k =1:length(vec_K)
     K = vec_K(k)
     
     %Create needed folders
+    if strcmp( kernel_type, 'stein') 
     Kmeans_folder = 'Kmeans';
     BoW_folder = strcat('BoW_hist_K', num2str(K));
-    svm_folder = 'svm_models';
+    svm_folder = 'svm_models'; 
+    % This folder is obtained in KPCA-RP
+    folder_pp = strcat( 'projected_points_dim', num2str(dim));    
+    end
+    
+    if strcmp( kernel_type, 'poly') 
+        Kmeans_folder = 'Kmeans_polyKernel';
+        BoW_folder = strcat('BoW_hist_K', num2str(K), '_polyKernel');
+        svm_folder = 'svm_models_polyKernel';
+        % This folder is obtained in KPCA-RP
+        folder_pp = strcat( 'PolyKernel_projected_points_dim', num2str(dim));    
+    end
+    
     create_folders(Kmeans_folder,BoW_folder, svm_folder)
+    
+    
+    
     
     
     % Get Kmeans (Vocabulary)
     disp('Kmeans');
-    get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter, Kmeans_folder)
+    get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter, Kmeans_folder, folder_pp)
     
     % Get Descriptors for Training and Testing Set
     disp('Getting Descriptors');
-    get_descriptors_BoW(list_pac_tr,list_pac_te,K,path, dim, Kmeans_folder, BoW_folder)
+    get_descriptors_BoW(list_pac_tr,list_pac_te,K,path, dim, Kmeans_folder, BoW_folder, folder_pp)
     
     % Train and Test with SVM
     

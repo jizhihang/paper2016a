@@ -25,7 +25,7 @@ all_people = importdata('people_list.txt');
 scale_factor = 1;
 shift = 0;
 
-people_test =   [ 2 3 5  6  7  8  9  10 22 ];
+people_test =  [ 2 3 5  6  7  8  9  10 22 ];
 people_train = [ 1 4 11 12 13 14 15 16 17 18 19 20 21 23 24 25];
 
 load_sub_path =strcat('overlapped_covariances/Covs/sc1/scale', int2str(scale_factor), '-shift',  int2str(shift));
@@ -40,7 +40,7 @@ n_actions = length(actions);
 
 %% Run the following only once. It's to create the random_space and it's RANDOM ;). 
 %# of random points
-r_points = floor(total_num_covs_tr*5/100);
+r_points = floor(total_num_covs_tr*10/100);
 
 random_idx_pac = random_points (list_pac_tr, r_points); 
 

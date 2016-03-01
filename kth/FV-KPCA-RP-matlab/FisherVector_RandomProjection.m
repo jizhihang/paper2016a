@@ -30,6 +30,11 @@ if strcmp( svm_type, 'svm')
     svm_folder = 'svm_models';
 end
 
+
+%% Kernel Type. For The KPCA-RP
+kernel_type = 'poly';
+%kernel_type = 'stein';
+
 %%
 % User Inputs
 prompt = 'Random projected Dimensionality? ';
@@ -69,20 +74,35 @@ for k =1:length(vec_K)
     
     K = vec_K(k)
     
-    FV_folder = strcat('FV_K', num2str(K));
+    if strcmp( kernel_type, 'stein')
+        
+        FV_folder = strcat('FV_K', num2str(K));
+        GMM_folder = 'universal_GMM';
+        % This folder is obtained in KPCA-RP
+        folder_pp = strcat( 'projected_points_dim', num2str(dim));
+        
+    end
     
-    GMM_folder = 'universal_GMM';
+    if strcmp( kernel_type, 'poly')
+        
+        FV_folder = strcat('FV_K', num2str(K),'_polyKernel');
+        GMM_folder = 'universal_GMM_polyKernel';
+        % This folder is obtained in KPCA-RP
+        folder_pp = strcat( 'PolyKernel_projected_points_dim', num2str(dim));
+        svm_folder = strcat(svm_folder, '_polyKernel');
+        
+    end
     
     %Create needed Folders
     create_folders_FV(FV_folder, svm_folder, GMM_folder)
     
     % Get the Universal GMM
     disp('GMM');
-    get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM, GMM_folder);
+    get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM, GMM_folder, folder_pp);
     
     % Getting FV for Training Set and Testing Set
     disp('Getting FV descriptors');
-    get_FV_descriptors(list_pac_tr, list_pac_te, K,path, dim, GMM_folder, FV_folder)
+    get_FV_descriptors(list_pac_tr, list_pac_te, K,path, dim, GMM_folder, FV_folder, folder_pp)
     
 end
 
