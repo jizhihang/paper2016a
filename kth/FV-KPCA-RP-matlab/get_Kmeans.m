@@ -1,4 +1,4 @@
-function get_Kmeans(path, list_pac, total_num_covs_tr, K, dim, num_iter)
+function get_Kmeans(path, list_pac, total_num_covs_tr, K, dim, num_iter, Kmeans_folder)
 
 
 X = zeros(dim, total_num_covs_tr);
@@ -29,6 +29,6 @@ tic
 C = vl_kmeans(X,K,'NumRepetitions',num_iter);
 toc
 
-save_Kmeans =  strcat( './Kmeans/means_K', num2str(K), '_dim',num2str(dim) );
+save_Kmeans =  strcat( './', Kmeans_folder, '/means_K', num2str(K), '_dim',num2str(dim) );
 save(char(save_Kmeans ), 'C');
 

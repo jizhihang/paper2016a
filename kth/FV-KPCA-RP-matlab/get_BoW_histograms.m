@@ -1,4 +1,4 @@
-function get_BoW_histograms(one_video_pac, K,path, dim)
+function get_BoW_histograms(one_video_pac, K,path, dim, Kmeans_folder, BoW_folder)
 
 
 person =  one_video_pac{1,1};
@@ -8,7 +8,7 @@ num_covs = one_video_pac{1,3};
 
 hist_i = zeros(K,1);
 
-load_Kmeans =  strcat( './Kmeans/means_K', num2str(K), '_dim',num2str(dim) );
+load_Kmeans =  strcat( './', Kmeans_folder, '/means_K', num2str(K), '_dim',num2str(dim) );
 load(char(load_Kmeans ));  % C i size(dim,K), each column is a Centroid
 
 for c = 1:num_covs
@@ -38,7 +38,7 @@ for c = 1:num_covs
     
 end
 %Saving the histograms for the projected points.
-save_hist=  strcat('./BoW_hist_K', num2str(K), '/pp_hist_', person, '_', action, '_dim',num2str(dim),  '.h5' );
+save_hist=  strcat('./', BoW_folder, '/pp_hist_', person, '_', action, '_dim',num2str(dim),  '.h5' );
 hdf5write(char(save_hist), '/dataset1', hist_i);
 % Guardar Aqui!!!!!
 %matlabpool close

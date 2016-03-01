@@ -38,47 +38,34 @@ n_actions = length(actions);
 %vec_K = [128 256 512 4000];
 %vec_K = [512 4000 ];
 
-% for k =1:length(vec_K)
-%     K = vec_K(k)
-%
-%     %% Get Kmeans (Vocabulary)
-%     disp('Kmeans');
-%     get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter)
-%
-%     %% Getting descriptors for Training Set
-%
-%
-%     for i=1:length(list_pac_tr)
-%         %i
-%         one_video_pac = {list_pac_tr{i,:}};
-%         %tic
-%         get_BoW_histograms(one_video_pac, K,path, dim);
-%         %toc
-%     end
-%
-%     %% Getting descriptors for Testing Set
-
-%     for i=1:length(list_pac_te)
-%         %i
-%         one_video_pac = {list_pac_te{i,:}};
-%         %tic
-%         get_BoW_histograms(one_video_pac, K,path, dim);
-%         %toc
-%     end
-%
-% end
-
-%% Train and Test with SVM
-
-
-vec_K = [128 256 512 4000];
+vec_K = [1024];
 all_accuracy = zeros(1,length(vec_K));
-
- for k =1:length(vec_K)
-     K = vec_K(k)
-     BoW_svm_train(K, list_pac_tr, dim);
-     [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te, dim);
-     all_accuracy(k) = accuracy(1);
-
+for k =1:length(vec_K)
+    
+    K = vec_K(k)
+    
+    %Create needed folders
+    Kmeans_folder = 'Kmeans';
+    BoW_folder = strcat('BoW_hist_K', num2str(K));
+    svm_folder = 'svm_models';
+    create_folders(Kmeans_folder,BoW_folder, svm_folder)
+    
+    
+    % Get Kmeans (Vocabulary)
+    disp('Kmeans');
+    get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter, Kmeans_folder)
+    
+    % Get Descriptors for Training and Testing Set
+    disp('Getting Descriptors');
+    get_descriptors_BoW(list_pac_tr,list_pac_te,K,path, dim, Kmeans_folder, BoW_folder)
+    
+    % Train and Test with SVM
+    
+    disp('Training and Testing with SVM classifier');
+    
+    BoW_svm_train(K, list_pac_tr, dim, BoW_folder, svm_folder);
+    [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te, dim, BoW_folder, svm_folder);
+    all_accuracy(k) = accuracy(1);
+    
 end
 
