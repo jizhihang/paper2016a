@@ -14,9 +14,9 @@ addpath('/home/johanna/toolbox/yael/matlab');
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 
 
-%svm_type
-%svm_type = 'linear'; %liblinear
-svm_type = 'svm';    %libsvm
+%% svm_type
+svm_type = 'linear'; %liblinear
+%svm_type = 'svm';    %libsvm
 
 %libLinear
 if strcmp( svm_type, 'linear')
@@ -32,8 +32,8 @@ end
 
 
 %% Kernel Type. For The KPCA-RP
-kernel_type = 'poly';
-%kernel_type = 'stein';
+%kernel_type = 'poly';
+kernel_type = 'stein';
 
 %%
 % User Inputs
