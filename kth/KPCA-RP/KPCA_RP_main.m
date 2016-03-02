@@ -14,7 +14,7 @@ dbstop error;
 
     
  %Kernel Type:   
- kernel_type = 'poly';
+ kernel_type = 'poly'
  %kernel_type = 'stein'
    
 %%
