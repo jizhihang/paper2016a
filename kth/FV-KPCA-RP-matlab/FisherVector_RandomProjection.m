@@ -44,8 +44,8 @@ dim = input(prompt);
 %dim = 4237; % After the random projection
 %dim = 8475
 %vec_K = [128 256 512 4000];
-ec_K =  [1024 512 256 128];
-vec_K = [256];
+vec_K =  [1024 512 256 128];
+%vec_K = [256];
 
 
 n_iterGMM = 10; % For GMM
