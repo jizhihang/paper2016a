@@ -41,7 +41,7 @@ n_actions = length(actions);
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
-vec_K = [4000 1024 512 256 128];
+vec_K = [1024 512 256 128];
 %vec_K = [512 4000 ];
 
 %vec_K = [1024];
