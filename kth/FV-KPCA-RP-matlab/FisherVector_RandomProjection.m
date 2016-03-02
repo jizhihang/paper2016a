@@ -125,7 +125,7 @@ if  strcmp( svm_type, 'svm')
             params_svm=  sprintf('-s 0 -t 0 -c %f -q', c)
             FV_svm_train(K, list_pac_tr, dim, svm_type, params_svm, FV_folder, svm_folder );
             [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type, FV_folder, svm_folder);
-            all_accuracy(j) = accuracy(1)
+            all_accuracy(k,j) = accuracy(1)
         end
     end
     
