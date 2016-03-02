@@ -69,7 +69,11 @@ n_actions = length(actions);
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
-
+if  strcmp( svm_type, 'svm')
+    vec_c = [ 0.1 1 10 100 1000 10000];
+    all_accuracy = zeros(length(vec_K), length(vec_c) );
+    
+end
 
 for k =1:length(vec_K)
     
@@ -85,7 +89,7 @@ for k =1:length(vec_K)
     end
     
     if strcmp( kernel_type, 'poly')
-        
+      
         FV_folder = strcat('FV_K', num2str(K),'_polyKernel');
         GMM_folder = 'universal_GMM_polyKernel';
         % This folder is obtained in KPCA-RP
@@ -95,31 +99,21 @@ for k =1:length(vec_K)
     end
     
     %Create needed Folders
-    create_folders_FV(FV_folder, svm_folder, GMM_folder)
+    create_folders_FV(FV_folder, svm_folder, GMM_folder);
     
     % Get the Universal GMM
-    disp('GMM');
-    get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM, GMM_folder, folder_pp);
+    %disp('GMM');
+    %get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM, GMM_folder, folder_pp);
     
     % Getting FV for Training Set and Testing Set
-    disp('Getting FV descriptors');
-    get_FV_descriptors(list_pac_tr, list_pac_te, K,path, dim, GMM_folder, FV_folder, folder_pp)
+    %disp('Getting FV descriptors');
+    %get_FV_descriptors(list_pac_tr, list_pac_te, K,path, dim, GMM_folder, FV_folder, folder_pp)
     
-end
-
-
-%% Train and Test with SVM
-
-
-%% For libSVM Example
-
-if  strcmp( svm_type, 'svm')
-    vec_c = [ 0.1 1 10 100 1000 10000];
-    all_accuracy = zeros(length(vec_K), length(vec_c) );
-        
-    for k =1:length(vec_K)
-        
-        K = vec_K(k)
+    %% Train and Test with SVM
+    
+    % For libSVM Example
+    
+    if  strcmp( svm_type, 'svm')
         for j = 1: length(vec_c)
             c = vec_c (j);
             params_svm=  sprintf('-s 0 -t 0 -c %f -q', c)
@@ -130,6 +124,7 @@ if  strcmp( svm_type, 'svm')
     end
     
 end
+
 
 
 %% For libLinear Example
