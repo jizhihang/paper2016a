@@ -15,7 +15,7 @@ dbstop error;
     
  %Kernel Type:   
  %kernel_type = 'poly';
- kernel_type = 'stein';
+ kernel_type = 'stein'
    
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
