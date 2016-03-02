@@ -56,6 +56,10 @@ folder_name = strcat('PolyKernel_projected_points_dim', num2str(r_points))
 random_projection_polyKernel(random_idx_pac, r_points, path, load_sub_path, dim)
 end
 
+if strcmp( kernel_type, 'stein')
+folder_name = strcat('projected_points_dim', num2str(r_points))
+random_projection(random_idx_pac, r_points, path, load_sub_path, dim)
+end
 
 if ~exist(folder_name, 'dir')
     mkdir(folder_name);
