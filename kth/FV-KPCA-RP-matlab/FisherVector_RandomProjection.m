@@ -44,7 +44,8 @@ dim = input(prompt);
 %dim = 4237; % After the random projection
 %dim = 8475
 %vec_K = [128 256 512 4000];
-vec_K = [1024];
+vec_K =  [1024 512 256 128];
+%vec_K = [1024];
 
 
 n_iterGMM = 10; % For GMM
@@ -94,15 +95,15 @@ for k =1:length(vec_K)
     end
     
     %Create needed Folders
-    %create_folders_FV(FV_folder, svm_folder, GMM_folder)
+    create_folders_FV(FV_folder, svm_folder, GMM_folder)
     
     % Get the Universal GMM
-    %disp('GMM');
-    %get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM, GMM_folder, folder_pp);
+    disp('GMM');
+    get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM, GMM_folder, folder_pp);
     
     % Getting FV for Training Set and Testing Set
-    %disp('Getting FV descriptors');
-    %get_FV_descriptors(list_pac_tr, list_pac_te, K,path, dim, GMM_folder, FV_folder, folder_pp)
+    disp('Getting FV descriptors');
+    get_FV_descriptors(list_pac_tr, list_pac_te, K,path, dim, GMM_folder, FV_folder, folder_pp)
     
 end
 
@@ -114,14 +115,18 @@ end
 
 if  strcmp( svm_type, 'svm')
     vec_c = [ 0.1 1 10 100 1000 10000];
-    all_accuracy = zeros(1, length(vec_c) );
-    
-    for j = 1: length(vec_c)
-        c = vec_c (j);
-        params_svm=  sprintf('-s 0 -t 0 -c %f -q', c)
-        FV_svm_train(K, list_pac_tr, dim, svm_type, params_svm, FV_folder, svm_folder );
-        [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type, FV_folder, svm_folder);
-        all_accuracy(j) = accuracy(1)
+    all_accuracy = zeros(length(vec_K), length(vec_c) );
+        
+    for k =1:length(vec_K)
+        
+        K = vec_K(k)
+        for j = 1: length(vec_c)
+            c = vec_c (j);
+            params_svm=  sprintf('-s 0 -t 0 -c %f -q', c)
+            FV_svm_train(K, list_pac_tr, dim, svm_type, params_svm, FV_folder, svm_folder );
+            [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type, FV_folder, svm_folder);
+            all_accuracy(j) = accuracy(1)
+        end
     end
     
 end
