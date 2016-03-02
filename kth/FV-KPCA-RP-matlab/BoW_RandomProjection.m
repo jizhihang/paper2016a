@@ -41,10 +41,10 @@ n_actions = length(actions);
 [list_pac_tr total_num_covs_tr] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_train);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path_1, people_test);
 
-%vec_K = [128 256 512 1024 4000];
+vec_K = [4000 1024 512 256 128];
 %vec_K = [512 4000 ];
 
-vec_K = [1024];
+%vec_K = [1024];
 all_accuracy = zeros(1,length(vec_K));
 for k =1:length(vec_K)
     
@@ -69,13 +69,9 @@ for k =1:length(vec_K)
     
     create_folders(Kmeans_folder,BoW_folder, svm_folder)
     
-    
-    
-    
-    
     % Get Kmeans (Vocabulary)
-    %disp('Kmeans');
-    %get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter, Kmeans_folder, folder_pp)
+    disp('Kmeans');
+    get_Kmeans(path, list_pac_tr, total_num_covs_tr, K, dim, num_iter, Kmeans_folder, folder_pp)
     
     %% Get Descriptors for Training and Testing Set
     disp('Getting Descriptors');
