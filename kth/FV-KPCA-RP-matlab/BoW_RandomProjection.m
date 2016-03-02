@@ -44,7 +44,7 @@ n_actions = length(actions);
 %vec_K = [128 256 512 4000];
 %vec_K = [512 4000 ];
 
-vec_K = [4000];
+vec_K = [1024];
 all_accuracy = zeros(1,length(vec_K));
 for k =1:length(vec_K)
     
