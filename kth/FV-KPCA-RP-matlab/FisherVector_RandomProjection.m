@@ -15,8 +15,8 @@ path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 
 
 %svm_type
-%svm_type = 'linear'; %liblinear
-svm_type = 'svm';    %libsvm
+svm_type = 'linear'; %liblinear
+%svm_type = 'svm';    %libsvm
 
 %libLinear
 if strcmp( svm_type, 'linear')
@@ -44,8 +44,8 @@ dim = input(prompt);
 %dim = 4237; % After the random projection
 %dim = 8475
 %vec_K = [128 256 512 4000];
-vec_K =  [1024 512 256 128];
-%vec_K = [1024];
+ec_K =  [1024 512 256 128];
+vec_K = [256];
 
 
 n_iterGMM = 10; % For GMM
@@ -75,6 +75,14 @@ if  strcmp( svm_type, 'svm')
     
 end
 
+
+if  strcmp( svm_type, 'linear')
+    vec_c = [ 0.01 0.1 1 10];
+    vec_s_linear = [0 1 2];
+    all_accuracy = zeros(length(vec_s_linear), length(vec_c) );
+end
+
+
 for k =1:length(vec_K)
     
     K = vec_K(k)
@@ -89,7 +97,7 @@ for k =1:length(vec_K)
     end
     
     if strcmp( kernel_type, 'poly')
-      
+        
         FV_folder = strcat('FV_K', num2str(K),'_polyKernel');
         GMM_folder = 'universal_GMM_polyKernel';
         % This folder is obtained in KPCA-RP
@@ -123,28 +131,29 @@ for k =1:length(vec_K)
         end
     end
     
+    %% For libLinear Example
+    if  strcmp( svm_type, 'linear')
+        
+        for i = 1: length(vec_s_linear)
+            for j = 1: length(vec_c)
+                
+                c = vec_c (j);
+                s = vec_s_linear(i);
+                params_linear =  sprintf('-s %f -c %f -q', s, c)
+                FV_svm_train(K, list_pac_tr, dim, svm_type, params_linear);
+                [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type);
+                all_accuracy(i,j) = accuracy(1)
+                
+            end
+        end
+        
+    end
+    
 end
 
 
 
-%% For libLinear Example
-% vec_c = [ 0.01 0.1 1 10];
-% vec_s_linear = [0 1 2];
-%
-% all_accuracy = zeros(length(vec_s_linear), length(vec_c) );
-%
-% for i = 1: length(vec_s_linear)
-%     for j = 1: length(vec_c)
-%
-%         c = vec_c (j);
-%         s = vec_s_linear(i);
-%         params_linear =  sprintf('-s %f -c %f -q', s, c)
-%         FV_svm_train(K, list_pac_tr, dim, svm_type, params_linear);
-%         [predicted_label, accuracy, dec_values] = FV_svm_test(K, list_pac_te, dim, svm_type);
-%         all_accuracy(i,j) = accuracy(1)
-%
-%     end
-% end
+
 
 
 
