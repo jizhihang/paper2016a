@@ -77,7 +77,7 @@ end
 
 
 if  strcmp( svm_type, 'linear')
-    vec_c = [ 0.01 0.1 1 10];
+    vec_c = [ 0.01 0.1 1 10 100 1000];
     vec_s_linear = [0 1 2];
     all_accuracy = zeros(length(vec_s_linear), length(vec_c) );
 end
