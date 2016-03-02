@@ -1,6 +1,6 @@
 function  [predicted_label, accuracy, dec_values] = BoW_svm_test(K, list_pac_te, dim, BoW_folder, svm_folder)
 
-load_svm_model = strcat( './', svm_folder, 'svm_models/inter_kernel_svm_BoW_pp', num2str(K), '_dim',num2str(dim), '.mat');
+load_svm_model = strcat( './', svm_folder, '/svm_models/inter_kernel_svm_BoW_pp', num2str(K), '_dim',num2str(dim), '.mat');
 load(load_svm_model); % Loading Model and X_train
 
 
