@@ -53,7 +53,7 @@ random_idx_pac = random_points (list_pac_tr, r_points);
 %Using Polynomial Kernel. Best_n found in mlsda paper 2016.
 if strcmp( kernel_type, 'poly') 
 folder_name = strcat('PolyKernel_projected_points_dim', num2str(r_points))
-random_projection_polyKernel(random_idx_pac, r_points, path, load_sub_path, dim)
+%random_projection_polyKernel(random_idx_pac, r_points, path, load_sub_path, dim)
 end
 
 if strcmp( kernel_type, 'stein')
