@@ -42,7 +42,7 @@ end
 if strcmp( kernel_type, 'poly')
     
     load_rp_data = strcat('PolyKernelrandom_projection_data_dim',  num2str(r_points));
-    load( char(load_rp_data)); % Loading V & X_train. See random_projection
+    load( char(load_rp_data), 'V',  'X_train'); % Loading V & X_train. See random_projection
     
    %Polynomial Kernel - See mlsda paper on Manifolds
    best_n = 12;
