@@ -45,7 +45,7 @@ dim = input(prompt);
 %dim = 8475;
 %vec_K = [128 256 512 4000];
 %vec_K =  [1024 512 256 128];
-vec_K = [256];
+vec_K = [512];
 
 n_iterGMM = 10; % For GMM
 
