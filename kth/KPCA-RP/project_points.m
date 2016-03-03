@@ -1,5 +1,5 @@
 function project_points (list_pac, path, load_sub_path,r_points, folder_name, kernel_type)
-
+matlabpool(8) 
 
 if strcmp( kernel_type, 'stein')
     
@@ -57,8 +57,8 @@ if strcmp( kernel_type, 'poly')
         %show_you = strcat(person,  '_', action);
         %disp(show_you);
         
-        %parfor c  = 1:num_covs
-        for c = 1:num_covs
+        parfor c  = 1:num_covs
+        %for c = 1:num_covs
             load_cov =  strcat( path, load_sub_path, '/Cov_', person, '_', action,  '_segm', num2str(c) , '.h5' );
             S = char(load_cov);
             data_one_cov= hdf5info(S);
@@ -77,7 +77,7 @@ if strcmp( kernel_type, 'poly')
 
 end
 
-
+matlabpool close
 
 
 

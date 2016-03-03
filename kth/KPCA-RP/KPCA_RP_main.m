@@ -69,8 +69,8 @@ end
 
 
 % Get projected points for Training and Testing Set
-disp('project_points for Training Set');
-project_points (list_pac_tr,path, load_sub_path, r_points, folder_name, kernel_type);
+%disp('project_points for Training Set');
+%project_points (list_pac_tr,path, load_sub_path, r_points, folder_name, kernel_type);
 
 disp('project_points for Testing Set');
 project_points (list_pac_te, path, load_sub_path,r_points, folder_name, kernel_type);
