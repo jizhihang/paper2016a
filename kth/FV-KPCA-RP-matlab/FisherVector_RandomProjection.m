@@ -15,8 +15,8 @@ path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 
 
 %% svm_type
-%svm_type = 'linear'; %liblinear
-svm_type = 'svm';    %libsvm
+svm_type = 'linear'; %liblinear
+%svm_type = 'svm';    %libsvm
 
 %libLinear
 if strcmp( svm_type, 'linear')
@@ -44,8 +44,8 @@ dim = input(prompt);
 %dim = 4237; % After the random projection
 %dim = 8475;
 %vec_K = [128 256 512 4000];
-vec_K =  [1024 512 256 128];
-%vec_K = [256];
+%vec_K =  [1024 512 256 128];
+vec_K = [256];
 
 n_iterGMM = 10; % For GMM
 
