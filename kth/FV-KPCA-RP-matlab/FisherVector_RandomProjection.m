@@ -15,8 +15,8 @@ path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 
 
 %% svm_type
-svm_type = 'linear'; %liblinear
-%svm_type = 'svm';    %libsvm
+%svm_type = 'linear'; %liblinear
+svm_type = 'svm';    %libsvm
 
 %libLinear
 if strcmp( svm_type, 'linear')
@@ -42,11 +42,10 @@ dim = input(prompt);
 
 
 %dim = 4237; % After the random projection
-%dim = 8475
+%dim = 8475;
 %vec_K = [128 256 512 4000];
-%vec_K =  [1024 512 256 128];
-vec_K = [256];
-
+vec_K =  [1024 512 256 128];
+%vec_K = [256];
 
 n_iterGMM = 10; % For GMM
 
@@ -61,7 +60,7 @@ people_test =  [ 2 3 5  6  7  8  9  10 22 ];
 people_train = [ 1 4 11 12 13 14 15 16 17 18 19 20 21 23 24 25];
 
 
-
+%%
 n_people  = length(all_people);
 n_actions = length(actions);
 
