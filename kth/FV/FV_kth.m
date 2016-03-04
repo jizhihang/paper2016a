@@ -43,5 +43,9 @@ FV_folder = strcat('FV_K', num2str(K));
 create_folders_FV(FV_folder, svm_folder, GMM_folder);
 
 %get_universalGMM(path_features, people_train, all_people, actions,  K, dim, n_iterGMM, GMM_folder)
-FV_kth_all_videos(path_features, all_people, actions, K, dim, GMM_folder, FV_folder)
+%FV_kth_all_videos(path_features, all_people, actions, K, dim, GMM_folder, FV_folder)
+
+c= 1;
+params =  sprintf('-s 0 -t 0 -c %f -q', c);
+FV_train(people_train, all_people, actions,  K, dim_FV, FV_folder, svm_folder, params);
 
