@@ -15,8 +15,8 @@ path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 
 
 %% svm_type
-svm_type = 'linear' %liblinear
-%svm_type = 'svm'    %libsvm
+%svm_type = 'linear' %liblinear
+svm_type = 'svm'    %libsvm
 
 %libLinear
 if strcmp( svm_type, 'linear')
@@ -32,8 +32,8 @@ end
 
 
 %% Kernel Type. For The KPCA-RP
-%kernel_type = 'poly';
-kernel_type = 'stein'
+kernel_type = 'poly';
+%kernel_type = 'stein'
 
 %%
 % User Inputs
@@ -44,8 +44,8 @@ dim = input(prompt);
 %dim = 4237; % After the random projection
 %dim = 8475;
 %vec_K = [128 256 512 4000];
-%vec_K =  [1024 512 256 128];
-vec_K = [512];
+vec_K =  [1024 512 256 128];
+%vec_K = [512];
 
 n_iterGMM = 10; % For GMM
 
@@ -109,12 +109,12 @@ for k =1:length(vec_K)
     create_folders_FV(FV_folder, svm_folder, GMM_folder);
     
     % Get the Universal GMM
-    %disp('GMM');
-    %get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM, GMM_folder, folder_pp);
+    disp('GMM');
+    get_universalGMM(path, list_pac_tr, total_num_covs_tr, K, dim, n_iterGMM, GMM_folder, folder_pp);
     
     % Getting FV for Training Set and Testing Set
-    %disp('Getting FV descriptors');
-    %get_FV_descriptors(list_pac_tr, list_pac_te, K,path, dim, GMM_folder, FV_folder, folder_pp)
+    disp('Getting FV descriptors');
+    get_FV_descriptors(list_pac_tr, list_pac_te, K,path, dim, GMM_folder, FV_folder, folder_pp)
     
     %% Train and Test with SVM
     
