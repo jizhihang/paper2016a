@@ -12,6 +12,9 @@ run('/home/johanna/toolbox/vlfeat-0.9.20/toolbox/vl_setup');
 %Fisher Vector
 addpath('/home/johanna/toolbox/yael/matlab');
 
+%libSVM
+addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
+
 %General paths
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 
