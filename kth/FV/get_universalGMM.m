@@ -17,7 +17,7 @@ X = [ ] ;
 for p=1: length(people_train)
    
     person = all_people(people_train(p));
-    person
+    %person
     for act = 1:n_actions
         
         load_video_i=  strcat( path_1,person, '_', actions(act), '_dim', num2str(dim), '.h5');
@@ -35,7 +35,7 @@ for p=1: length(people_train)
    
 end
 
-size(X)
+%size(X)
 disp('GMM');
 tic
 [means, covariances, priors] = vl_gmm(X, K,  'MaxNumIterations', n_iterGMM);
