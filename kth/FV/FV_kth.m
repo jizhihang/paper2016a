@@ -31,7 +31,7 @@ all_people = importdata('people_list.txt');
 n_peo =  size(all_people,1);
 
 %n_test = (n_peo-1)*n_actions;
-dim_FV = 2*dim*Ncent;
+dim_FV = 2*dim*K;
 
 people_test =  [ 2 3 5  6  7  8  9  10 22 ];
 people_train = [ 1 4 11 12 13 14 15 16 17 18 19 20 21 23 24 25];
