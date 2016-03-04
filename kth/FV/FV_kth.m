@@ -30,9 +30,8 @@ all_people = importdata('people_list.txt');
 
 
 n_peo =  size(all_people,1);
-sc = int2str(1);
 
-n_test = (n_peo-1)*n_actions;
+%n_test = (n_peo-1)*n_actions;
 dim_FV = 2*dim*Ncent;
 
 people_test =  [ 2 3 5  6  7  8  9  10 22 ];
