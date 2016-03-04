@@ -19,7 +19,7 @@ addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
 
 %This path is only to load the matrices that contain all the feature vectors
-%per video and their labels. 
+%per video and their labels.
 path_features = '/home/johanna/codes/codes-git/manifolds/trunk/kth/dim_14/features/kth-features_dim14_openMP/sc1/';
 
 
@@ -48,9 +48,16 @@ create_folders_FV(FV_folder, svm_folder, GMM_folder);
 %get_universalGMM(path_features, people_train, all_people, actions,  K, dim, n_iterGMM, GMM_folder)
 %FV_kth_all_videos(path_features, all_people, actions, K, dim, GMM_folder, FV_folder)
 
-c= 1;
-params =  sprintf('-s 0 -t 0 -c %f -q', c);
-FV_train(people_train, all_people, actions,  K, dim, dim_FV, FV_folder, svm_folder, params);
-[predicted_label, accuracy, dec_values]  = FV_test(people_test, all_people, actions,  K, dim, dim_FV, FV_folder, svm_folder);
+vec_c = [ 0.1 1 10 100 1000 10000];
+all_accuracy = zeros(length(vec_K), length(vec_c) );
+for j = 1: length(vec_c)
+    c = vec_c (j);
+    
+    params =  sprintf('-s 0 -t 0 -c %f -q', c);
+    FV_train(people_train, all_people, actions,  K, dim, dim_FV, FV_folder, svm_folder, params);
+    [predicted_label, accuracy, dec_values]  = FV_test(people_test, all_people, actions,  K, dim, dim_FV, FV_folder, svm_folder);
+    
+    all_accuracy(i,j) = accuracy(1);
+end
 
 
