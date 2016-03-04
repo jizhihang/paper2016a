@@ -1,4 +1,4 @@
-function FV_train(people_train, all_people, actions,  K, dim_FV, FV_folder, params)
+function FV_train(people_train, all_people, actions,  K, dim_FV, FV_folder, svm_folder, params)
 
 n_actions = size(actions,1);
 n_samples_train = length(people_train)*n_actions;
