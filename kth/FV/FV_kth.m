@@ -4,7 +4,7 @@ close all
 clc
 
 dbstop error;
-dbstop in  get_universalGMM at 14
+%dbstop in  get_universalGMM at 14
 
 %VL
 run('/home/johanna/toolbox/vlfeat-0.9.20/toolbox/vl_setup');
@@ -35,6 +35,12 @@ dim_FV = 2*dim*K;
 
 people_test =  [ 2 3 5  6  7  8  9  10 22 ];
 people_train = [ 1 4 11 12 13 14 15 16 17 18 19 20 21 23 24 25];
+
+GMM_folder = 'universal_GMM';
+svm_folder = 'svm_models';
+FV_folder = strcat('FV_K', num2str(K));
+
+create_folders_FV(FV_folder, svm_folder, GMM_folder);
 
 get_universalGMM(path_features, people_train, all_people, actions,  K, dim, n_iterGMM)
 

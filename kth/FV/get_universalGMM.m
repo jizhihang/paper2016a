@@ -1,4 +1,4 @@
-function get_universalGMM(path_features, people_train, all_people, actions,  K, dim, n_iterGMM)
+function get_universalGMM(path_features, people_train, all_people, actions,  K, dim, n_iterGMM, GMM_folder)
 
 
 scale = 1;
@@ -6,7 +6,7 @@ shift = 0;
 path_1 = strcat( path_features, 'scale', num2str(scale), '-shift', num2str(shift), '/');
         
 
-max_n_vec_video = 20000;% (~aprox) %16.000*16(people_train) = 256.000
+max_n_vec_video = 3000;% (~aprox) %16.000*16*6(people_train*actions) = 256.000
 
 n_actions = size(actions,1);
 
@@ -23,7 +23,7 @@ for p=1: length(people_train)
         load_video_i=  strcat( path_1,person, '_', actions(act), '_dim', num2str(dim), '.h5');
         S = char(load_video_i);
         vectors_one_video= hdf5info(S);
-        Xi = hdf5read(data_one_cov.GroupHierarchy.Datasets(1)); % One covariance point
+        Xi = hdf5read(vectors_one_video.GroupHierarchy.Datasets(1)); % One covariance point
         a=1;
         b = length(Xi);
         random_points = randi([a b],1,max_n_vec_video);
@@ -41,5 +41,5 @@ tic
 [means, covariances, priors] = vl_gmm(X, K,  'MaxNumIterations', n_iterGMM);
 toc
 
-%save_gmm_model =  strcat( './',GMM_folder, '/gmm_model_K', num2str(K), '_dim',num2str(dim) );
-%save(char(save_gmm_model), 'means','covariances','priors');
+save_gmm_model =  strcat( './',GMM_folder, '/gmm_model_K', num2str(K), '_dim',num2str(dim) );
+save(char(save_gmm_model), 'means','covariances','priors');
