@@ -13,7 +13,7 @@ for p=1: length(people_train)
     person
     for act = 1:n_actions
         
-        load_FV =  trcat('./', FV_folder, '/FV_', person, '_', actions(act), '_dim', num2str(dim),'.h5' );
+        load_FV =  strcat('./', FV_folder, '/FV_', person, '_', actions(act), '_dim', num2str(dim),'.h5' );
         S = char(load_FV);
         FV_one_video= hdf5info(S);
         FVi = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); % One covariance point
