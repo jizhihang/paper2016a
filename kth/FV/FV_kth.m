@@ -42,5 +42,5 @@ FV_folder = strcat('FV_K', num2str(K));
 
 create_folders_FV(FV_folder, svm_folder, GMM_folder);
 
-get_universalGMM(path_features, people_train, all_people, actions,  K, dim, n_iterGMM)
+get_universalGMM(path_features, people_train, all_people, actions,  K, dim, n_iterGMM, GMM_folder)
 
