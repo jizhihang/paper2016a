@@ -3,6 +3,7 @@ clear all
 close all
 clc
 
+dbstop error;
 dbstop in  get_universalGMM at 14
 
 %VL
