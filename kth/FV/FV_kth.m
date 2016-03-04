@@ -21,9 +21,8 @@ path_features = '/home/johanna/codes/codes-git/manifolds/trunk/kth/dim_14/featur
 
 
 dim = 14;
-Ncent = 256;
+K = 256;
 
-Ng = int2str(Ncent);
 
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
