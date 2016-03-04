@@ -22,7 +22,7 @@ path_features = '/home/johanna/codes/codes-git/manifolds/trunk/kth/dim_14/featur
 
 dim = 14;
 K = 256;
-
+n_iterGMM = 10; % For GMM
 
 actions = importdata('actionNames.txt');
 all_people = importdata('people_list.txt');
