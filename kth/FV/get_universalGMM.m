@@ -13,7 +13,6 @@ n_actions = size(actions,1);
 
 X = [ ] ;
 
-
 for p=1: length(people_train)
    
     person = all_people(people_train(p));
