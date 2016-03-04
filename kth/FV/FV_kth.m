@@ -49,7 +49,7 @@ create_folders_FV(FV_folder, svm_folder, GMM_folder);
 %FV_kth_all_videos(path_features, all_people, actions, K, dim, GMM_folder, FV_folder)
 
 vec_c = [ 0.1 1 10 100 1000 10000];
-all_accuracy = zeros(length(vec_K), length(vec_c) );
+all_accuracy = zeros(1, length(vec_c) );
 for j = 1: length(vec_c)
     c = vec_c (j);
     
