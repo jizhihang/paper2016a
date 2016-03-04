@@ -47,5 +47,5 @@ create_folders_FV(FV_folder, svm_folder, GMM_folder);
 
 c= 1;
 params =  sprintf('-s 0 -t 0 -c %f -q', c);
-FV_train(people_train, all_people, actions,  K, dim_FV, FV_folder, svm_folder, params);
+FV_train(people_train, all_people, actions,  K, dim, dim_FV, FV_folder, svm_folder, params);
 
