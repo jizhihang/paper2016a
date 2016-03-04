@@ -13,7 +13,7 @@ load(load_svm_model, 'model');
 for p=1: length(people_test)
    
     person = all_people(people_test(p));
-    person
+    %person
     for act = 1:n_actions
         
         load_FV =  strcat('./', FV_folder, '/FV_', person, '_', actions(act), '_dim', num2str(dim),'.h5' );
