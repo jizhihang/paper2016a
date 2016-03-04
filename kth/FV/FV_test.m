@@ -10,7 +10,7 @@ j = 1;
 load_svm_model = strcat( './',svm_folder, '/linear_kernel_svm_FV_K', num2str(K), '_dim', num2str(dim), '.mat');
 load(load_svm_model, 'model');
 
-for p=1: length(people_train)
+for p=1: length(people_test)
    
     person = all_people(people_test(p));
     person
