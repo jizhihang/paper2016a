@@ -4,7 +4,7 @@ n_actions = size(actions,1);
 n_samples_train = length(people_test)*n_actions;
 
 X_test = zeros(dim_FV, n_samples_train);
-labels_train = zeros(n_samples_train,1);
+labels_test = zeros(n_samples_train,1);
 j = 1;
 
 load_svm_model = strcat( './',svm_folder, '/linear_kernel_svm_FV_K', num2str(K), '_dim', num2str(dim), '.mat');
@@ -21,7 +21,7 @@ for p=1: length(people_test)
         FV_one_video= hdf5info(S);
         FVi = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); % One covariance point
         X_test(:,j) = FVi;
-        labels_train(j) = act;
+        labels_test(j) = act;
         j = j + 1;
         
     end

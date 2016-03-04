@@ -10,7 +10,7 @@ j = 1;
 for p=1: length(people_train)
    
     person = all_people(people_train(p));
-    person
+    %person
     for act = 1:n_actions
         
         load_FV =  strcat('./', FV_folder, '/FV_', person, '_', actions(act), '_dim', num2str(dim),'.h5' );
