@@ -20,9 +20,6 @@ for pe=1:n_people
         
         load_video_i=  strcat( path_1,all_people(pe), '_', actions(act), '_dim', num2str(dim), '.h5');
         S = char(load_video_i);
-        vectors_one_video= hdf5info(S);
-
-        S = char(vectors_one_video);
         data_onevideo = hdf5info(S);
         one_video = hdf5read(data_onevideo.GroupHierarchy.Datasets(1));
         one_video= {one_video};
