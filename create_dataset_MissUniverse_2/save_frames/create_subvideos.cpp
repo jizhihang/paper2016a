@@ -84,7 +84,7 @@ main(int argc, char** argv)
   
    /// Step 3: 
   //Creating Folders and Using 2 views per participant. Saving frames in each folder
-  //step_3( path, video_name);
+  step_3( path, video_name);
   
   
 
@@ -238,7 +238,7 @@ save_frames(const std::string path, std::string video_name, std::string country,
   std::stringstream video_path;
   
   std::stringstream root_name;
-  root_name << path << country << "/miss_"<< country ;
+  root_name << path << country << "/";
   
   
   
@@ -267,7 +267,7 @@ save_frames(const std::string path, std::string video_name, std::string country,
     inputVideo.read(src);
     
     std::stringstream frame_posi;   
-    frame_posi << root_name.str() << "_" << std::setfill('0') << std::setw(3) << k << ".jpg";    
+    frame_posi << root_name.str() << std::setfill('0') << std::setw(3) << k << ".jpg";    
     imwrite( frame_posi.str(), src );    
     k++;
     

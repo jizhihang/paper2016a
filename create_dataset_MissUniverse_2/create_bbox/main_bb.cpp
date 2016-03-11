@@ -27,7 +27,9 @@ int i=0;
 char imgName[15];
 
 
-void checkBoundary(){
+void 
+checkBoundary()
+{
   //check croping rectangle exceed image boundary
   if(cropRect.width>img.cols-cropRect.x)
     cropRect.width=img.cols-cropRect.x;
@@ -42,17 +44,24 @@ void checkBoundary(){
     cropRect.height=0;
 }
 
-void showImage(){
+void 
+showImage(){
   img=src.clone();
   checkBoundary();
   if(cropRect.width>0&&cropRect.height>0){
     ROI=src(cropRect);
     imshow("cropped",ROI);
+    
   }
   
   rectangle(img, cropRect, Scalar(0,255,0), 1, 8, 0 );
   imshow(winName,img);
 }
+
+
+inline void list_frames(const std::string path, std::string country);
+inline void  creating_bbox(const std::string path, std::string country);
+
 
 
 void onMouse( int event, int x, int y, int f, void* ){
@@ -90,15 +99,15 @@ void onMouse( int event, int x, int y, int f, void* ){
   
   if(clicked){
     if(P1.x>P2.x){ cropRect.x=P2.x;
-    cropRect.width=P1.x-P2.x; }
-    else {         cropRect.x=P1.x;
-    cropRect.width=P2.x-P1.x; }
-    
-    if(P1.y>P2.y){ cropRect.y=P2.y;
-    cropRect.height=P1.y-P2.y; }
-    else {         cropRect.y=P1.y;
-    cropRect.height=P2.y-P1.y; }
-    
+      cropRect.width=P1.x-P2.x; }
+      else {         cropRect.x=P1.x;
+	cropRect.width=P2.x-P1.x; }
+	
+	if(P1.y>P2.y){ cropRect.y=P2.y;
+	  cropRect.height=P1.y-P2.y; }
+	  else {         cropRect.y=P1.y;
+	    cropRect.height=P2.y-P1.y; }
+	    
   }
   
   
@@ -110,8 +119,6 @@ void onMouse( int event, int x, int y, int f, void* ){
 int
 main(int argc, char** argv)
 {
-
-  
   cout<<"Click and drag for Selection"<<endl<<endl;
   cout<<"------> Press 's' to save"<<endl<<endl;
   cout<<"------> Press '8' to move up"<<endl;
@@ -136,53 +143,91 @@ main(int argc, char** argv)
   cout<<"------> Press 'Esc' to quit"<<endl<<endl;
   
   
-  //Path  @ Home
-  //const std::string path = "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/";
   
-  // Path @ UQ
-  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/";
- 
- 
+  //Path @UQ
+  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2001/";
   
-  
-  std::string name =  "MissUniverse2009_Top10.mp4";
-  std::stringstream video_path;
+  std::string video_name =  "OriginalVideo_2001.mp4";
+  std::string country;
   
   
-  std::string country_year;
-  cout << "Folder Name (year_country: ";
-  getline(cin, country_year);
+  std::string country_boundaries =  "Country_Ini_End_2.txt";
+  std::stringstream country_boundaries_path;
+  country_boundaries_path << path << country_boundaries;
+  field<string> oriVideo_info;
+  oriVideo_info.load(country_boundaries_path.str());
+  //oriVideo_info.print();
+  int num_queens= oriVideo_info.n_rows;
+  
+  for (int q = 0; q  < num_queens; q=q+2) //Use only one view
+  {
+    country = oriVideo_info(q,0);       
+    list_frames(path, country);
+    creating_bbox(path, country);
+    
+    //getchar();
+    //creating_bbox(path, video_name, country, ini_fr, end_fr );
+  }
+  
+  return 0;
+  
+}
 
+inline
+void
+list_frames(const std::string path, std::string country)
+{
+  
+  //List all jpg files in list.txt 
+  std::stringstream create_list;
+  create_list << "ls " << path << country <<  "/*.jpg | xargs -n 1 basename >" << path << country <<  "/list.txt"; 
+  cout << create_list.str() << endl;
   
   
-  video_path << path << name;
-  std::string one_video;
-  one_video = video_path.str();
-  cout << one_video << endl;
+  
+  const int dir_err = system( create_list.str().c_str() );
+  
+  if (-1 == dir_err)
+  {
+    printf("Error creating file!n");
+    exit(1);
+  }
   
   
-   cv::VideoCapture capVideo(one_video);
-    int n_frames = capVideo.get(CV_CAP_PROP_FRAME_COUNT);
+  
+  
+}
+
+
+
+inline 
+void 
+creating_bbox(const std::string path, std::string country)
+{
+  
+  std::stringstream list;
+  list << path << country <<  "/list.txt";
+  cout << list.str() << endl;
+  field<std::string> frames_list;
+  
+  frames_list.load( list.str() );
+  
+  int n_frames = frames_list.n_elem;
+  mat bb_frames;
+  bb_frames.zeros(n_frames,4);
+  
+  cout << n_frames << endl;
+  
+  
+  
+  
+  for(int fr = 0; fr<n_frames; fr++){
     
-   if( !capVideo.isOpened() )
-   {
-     cout << "Video couldn't be opened" << endl;
-     return 0;
-     
-   }
-  
-  
-    ///CUIDADO COMO GUARDAS LAS FRAMES 1, 2,3
-  // debes cambiarlo a 001, 002, 003, etc
-  int ini_frame = 1565;
-  
-  for(int fr=ini_frame; fr<n_frames; fr++){
+    std::stringstream frame_name;
     
-    capVideo.set(CV_CAP_PROP_POS_FRAMES, fr); //start the video at 300ms
-    cout << fr << endl;
-     
-   // src=imread("Nemo.jpg",1);
-    capVideo.read(src);
+    frame_name << path << country << "/" << frames_list(fr);
+    
+    src = imread( frame_name.str(),1);
     
     //Create a window
     namedWindow(winName, 1);
@@ -190,57 +235,58 @@ main(int argc, char** argv)
     //show the image
     imshow(winName, src);
     
-     while(1){
-       char c=waitKey();
-       
-       if(c=='s'&&ROI.data){
-	 std::stringstream bb_name;
-	 bb_name << "./" << country_year <<  "/" <<fr << ".jpg";
-	 //sprintf(imgName,"%d.jpg",i++);
-	 //imwrite(imgName,ROI);
-	 
-	 cv::resize( ROI, ROI, cv::Size(250, 400) );
+    while(1){
+      char c=waitKey();
       
-      
-	 imwrite(bb_name.str().c_str(),ROI);
-	 bb_name.str().c_str();
-	 cout<<"  Saved " <<bb_name.str() <<endl;
-	 break;
-	 
+      if(c=='s'&&ROI.data){
+	
+	vec BB;
+	BB.zeros(4); 
+	
+	BB(0) = cropRect.x;
+	BB(1) = cropRect.y;
+	BB(2) = cropRect.width;
+	BB(3) = cropRect.height;
+	
+	bb_frames.row(fr) = BB.t();	 
+	break;
+	
       }
       
       
-    if(c=='6') cropRect.x++;
-    if(c=='4') cropRect.x--;
-    if(c=='8') cropRect.y--;
-    if(c=='2') cropRect.y++;
-
-    if(c=='w') { cropRect.y--; cropRect.height++;}
-    if(c=='d') cropRect.width++;
-    if(c=='x') cropRect.height++;
-    if(c=='a') { cropRect.x--; cropRect.width++;}
-
-    if(c=='t') { cropRect.y++; cropRect.height--;}
-    if(c=='h') cropRect.width--;
-    if(c=='b') cropRect.height--;
-    if(c=='f') { cropRect.x++; cropRect.width--;}
-    if(c=='p') { fr=fr-2;break;}
-
-    if(c==27) break;
-    if(c=='r') {cropRect.x=0;cropRect.y=0;cropRect.width=0;cropRect.height=0;}     imshow(winName, src);
-    showImage();
-
+      if(c=='6') cropRect.x++;
+      if(c=='4') cropRect.x--;
+      if(c=='8') cropRect.y--;
+      if(c=='2') cropRect.y++;
+      
+      if(c=='w') { cropRect.y--; cropRect.height++;}
+      if(c=='d') cropRect.width++;
+      if(c=='x') cropRect.height++;
+      if(c=='a') { cropRect.x--; cropRect.width++;}
+      
+      if(c=='t') { cropRect.y++; cropRect.height--;}
+      if(c=='h') cropRect.width--;
+      if(c=='b') cropRect.height--;
+      if(c=='f') { cropRect.x++; cropRect.width--;}
+      if(c=='p') { fr=fr-2;break;}
+      
+      if(c==27) break;
+      if(c=='r') {cropRect.x=0;cropRect.y=0;cropRect.width=0;cropRect.height=0;}     imshow(winName, src);
+      showImage();
+      
     }
     
     
     
   }
   
+  std::stringstream bb_name;
+  bb_name << path << country <<  "/BB_all_frames.txt";
+  cout<< "  Saving " <<bb_name.str() <<endl;
+  bb_frames.save( bb_name.str(), raw_ascii );
   
-  
-  
-  return 0;
   
 }
+
 
 
