@@ -57,11 +57,11 @@ main(int argc, char** argv)
   //const std::string path = "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition_v3/MissUniverse2010/";
   
   //Path @UQ
-  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2003/";
+  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2001/";
   
   
   
-  std::string video_name =  "OriginalVideo_2003_b.mp4";
+  std::string video_name =  "OriginalVideo_2001.mp4";
   
   
   
@@ -70,7 +70,6 @@ main(int argc, char** argv)
   /// Step 1: 
   // See the Original Video and manually select Initial and End Frame per
   // participant. Create file "Country_Ini_End.txt";
-  
   //visualise_original_video(path, video_name );
   
   
