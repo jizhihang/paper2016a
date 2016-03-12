@@ -144,10 +144,12 @@ main(int argc, char** argv)
   
   
   
-  //Path @UQ
-  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2001/";
+  //Path @Home
+  const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse2007/";
   
-  std::string video_name =  "OriginalVideo_2001.mp4";
+  //Path @UQ
+  //const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2001/";
+  
   std::string country;
   
   
@@ -166,7 +168,6 @@ main(int argc, char** argv)
     creating_bbox(path, country);
     
     //getchar();
-    //creating_bbox(path, video_name, country, ini_fr, end_fr );
   }
   
   return 0;
@@ -181,8 +182,8 @@ list_frames(const std::string path, std::string country)
   //List all jpg files in list.txt 
   std::stringstream create_list;
   create_list << "ls " << path << country <<  "/*.jpg | xargs -n 1 basename >" << path << country <<  "/list.txt"; 
-  cout << create_list.str() << endl;
-  
+  //cout << create_list.str() << endl;
+  //getchar();
   
   
   const int dir_err = system( create_list.str().c_str() );

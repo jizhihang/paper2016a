@@ -53,15 +53,17 @@ main(int argc, char** argv)
   
   cout<<"------> Press 'Esc' to quit"<<endl<<endl;
   
-  // Path @ Home
-  //const std::string path = "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition_v3/MissUniverse2010/";
+    
+  //Path @Home
+  const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse2007/";
+  
   
   //Path @UQ
-  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2001/";
+  //const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2001/";
   
   
   
-  std::string video_name =  "OriginalVideo_2001.mp4";
+  std::string video_name =  "OriginalVideo_2007.mp4";
   
   
   
@@ -102,7 +104,7 @@ inline void step_2(const std::string path, std::string video_name)
   country_boundaries_path << path << country_boundaries;
   field<string> oriVideo_info;
   oriVideo_info.load(country_boundaries_path.str());
-  oriVideo_info.print();
+  //oriVideo_info.print();
   
   
   int num_queens= oriVideo_info.n_rows;
@@ -140,7 +142,7 @@ inline void step_3(const std::string path, std::string video_name)
   country_boundaries_path << path << country_boundaries;
   field<string> oriVideo_info;
   oriVideo_info.load(country_boundaries_path.str());
-  oriVideo_info.print();
+  //oriVideo_info.print();
   int num_queens= oriVideo_info.n_rows;
      
      for (int q=0; q  < num_queens; q++)
