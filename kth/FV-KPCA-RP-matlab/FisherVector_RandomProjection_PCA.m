@@ -21,13 +21,13 @@ svm_type = 'svm'    %libsvm
 %libLinear
 if strcmp( svm_type, 'linear')
     addpath('/home/johanna/toolbox/liblinear-2.1/matlab');
-    svm_folder = 'svm_models_liblinear';
+    svm_folder = 'svm_models_liblinear_pca';
 end
 
 %libSVM
 if strcmp( svm_type, 'svm')
     addpath('/home/johanna/toolbox/libsvm-3.20/matlab')
-    svm_folder = 'svm_models';
+    svm_folder = 'svm_models_pca';
 end
 
 
@@ -39,13 +39,11 @@ kernel_type = 'stein'
 % User Inputs
 %prompt = 'Random projected Dimensionality? ';
 %dim = input(prompt);
-dim = 8475;
+old_dim = 8475;
+dim = 7; % After PCA (retaining the 90% of the components)
 
-%dim = 4237; % After the random projection
-%dim = 8475;
-%vec_K = [128 256 512 4000];
+
 vec_K =  [1024 512 256 128];
-%vec_K = [512];
 
 n_iterGMM = 10; % For GMM
 
@@ -88,25 +86,19 @@ for k =1:length(vec_K)
     
     if strcmp( kernel_type, 'stein')
         
-        FV_folder = strcat('FV_K', num2str(K));
-        GMM_folder = 'universal_GMM';
+        FV_folder = strcat('FV_PCA_K', num2str(K));
+        GMM_folder = 'universal_GMM_PCA';
         % This folder is obtained in KPCA-RP
-        folder_pp = strcat( 'projected_points_dim', num2str(dim));
+        folder_pp = strcat( 'KPCA-RP/pca_projected_points_dim', num2str(dim));
         
     end
     
-    if strcmp( kernel_type, 'poly')
-        
-        FV_folder = strcat('FV_K', num2str(K),'_polyKernel');
-        GMM_folder = 'universal_GMM_polyKernel';
-        % This folder is obtained in KPCA-RP
-        folder_pp = strcat( 'PolyKernel_projected_points_dim', num2str(dim));
-        svm_folder = strcat(svm_folder, '_polyKernel');
-        
-    end
     
     %Create needed Folders
     create_folders_FV(FV_folder, svm_folder, GMM_folder);
+    
+    
+    
     
     % Get the Universal GMM
     disp('GMM');

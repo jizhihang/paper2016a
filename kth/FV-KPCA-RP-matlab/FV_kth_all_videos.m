@@ -18,7 +18,7 @@ for c = 1:num_covs
     
     
     %Loading Projected Point
-    load_pp_vector =  strcat( path, 'KPCA-RP/',folder_pp, '/pp_', person, '_', action,  '_segm', num2str(c) , '.h5' );
+    load_pp_vector =  strcat( path, folder_pp, '/pp_', person, '_', action,  '_segm', num2str(c) , '.h5' );
     S = char(load_pp_vector);
     data_one_cov= hdf5info(S);
     X(:,c) = hdf5read(data_one_cov.GroupHierarchy.Datasets(1)); % One covariance point
