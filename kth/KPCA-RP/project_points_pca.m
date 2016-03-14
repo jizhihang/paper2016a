@@ -2,8 +2,8 @@ function project_points_pca (list_pac,  folder_name, new_folder_name, new_dim)
 
 %X = zeros( total_num_covs_tr, dim_ps );
 
-load_rp_data = strcat('pca_projection_data_dim',  num2str(NP));
-load(char(load_rp_data),'W', 'U','S','V', NP);
+load_rp_data = strcat('pca_projection_data_dim',  num2str(new_dim));
+load(char(load_rp_data),'W', 'U','S','V', 'NP');
 
 
     
