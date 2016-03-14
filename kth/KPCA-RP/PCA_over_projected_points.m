@@ -7,9 +7,9 @@ k =1;
     
     for i=1: length(list_pac_tr)
         
-        person =  list_pac{i,1};
-        action =  list_pac{i,2};
-        num_covs = list_pac{i,3};
+        person =  list_pac_tr{i,1};
+        action =  list_pac_tr{i,2};
+        num_covs = list_pac_tr{i,3};
         show_you = strcat(person,  '_', action);
         disp(show_you);
         
