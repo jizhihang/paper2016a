@@ -4,7 +4,7 @@
 clear all
 clc
 dbstop error;
-dbstop in PCA_over_projected_points at 48
+dbstop in PCA_over_projected_points at 50
 %dbstop in random_projection at 38;
 %dbstop in project_points at 34
 

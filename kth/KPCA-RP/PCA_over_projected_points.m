@@ -1,7 +1,7 @@
 function PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim_ps)
 
 
-X = zeros( dim_ps, total_num_covs_tr );
+X = zeros( total_num_covs_tr, dim_ps );
 
 k =1;
     
@@ -21,7 +21,7 @@ k =1;
             S = char(load_pp_vector);
             data_one_cov= hdf5info(S);
             one_ppoint = hdf5read(data_one_cov.GroupHierarchy.Datasets(1)); % One covariance point
-            X(:,k) = one_ppoint;
+            X(k,:) = one_ppoint';
             %pca_one_point = 0;
             %save_pp =  strcat('./', folder_name, '/pp_', person, '_', action,  '_segm', num2str(c) , '.h5' );
             %hdf5write(char(save_pp), '/dataset1', pca_one_point);
@@ -44,8 +44,10 @@ propEnergy = energy./energy(end);
 percentMark = min(find(propEnergy > 0.9));
 NP = percentMark;
 
+W = U(:,1:NP);
 
-W=U(:,1:NP);
+save_rp_data = strcat('pca_projection_data_dim',  num2str(NP));
+save(char(save_rp_data),'W', 'U','S','V', NP);
     
 
 
