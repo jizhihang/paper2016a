@@ -44,13 +44,13 @@ n_actions = length(actions);
 
 
 r_points = floor(8475/10);
-folder_name = strcat('pca_projected_points_dim', num2str(r_points))
-
+folder_name = strcat('projected_points_dim', num2str(r_points))
+new_folder_name = strcat('pca_projected_points_dim', num2str(r_points))
 
 % Get projected points for Training and Testing Set
 disp('PCA for projected points for Training Set');
-PCA_over_projected_points (list_pac_tr,  folder_name);
+PCA_over_projected_points (list_pac_tr,  folder_name, new_folder_name);
 
 disp('PCA for projected points for for Testing Set');
-PCA_over_projected_points (list_pac_te, path, load_sub_path,r_points, folder_name);
+PCA_over_projected_points (list_pac_te, folder_name, new_folder_name);
 
