@@ -54,7 +54,7 @@ if ~exist(new_folder_name, 'dir')
 end
 
 %%PCA over training data
-PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim_ps);
+%PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim_ps);
 
 % Get projected points for Training and Testing Set uisng PCA
 disp('PCA for projected points for Training Set');
