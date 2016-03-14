@@ -1,4 +1,4 @@
-function project_points_pca (list_pac,  folder_name, new_folder_name)
+function project_points_pca (list_pac,  folder_name, new_folder_name, new_dim)
 
 %X = zeros( total_num_covs_tr, dim_ps );
 

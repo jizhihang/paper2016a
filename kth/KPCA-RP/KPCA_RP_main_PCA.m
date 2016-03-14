@@ -55,11 +55,12 @@ end
 
 %%PCA over training data
 %PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim_ps);
+new_dim = 7;
 
 % Get projected points for Training and Testing Set uisng PCA
 disp('PCA for projected points for Training Set');
-project_points_pca (list_pac_tr,  folder_name, new_folder_name)
+project_points_pca (list_pac_tr,  folder_name, new_folder_name, new_dim);
 
 disp('PCA for projected points for for Testing Set');
-project_points_pca (list_pac_te,  folder_name, new_folder_name)
+project_points_pca (list_pac_te,  folder_name, new_folder_name, new_dim);
 
