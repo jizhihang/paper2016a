@@ -48,7 +48,7 @@ NP = percentMark;
 W = U(:,1:NP);
 
 save_rp_data = strcat('pca_projection_data_dim',  num2str(NP));
-save(char(save_rp_data),'W', 'U','S','V', NP);
+save(char(save_rp_data),'W', 'U','S','V', 'NP');
     
 
 
