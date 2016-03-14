@@ -22,6 +22,7 @@ k =1;
             data_one_cov= hdf5info(S);
             one_ppoint = hdf5read(data_one_cov.GroupHierarchy.Datasets(1)); % One covariance point
             X(k,:) = one_ppoint';
+            k = k+1;
             %pca_one_point = 0;
             %save_pp =  strcat('./', folder_name, '/pp_', person, '_', action,  '_segm', num2str(c) , '.h5' );
             %hdf5write(char(save_pp), '/dataset1', pca_one_point);
