@@ -52,7 +52,7 @@ dim_ps = r_points; % Dimensionality of the random Projected Space
 %PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim_ps);
 new_dim = 7; % After PCA
 
-folder_name = strcat('projected_points_dim', num2str(new_dim));
+folder_name = strcat('projected_points_dim', num2str(dim_ps));
 new_folder_name = strcat('pca_projected_points_dim', num2str(new_dim));
 
 if ~exist(new_folder_name, 'dir')
