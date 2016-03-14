@@ -46,16 +46,18 @@ n_actions = length(actions);
 r_points = 8475;
 dim_ps = r_points; % Dimensionality of the random Projected Space
 
-folder_name = strcat('projected_points_dim', num2str(r_points));
-new_folder_name = strcat('pca_projected_points_dim', num2str(r_points));
 
-if ~exist(new_folder_name, 'dir')
-    mkdir(new_folder_name);
-end
 
 %%PCA over training data
 %PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim_ps);
 new_dim = 7; % After PCA
+
+folder_name = strcat('projected_points_dim', num2str(new_dim));
+new_folder_name = strcat('pca_projected_points_dim', num2str(new_dim));
+
+if ~exist(new_folder_name, 'dir')
+    mkdir(new_folder_name);
+end
 
 % Get projected points for Training and Testing Set uisng PCA
 disp('PCA for projected points for Training Set');
