@@ -49,7 +49,7 @@ folder_name = strcat('pca_projected_points_dim', num2str(r_points))
 
 % Get projected points for Training and Testing Set
 disp('PCA for projected points for Training Set');
-PCA_over_projected_points (list_pac_tr,path, load_sub_path, r_points, folder_name);
+PCA_over_projected_points (list_pac_tr,  folder_name);
 
 disp('PCA for projected points for for Testing Set');
 PCA_over_projected_points (list_pac_te, path, load_sub_path,r_points, folder_name);
