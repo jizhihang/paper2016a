@@ -24,7 +24,7 @@ load(char(load_rp_data),'W', 'U','S','V', 'NP');
             data_one_cov= hdf5info(S);
             one_ppoint = hdf5read(data_one_cov.GroupHierarchy.Datasets(1)); % One covariance point
             
-            xi=one_ppoint*W;
+            xi=one_ppoint'*W;
             
             save_pp_pca =  strcat('./', new_folder_name, '/pp_', person, '_', action,  '_segm', num2str(c) , '.h5' );
             hdf5write(char(save_pp_pca), '/dataset1', xi);
