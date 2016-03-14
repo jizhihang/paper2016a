@@ -55,15 +55,15 @@ main(int argc, char** argv)
   
     
   //Path @Home
-  const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse2007/";
+  //const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse2010/";
   
   
   //Path @UQ
-  //const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2001/";
+  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2010/";
   
   
   
-  std::string video_name =  "OriginalVideo_2007.mp4";
+  std::string video_name =  "OriginalVideo_2010.mp4";
   
   
   

@@ -145,10 +145,10 @@ main(int argc, char** argv)
   
   
   //Path @Home
-  const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse2007/";
+  //const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse2007/";
   
   //Path @UQ
-  //const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2001/";
+  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2010/";
   
   std::string country;
   
@@ -158,7 +158,7 @@ main(int argc, char** argv)
   country_boundaries_path << path << country_boundaries;
   field<string> oriVideo_info;
   oriVideo_info.load(country_boundaries_path.str());
-  //oriVideo_info.print();
+  oriVideo_info.col(0).print();
   int num_queens= oriVideo_info.n_rows;
   
   for (int q = 0; q  < num_queens; q=q+2) //Use only one view
