@@ -43,7 +43,7 @@ n_actions = length(actions);
 [list_pac_te total_num_covs_te] = get_list( n_actions, path, all_people, actions, load_sub_path, people_test);
 
 
-r_points = floor(8475/10);
+r_points = 8475;
 folder_name = strcat('projected_points_dim', num2str(r_points))
 new_folder_name = strcat('pca_projected_points_dim', num2str(r_points))
 
