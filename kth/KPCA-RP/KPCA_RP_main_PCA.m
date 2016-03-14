@@ -51,7 +51,7 @@ new_folder_name = strcat('pca_projected_points_dim', num2str(r_points))
 
 % Get projected points for Training and Testing Set
 disp('PCA for projected points for Training Set');
-PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim);
+PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim_ps);
 
 %disp('PCA for projected points for for Testing Set');
 %PCA_over_projected_points (list_pac_te, folder_name, new_folder_name);
