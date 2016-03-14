@@ -4,7 +4,7 @@
 clear all
 clc
 dbstop error;
-dbstop in PCA_over_projected_points at 19
+dbstop in PCA_over_projected_points at 48
 %dbstop in random_projection at 38;
 %dbstop in project_points at 34
 
@@ -18,8 +18,8 @@ dbstop in PCA_over_projected_points at 19
 
     
  %Kernel Type:   
- kernel_type = 'poly'
- %kernel_type = 'stein'
+ %kernel_type = 'poly'
+ kernel_type = 'stein'
    
 %%
 path  = '~/codes/codes-git/paper2016a/trunk/kth/';
@@ -49,8 +49,8 @@ new_folder_name = strcat('pca_projected_points_dim', num2str(r_points))
 
 % Get projected points for Training and Testing Set
 disp('PCA for projected points for Training Set');
-PCA_over_projected_points (list_pac_tr,  folder_name, new_folder_name);
+PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim);
 
-disp('PCA for projected points for for Testing Set');
-PCA_over_projected_points (list_pac_te, folder_name, new_folder_name);
+%disp('PCA for projected points for for Testing Set');
+%PCA_over_projected_points (list_pac_te, folder_name, new_folder_name);
 
