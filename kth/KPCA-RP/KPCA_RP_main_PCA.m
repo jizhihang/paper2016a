@@ -44,6 +44,8 @@ n_actions = length(actions);
 
 
 r_points = 8475;
+dim_ps = r_points; % Dimensionality of the random Projected Space
+
 folder_name = strcat('projected_points_dim', num2str(r_points))
 new_folder_name = strcat('pca_projected_points_dim', num2str(r_points))
 

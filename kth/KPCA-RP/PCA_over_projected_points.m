@@ -1,7 +1,7 @@
-function PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim)
+function PCA_over_projected_points (list_pac_tr,  folder_name,  total_num_covs_tr, dim_ps)
 
 
-X = zeros( dim, total_num_covs_tr );
+X = zeros( dim_ps, total_num_covs_tr );
 
 k =1;
     
