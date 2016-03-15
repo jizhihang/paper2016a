@@ -55,10 +55,10 @@ opt_feat::features_all_videos(int view )
     
     int n_queens = country_list.n_rows;
     
-    std::stringstream  ss_create_folder;
-    ss_create_folder << "features/" << list_missUni(y);  
     
     //Correr solo una vez    
+    //std::stringstream  ss_create_folder;
+    //ss_create_folder << "features/" << list_missUni(y);  
     //create_folder( ss_create_folder.str() );
 
     for (int q=0; q<n_queens; ++q)
@@ -98,6 +98,7 @@ opt_feat::features_all_videos(int view )
   
   //#pragma omp parallel for 
   
+  /*
   for (int i = 0; i<load_save_names.n_rows; ++i)
   {
     
@@ -151,9 +152,9 @@ opt_feat::features_all_videos(int view )
   
   }
   
+  */
   
-  //double n = timer.toc();
-  //cout << "number of seconds in parallel : " << n << endl;
+
   
   
   
