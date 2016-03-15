@@ -18,10 +18,8 @@ opt_feat::features_all_videos(int view )
 
   int total_videos = 0;
 
-  for (int y = 0; y< n_years; ++y)
-    
+  for (int y = 0; y< n_years; ++y)    
   {
-    
     std::stringstream ss_country_list;
     ss_country_list << path << list_missUni (y) << "/country_list.txt";
     field <std::string> country_list ;
@@ -41,8 +39,7 @@ opt_feat::features_all_videos(int view )
   
   //Correr solo una vez
   //create_folder("features");
-  for (int y = 0; y< n_years; ++y)
-    
+  for (int y = 0; y< n_years; ++y)    
   {
     
     std::stringstream ss_country_list;
