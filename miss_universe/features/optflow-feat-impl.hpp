@@ -106,7 +106,7 @@ opt_feat::features_all_videos(int view )
     
     feature_video( one_folder, my_Struct_feat_lab ); // It's not a video is a set of frames
     
-    /*
+    
     mat mat_features_video_i;
     vec lab_video_i;
     
@@ -140,11 +140,11 @@ opt_feat::features_all_videos(int view )
     }
     */
   }
-  /*
+  
   double n = timer.toc();
   cout << "number of seconds in parallel : " << n << endl;
   
-  */
+  
   
   
 }
@@ -362,8 +362,8 @@ opt_feat::feature_video( std::string one_folder, Struct_feat_lab &my_Struct_feat
     std::swap(prevgray, gray);
     std::swap(prevflow, flow);
     
-    cv::imshow("color", frame);
-    cv::waitKey(1);
+    //cv::imshow("color", frame);
+    //cv::waitKey(1);
     
     
   }
