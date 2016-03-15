@@ -95,7 +95,7 @@ opt_feat::features_all_videos(int view )
   
   //#pragma omp parallel for 
   
-  /*
+  
   for (int i = 0; i<load_save_names.n_rows; ++i)
   {
     
@@ -110,6 +110,7 @@ opt_feat::features_all_videos(int view )
     cout << one_folder << endl;
     //getchar( );
     
+    /*
     feature_video( one_folder, my_Struct_feat_lab ); // It's not a video is a set of frames
     
     
@@ -140,16 +141,15 @@ opt_feat::features_all_videos(int view )
     std::string save_feat_video_i   = load_save_names(i,1);
     std::string save_labels_video_i = load_save_names(i,2);
     
-    //#pragma omp critical
-    //{
+
     mat_features_video_i.save( save_feat_video_i, hdf5_binary );
     lab_video_i.save( save_labels_video_i, hdf5_binary );
-    //}
-  
+
+  */
   
   }
   
-  */
+  
   
 
   
