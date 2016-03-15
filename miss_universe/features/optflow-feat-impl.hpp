@@ -141,8 +141,8 @@ opt_feat::features_all_videos(int view )
     */
   }
   
-  double n = timer.toc();
-  cout << "number of seconds in parallel : " << n << endl;
+  //double n = timer.toc();
+  //cout << "number of seconds in parallel : " << n << endl;
   
   
   
