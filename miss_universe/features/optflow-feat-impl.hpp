@@ -97,7 +97,7 @@ opt_feat::features_all_videos(int view )
   //omp_set_num_threads(8); //Use only 8 processors
   
   //#pragma omp parallel for 
-  /*
+  
   for (int i = 0; i<load_save_names.n_rows; ++i)
   {
     
@@ -150,7 +150,7 @@ opt_feat::features_all_videos(int view )
   
   
   }
-  */
+  
   
   //double n = timer.toc();
   //cout << "number of seconds in parallel : " << n << endl;
