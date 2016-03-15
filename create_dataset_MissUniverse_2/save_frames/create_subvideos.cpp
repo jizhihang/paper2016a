@@ -55,15 +55,15 @@ main(int argc, char** argv)
   
     
   //Path @Home
-  //const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse2010/";
+  const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse2000/";
   
   
   //Path @UQ
-  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2010/";
+  //const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2000/";
   
   
   
-  std::string video_name =  "OriginalVideo_2010.mp4";
+  std::string video_name =  "OriginalVideo_2000.mp4";
   
   
   
@@ -81,12 +81,12 @@ main(int argc, char** argv)
   // see each one and select the starting and ending frame of two views. 
   // See  Frames Numbers are shown. Using the Initial and End Frame per Participant
   //Manually create the file  "Country_Ini_End_2.txt"
-  //step_2(path,  video_name); 
+  step_2(path,  video_name); 
   
   
-   /// Step 3: 
+  /// Step 3: 
   //Creating Folders and Using 2 views per participant. Saving frames in each folder
-  step_3( path, video_name);
+  //step_3( path, video_name);
   
   
 
