@@ -33,15 +33,14 @@ opt_feat::features_all_videos(int view )
   }
   
   cout << "total_videos " << total_videos << endl;
-  getchar();
+  //getchar();
   field <std::string> load_save_names (total_videos,3); 
   int k =0;
   
   
   
-  create_folder("features");
-  cout << "Las hace" << endl;
-  getchar();
+  //Correr solo una vez
+  //create_folder("features");
   for (int y = 0; y< n_years; ++y)
     
   {
@@ -58,7 +57,9 @@ opt_feat::features_all_videos(int view )
     
     std::stringstream  ss_create_folder;
     ss_create_folder << "features/" << list_missUni(y);  
-    create_folder( ss_create_folder.str() );
+    
+    //Correr solo una vez    
+    //create_folder( ss_create_folder.str() );
 
     for (int q=0; q<n_queens; ++q)
     {
