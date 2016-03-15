@@ -48,6 +48,9 @@ opt_feat::features_all_videos(int view )
     ss_country_list << path << list_missUni(y) << "/country_list.txt";
     field <std::string> country_list ;
     country_list.load( ss_country_list.str() );
+    country_list.print();
+    
+    getchar();
     
     int n_queens = country_list.n_rows;
     
