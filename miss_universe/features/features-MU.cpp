@@ -17,14 +17,14 @@ using namespace arma;
 
 
 //Home
-//const std::string path = "/media/johanna/HD1T/codes/datasets_codes/KTH/"; 
 
 //WANDA
-//const std::string path = "/home/johanna/codes/datasets_codes/MissUniverse/";
+const std::string path = "/home/johanna/codes/datasets_codes/MissUniverse/";
 
 
 // UQ
-const std::string path = "/home/johanna-uq/codes/datasets_codes/MissUniverse/";
+//const std::string path = "/home/johanna-uq/codes/datasets_codes/MissUniverse/";
+
 
 const std::string MissUniverseList = "miss_universe_list.txt";
 
