@@ -33,13 +33,15 @@ opt_feat::features_all_videos(int view )
   }
   
   cout << "total_videos " << total_videos << endl;
-  
+  getchar();
   field <std::string> load_save_names (total_videos,3); 
   int k =0;
   
   
   
   create_folder("features");
+  cout << "Las hace" << endl;
+  getchar();
   for (int y = 0; y< n_years; ++y)
     
   {
