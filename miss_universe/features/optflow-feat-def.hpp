@@ -13,6 +13,7 @@ public:
   
   const std::string path;
   const std::string MissUniverse;
+  int dim;
   
   
   

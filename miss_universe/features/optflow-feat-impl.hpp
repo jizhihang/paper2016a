@@ -6,6 +6,7 @@ opt_feat::opt_feat(const std::string in_path,
 {
 
   list_missUni.load( MissUniverse );  
+  dim = 14;
 
 }
 
@@ -157,7 +158,7 @@ inline
 void
 opt_feat::feature_video( std::string one_folder, Struct_feat_lab &my_Struct_feat_lab )
 {
-  int dim = 14;
+ 
   
   std::stringstream ss_frames_list;
   std::stringstream ss_bbox_list;
