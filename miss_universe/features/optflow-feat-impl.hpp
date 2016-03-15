@@ -110,11 +110,11 @@ opt_feat::features_all_videos(int view )
     cout << one_folder << endl;
     //getchar( );
     
-    /*
+   
     feature_video( one_folder, my_Struct_feat_lab ); // It's not a video is a set of frames
     
     
-    
+   /* 
     mat mat_features_video_i;
     vec lab_video_i;
     
