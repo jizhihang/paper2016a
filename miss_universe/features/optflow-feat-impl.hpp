@@ -211,7 +211,7 @@ opt_feat::feature_video( std::string one_folder, Struct_feat_lab &my_Struct_feat
     
     
     
-    frame_tmp = cv::imread( ss_frame_name.str(),1);
+    frame_tmp = cv::imread( ss_frame_name.str());
     /*
     BB = bb_list.row(fr);
     //BB.print();
