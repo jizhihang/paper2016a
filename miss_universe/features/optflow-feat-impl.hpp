@@ -207,8 +207,10 @@ opt_feat::feature_video( std::string one_folder, Struct_feat_lab &my_Struct_feat
     std::stringstream  ss_frame_name;
     ss_frame_name << one_folder << "/" << frames_list(fr);
     
-    //cout << ss_frame_name.str() << endl;
+    cout << ss_frame_name.str() << endl;
     
+    
+    /*
     frame_tmp = cv::imread( ss_frame_name.str(),1);
     
     BB = bb_list.row(fr);
@@ -373,7 +375,7 @@ opt_feat::feature_video( std::string one_folder, Struct_feat_lab &my_Struct_feat
     
     //cv::imshow("color", frame);
     //cv::waitKey(1);
-    
+    */
     
   }
   
