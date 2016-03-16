@@ -38,7 +38,7 @@ opt_feat::features_all_videos(int view )
   
   
   //Correr solo una vez
-  //create_folder("features");
+  create_folder("features");
   for (int y = 0; y< n_years; ++y)    
   {
     
@@ -46,17 +46,17 @@ opt_feat::features_all_videos(int view )
     ss_country_list << path << list_missUni(y) << "/country_list.txt";
     field <std::string> country_list ;
     country_list.load( ss_country_list.str() );
-    country_list.print();
+    //country_list.print();
     
-    getchar();
+    //getchar();
     
     int n_queens = country_list.n_rows;
     
     
     //Correr solo una vez    
-    //std::stringstream  ss_create_folder;
-    //ss_create_folder << "features/" << list_missUni(y);  
-    //create_folder( ss_create_folder.str() );
+    std::stringstream  ss_create_folder;
+    ss_create_folder << "features/" << list_missUni(y);  
+    create_folder( ss_create_folder.str() );
 
     for (int q=0; q<n_queens; ++q)
     {
@@ -114,7 +114,7 @@ opt_feat::features_all_videos(int view )
     feature_video( one_folder, my_Struct_feat_lab ); // It's not a video is a set of frames
     
     
-   /* 
+    
     mat mat_features_video_i;
     vec lab_video_i;
     
@@ -145,7 +145,7 @@ opt_feat::features_all_videos(int view )
     mat_features_video_i.save( save_feat_video_i, hdf5_binary );
     lab_video_i.save( save_labels_video_i, hdf5_binary );
 
-  */
+    
   
   }
   
@@ -207,10 +207,10 @@ opt_feat::feature_video( std::string one_folder, Struct_feat_lab &my_Struct_feat
     std::stringstream  ss_frame_name;
     ss_frame_name << one_folder << "/" << frames_list(fr);
     
-    cout << ss_frame_name.str() << endl;
+    //cout << ss_frame_name.str() << endl;
     
     
-    /*
+    
     frame_tmp = cv::imread( ss_frame_name.str());
     
     BB = bb_list.row(fr);
@@ -375,7 +375,6 @@ opt_feat::feature_video( std::string one_folder, Struct_feat_lab &my_Struct_feat
     
     //cv::imshow("color", frame);
     //cv::waitKey(1);
-    */
     
   }
   

@@ -19,11 +19,11 @@ using namespace arma;
 //Home
 
 //WANDA
-const std::string path = "/home/johanna/codes/datasets_codes/MissUniverse/";
+//const std::string path = "/home/johanna/codes/datasets_codes/MissUniverse/";
 
 
 // UQ
-//const std::string path = "/home/johanna-uq/codes/datasets_codes/MissUniverse/";
+const std::string path = "/home/johanna-uq/codes/datasets_codes/MissUniverse/";
 
 
 const std::string MissUniverseList = "miss_universe_list.txt";
