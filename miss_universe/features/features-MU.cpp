@@ -13,6 +13,9 @@ using namespace arma;
 #include "optflow-feat-def.hpp"
 #include "optflow-feat-impl.hpp"
 
+#include "saving_Cov_def.hpp"
+#include "saving_Cov_impl.hpp"
+
 
 
 
@@ -40,8 +43,13 @@ main(int argc, char** argv)
      
   int view = 1;
     
-  opt_feat get_features(path,  MissUniverseList);
-  get_features.features_all_videos( view  ) ;
+  //opt_feat get_features(path,  MissUniverseList);
+  //get_features.features_all_videos( view  ) ;
+  
+  
+  
+  OverlappedCovs get_CovsperVideo(path, MissUniverseList);
+  get_CovsperVideo.calculate_covariances( view);
     
    
     
