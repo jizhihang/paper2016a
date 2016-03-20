@@ -55,15 +55,15 @@ main(int argc, char** argv)
   
     
   //Path @Home
-  //const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse1998/";
+  const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse1996/";
   
   
   //Path @UQ
-  const std::string path = "/home/johanna-uq/codes/datasets_codes/MissUniverse/MissUniverse1997/";
+  //const std::string path = "/home/johanna-uq/codes/datasets_codes/MissUniverse/MissUniverse1996/";
   
   
   
-  std::string video_name =  "OriginalVideo_1997.mp4";
+  std::string video_name =  "OriginalVideo_1996.mp4";
   
   
   
@@ -86,7 +86,7 @@ main(int argc, char** argv)
   
   /// Step 3: 
   //Creating Folders and Using 2 views per participant. Saving frames in each folder
-  step_3( path, video_name);
+  //step_3( path, video_name);
   
   
 

@@ -1,11 +1,11 @@
-function FV_MU_all_videos(path_dataset, path_features, view, all_years, K, dim, GMM_folder, FV_folder)
+function FV_MU_all_videos(path_dataset, path_features, view, all_years, K, dim, GMM_folder, FV_folder, run)
 %%Calcular FV for all videos
 
 
 
 n_years = length(all_years);
 
-load_gmm_model =  strcat( './',GMM_folder, '/gmm_model_K', num2str(K), '_view', num2str(view) );
+load_gmm_model =  strcat( './',GMM_folder, '/gmm_model_K', num2str(K), '_view', num2str(view), '_run', num2str(run) );
 load(char(load_gmm_model), 'means','covariances','priors');
 
 
@@ -56,7 +56,7 @@ for y=1:n_years
         end
         
         %to save        
-        save_FV=  strcat('./', FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view),'.h5' );
+        save_FV=  strcat('./', FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run), '.h5' );
         hdf5write(char(save_FV), '/dataset1', vn);
     end
 

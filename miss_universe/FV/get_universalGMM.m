@@ -1,4 +1,4 @@
-function get_universalGMM(path_dataset, path_features, view, years_train,  K,  n_iterGMM, GMM_folder)
+function get_universalGMM(path_dataset, path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run)
 
 n_years = length(years_train);
 %%See how many vectors there are per video
@@ -43,5 +43,5 @@ tic
 [means, covariances, priors] = vl_gmm(X, K,  'MaxNumIterations', n_iterGMM);
 toc
 
-save_gmm_model =  strcat( './',GMM_folder, '/gmm_model_K', num2str(K), '_view', num2str(view) );
+save_gmm_model =  strcat( './',GMM_folder, '/gmm_model_K', num2str(K), '_view', num2str(view), '_run', num2str(run) );
 save(char(save_gmm_model), 'means','covariances','priors');
