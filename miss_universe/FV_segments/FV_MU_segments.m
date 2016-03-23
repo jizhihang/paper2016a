@@ -29,6 +29,15 @@ if strcmp( pc, 'wanda')
         addpath('/home/johanna/toolbox/liblinear-2.1/matlab');
         
     end
+    
+    
+    %Path for Original dataset
+    path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
+    
+    %This path is only to load the matrices that contain all the feature vectors
+    %per video and their labels.
+    path_features = '/home/johanna/codes/codes-git/paper2016a/trunk/miss_universe/features/features/';
+
 end
 
 
