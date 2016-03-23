@@ -78,10 +78,12 @@ end
 
 
 
+prompt = 'K? ';
+K = input(prompt);
 
 %vec_K =  [1024 512 256 128];
 %vec_K = [512];
-K = 128;
+%K = 128;
 vec_c = [ 0.1 1 10 100];
 %vec_c = [ 10 ] ;
 
