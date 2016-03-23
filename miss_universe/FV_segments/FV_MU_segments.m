@@ -166,7 +166,7 @@ for i = 1: length( all_years)
         %Testing
         [predicted_output, accuracy, dec_values, labels_test,  n_labels_test, scores, n_countries]  = FV_test_rankSVM(path_dataset, view, years_test, K, dim_FV, FV_folder, svm_folder, svm_type, run);
         AA = [predicted_output  labels_test];
-        all_accuracy(i,j) = accuracy(1)
+        all_accuracy(i,j) = accuracy(1);
         
         
         [a real_order]  = sort(scores', 'descend');
