@@ -29,13 +29,16 @@ for y=1:n_years
     end
     
     
+    n_segments = cell(n_countries,2);
+    n_segments(:,1) = countries;
+    
     for c = 1:n_countries
         load_video_i=  strcat( path_features, 'MissUniverse', year, '/', countries(c), '_view', num2str(view), '.h5');
         S = char(load_video_i);
         vectors_one_video= hdf5info(S);
         one_video = hdf5read(vectors_one_video.GroupHierarchy.Datasets(1));
         
-        load_fr_video_i=  strcat( path_features, 'MissUniverse', year, '/lab_', countries(c), '_view', num2str(view), '.h5');
+        load_fr_video_i=  strcat( path_features, 'MissUniverse', year, '/lab_', countries(c), '.h5');
         S = char(load_fr_video_i);
         frames_one_video= hdf5info(S);
         list_fr_video = hdf5read(frames_one_video.GroupHierarchy.Datasets(1));
@@ -74,17 +77,18 @@ for y=1:n_years
             
             
             save_FV=  strcat('./', FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run), '_segm', num2str(seg_i), '.h5' );
-            char(save_FV)
+            char(save_FV);
             hdf5write(char(save_FV), '/dataset1', vn);
             seg_i = seg_i+1;
             
             
             
         end
-        
+        n_segments(c,2) = {seg_i-1};
 
     end
-    
+    save_n_segments =  strcat('./', FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run), '_segm', num2str(seg_i), '.h5' );
+    save('save_n_segments', 'n_segments');
 end
 
 

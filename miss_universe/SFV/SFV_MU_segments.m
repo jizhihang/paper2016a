@@ -5,10 +5,10 @@ clc
 
 dbstop error;
 %dbstop in  get_universalGMM at 14
-
+%dbstop in FV_layers_1 at 89
 
 %%Setting paths for libs and features and original dataset
-pc = 'uq'; % uq wanda home
+pc = 'home'; % uq wanda home
 svm_type = 'linear'; %'svm';    %libsvm
 [path_dataset path_features] = set_paths(pc, svm_type);
 
