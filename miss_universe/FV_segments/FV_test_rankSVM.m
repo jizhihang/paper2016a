@@ -1,10 +1,9 @@
 
 %% Only useful for Leave-One-Out Cross Validation
-function [predicted_output, accuracy,  dec_values, labels_test, n_labels_test, scores, n_countries]  = FV_test_rankSVM(path_dataset, view, years_test, K, dim_FV, FV_folder, svm_folder, run)
+function [predicted_output, accuracy,  dec_values, labels_test, n_labels_test, scores, n_countries]  = FV_test_rankSVM(path_dataset, view, years_test, K, dim_FV, FV_folder, svm_folder, svm_type, run)
 
 
-load_svm_model = strcat( './',svm_folder, '/FV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat');
-load(load_svm_model, 'model');
+
 
 n_years = length(years_test);
 n_samples_test = 0;
@@ -83,4 +82,16 @@ for y=1:n_years
     end
 end
 
-[predicted_output, accuracy, dec_values] = svmpredict(labels_test, X_test', model);
+if strcmp( svm_type, 'svm')
+    load_svm_model = strcat( './',svm_folder, '/FV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat')
+    load(load_svm_model, 'model');
+    [predicted_output, accuracy, dec_values] = svmpredict(labels_test, X_test', model);
+end
+
+%% libLinear
+if strcmp( svm_type, 'linear')
+    load_svm_model = strcat( './', svm_folder, '/FV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat');
+    load(load_svm_model) % Loading  model obtained with libLinear
+    sparse_X_test =  sparse(X_test');
+    [predicted_output, accuracy, dec_values] = predict(labels_test,sparse_X_test , model);
+end

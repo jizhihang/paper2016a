@@ -1,4 +1,4 @@
-function FV_MU_all_videos(path_dataset, path_features, view, all_years, K, dim, GMM_folder, FV_folder, run)
+function FV_MU_all_videos(path_dataset, path_features, view, all_years, K,  GMM_folder, FV_folder, run)
 %%Calcular FV for all videos
 
 

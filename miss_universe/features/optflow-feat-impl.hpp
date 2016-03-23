@@ -70,7 +70,7 @@ opt_feat::features_all_videos(int view )
       
       
       save_feat_video_i   << "./features/" << list_missUni(y) << "/" << country_list(q) << "_view" << view << ".h5";
-      save_labels_video_i << "./features/" << list_missUni(y) << "/lab_" << country_list(q) << ".h5";
+      save_labels_video_i << "./features/" << list_missUni(y) << "/lab_" << country_list(q)  << "_view" << view << ".h5";
       
       load_save_names(k,0) = folder.str();
       load_save_names(k,1) = save_feat_video_i.str();
