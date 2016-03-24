@@ -16,7 +16,7 @@ for y=1:n_years
     FV_MU = strcat(FV_folder, '/MissUniverse', year);
     
     
-    load_n_segments = strcat('./', FV_folder, '/MissUniverse', year, '/n_segments_view', num2str(view), '_run', num2str(run), '.h5' );
+    load_n_segments = strcat('./', FV_folder, '/MissUniverse', year, '/n_segments_view', num2str(view), '_run');
     load('load_n_segments', 'n_segments');
     
   
