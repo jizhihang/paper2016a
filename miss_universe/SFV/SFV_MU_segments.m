@@ -29,9 +29,9 @@ segm_length = 5;
 n_iterGMM = 10; % For GMM
 
 
-%main_FV_layer1(path_dataset, path_features, all_years, K, svm_type, vec_c, segm_length, n_iterGMM  )
+main_FV_layer1(path_dataset, path_features, all_years, K, svm_type, vec_c, segm_length, n_iterGMM  )
 
-dim_reduction (path_dataset, view, train_years,  FV_folder, run);
+
 
 
 
