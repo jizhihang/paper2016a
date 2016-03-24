@@ -26,7 +26,7 @@ for i = 1: length( all_years)
     %all_years = [ years_train years_test ];
     
     %get_universalGMM(path_dataset,  path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run);
-    FV_layers_1  ( path_dataset, path_features, view, all_years, K,  GMM_folder, FV_folder, run, segm_length );
+    %FV_layers_1  ( path_dataset, path_features, view, all_years, K,  GMM_folder, FV_folder, run, segm_length );
     
     dim_reduction( path_dataset, view, years_train, years_test, FV_folder, run);
     
