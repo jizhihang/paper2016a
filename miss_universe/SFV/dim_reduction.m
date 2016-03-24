@@ -25,7 +25,7 @@ for y=1:n_years
         
         
        
-        n_segm = n_segments(c,2);
+        n_segm = cell2mat(n_segments(c,2));
         
         total_segments = total_segments + n_segm;
         
