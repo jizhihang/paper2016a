@@ -6,7 +6,7 @@ clc
 dbstop error;
 %dbstop in  get_universalGMM at 14
 %dbstop in FV_layers_1 at 89
-dbstop in dim_reduction at 41
+%dbstop in dim_reduction at 41
 
 %%Setting paths for libs and features and original dataset
 pc = 'wanda'; % uq wanda home
