@@ -40,4 +40,7 @@ for y=1:n_years
     
 end
 
+total_segments
+pause
+
 
