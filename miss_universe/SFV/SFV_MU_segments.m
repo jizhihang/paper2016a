@@ -8,7 +8,7 @@ dbstop error;
 %dbstop in FV_layers_1 at 89
 
 %%Setting paths for libs and features and original dataset
-pc = 'home'; % uq wanda home
+pc = 'uq'; % uq wanda home
 svm_type = 'linear'; %'svm';    %libsvm
 [path_dataset path_features] = set_paths(pc, svm_type);
 

@@ -1,9 +1,6 @@
 function FV_layers_1(path_dataset, path_features, view, all_years, K,  GMM_folder, FV_folder, run, segm_length)
 %%Calcular FV for all videos
 
-%Create a new list to save the number of resulting segments per
-%video!!!!!!!!!!!!!!!!!!!!
-
 
 n_years = length(all_years);
 
@@ -38,7 +35,7 @@ for y=1:n_years
         vectors_one_video= hdf5info(S);
         one_video = hdf5read(vectors_one_video.GroupHierarchy.Datasets(1));
         
-        load_fr_video_i=  strcat( path_features, 'MissUniverse', year, '/lab_', countries(c), '.h5');
+        load_fr_video_i=  strcat( path_features, 'MissUniverse', year, '/lab_', countries(c), '_view', num2str(view), '.h5');
         S = char(load_fr_video_i);
         frames_one_video= hdf5info(S);
         list_fr_video = hdf5read(frames_one_video.GroupHierarchy.Datasets(1));
@@ -87,7 +84,7 @@ for y=1:n_years
         n_segments(c,2) = {seg_i-1};
 
     end
-    save_n_segments =  strcat('./', FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run), '_segm', num2str(seg_i), '.h5' );
+    save_n_segments =  strcat('./', FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run), '.h5' );
     save('save_n_segments', 'n_segments');
 end
 
