@@ -7,7 +7,7 @@ total_segments = 0;
 
 for y=1:n_years
     
-    year = num2str( all_years(y) );
+    year = num2str( train_years(y) );
     load_year_list =  strcat(path_dataset, 'MissUniverse', year, '/country_list.txt');
     
     countries = importdata(load_year_list);
