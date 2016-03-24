@@ -84,8 +84,8 @@ for y=1:n_years
         n_segments(c,2) = {seg_i-1};
 
     end
-    save_n_segments =  strcat('./', FV_folder, '/MissUniverse', year, '/n_segments_view', num2str(view), '_run', num2str(run) );
-    save('save_n_segments', 'n_segments');
+    save_n_segments =  strcat('./', FV_folder, '/MissUniverse', year, '/n_segments_view', num2str(view), '_run', num2str(run), '.mat' );
+    save(save_n_segments, 'n_segments');
 end
 
 
