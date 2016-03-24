@@ -1,4 +1,4 @@
-function dim_reduction (path_dataset, view, train_years,  FV_folder, run)
+function dim_reduction (path_dataset, view, train_years, years_test,  FV_folder, run)
 %Dimensionality Reduction using Max-Margin
 
 n_years = length(train_years);
