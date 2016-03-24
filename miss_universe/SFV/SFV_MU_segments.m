@@ -6,6 +6,7 @@ clc
 dbstop error;
 %dbstop in  get_universalGMM at 14
 %dbstop in FV_layers_1 at 89
+dbstop in dim_reduction at 37
 
 %%Setting paths for libs and features and original dataset
 pc = 'wanda'; % uq wanda home
@@ -29,6 +30,8 @@ n_iterGMM = 10; % For GMM
 
 
 main_FV_layer1(path_dataset, path_features, all_years, K, svm_type, vec_c, segm_length, n_iterGMM  )
+
+dim_reduction (path_dataset, view, train_years,  FV_folder, run);
 
 
 
