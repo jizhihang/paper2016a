@@ -1,4 +1,4 @@
-function FV_train_rankSVM(path_dataset, view, years_train, K, dim_FV, FV_folder, svm_folder, params, run)
+function FV_train_rankSVM(path_dataset, view, years_train, K, dim_FV, FV_folder, svm_folder, svm_type, params, run)
 
 
 n_years = length(years_train);
@@ -70,8 +70,20 @@ for y=1:n_years
         end
     end
 end
+
+if strcmp( svm_type, 'linear')
+    %svm_type
+    sparse_X_train =  sparse(X_train');
+    model = train(labels_train, sparse_X_train, [params]);
+    save_svm_model = strcat( './', svm_folder, '/libLinear_FV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat');
+    save(save_svm_model, 'model');
+end
       
+
+if strcmp( svm_type, 'svm')
+
     data_train = X_train';
     model = svmtrain(labels_train, data_train, [params]);
     save_svm_model = strcat( './',svm_folder, '/FV_K', num2str(K), '_view', num2str(view) , '_run', num2str(run), '.mat');
     save(save_svm_model, 'model');
+end
