@@ -9,7 +9,7 @@ dbstop error;
 %dbstop in dim_reduction at 41
 
 %%Setting paths for libs and features and original dataset
-pc = 'home'; % uq wanda home
+pc = 'wanda'; % uq wanda home
 svm_type = 'linear'; %'svm';    %libsvm
 [path_dataset path_features] = set_paths(pc, svm_type);
 
