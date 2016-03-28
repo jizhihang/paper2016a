@@ -1,14 +1,24 @@
-function dim_reduction (path_dataset, view, train_years,  FV_folder, run)
-%Dimensionality Reduction using Max-Margin
+function project_points_PCA (path_dataset, view, all_years, FV_folder, red_FV_folder, run)
 
-n_years_tr = length(train_years);
+
+
+
+n_years = length(all_years);
 total_segments = 0;
 
-X = [];
 
-for y=1:n_years_tr
+ load_rp_data = strcat('./', FV_folder, '/pca_projection_data_run', num2str(run));
+ load(char(load_rp_data),'W', 'U','S','V', 'NP');
     
-    year = num2str( train_years(y) );
+    %NP New dimensionality
+    %pause
+    
+    % dim_FV = 2*dim*K*n_segm; AUN NO SE
+
+
+for y=1:n_years
+    
+    year = num2str( all_years(y) );
     load_year_list =  strcat(path_dataset, 'MissUniverse', year, '/country_list.txt');
     
     countries = importdata(load_year_list);
@@ -19,6 +29,13 @@ for y=1:n_years_tr
     
     load_n_segments = strcat('./', FV_folder, '/MissUniverse', year, '/n_segments_view', num2str(view), '_run', num2str(run) , '.mat');
     load(load_n_segments, 'n_segments');
+    
+    red_FV_MU = strcat(red_FV_folder, '/MissUniverse', year);
+    
+    if ~exist(red_FV_MU, 'dir')
+        
+        mkdir(red_FV_MU);
+    end
     
   
     
@@ -34,16 +51,17 @@ for y=1:n_years_tr
             load_FV=  strcat('./', FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run), '_segm', num2str(i), '.h5' );
             name_FV_v_segm_i = hdf5info( char(load_FV) );
             FV_v_segm_i = hdf5read(name_FV_v_segm_i.GroupHierarchy.Datasets(1));
-            X = [X FV_v_segm_i ];
+            
+            new_FV = FV_v_segm_i'*W;
+            
+            save_red_FV=  strcat('./', red_FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run), '_segm', num2str(i), '.h5' );
+            char(save_red_FV);
+            hdf5write(char(save_red_FV), '/dataset1', new_FV);
+
+           
         
         end
         
     end
     
 end
-
-[W U S V NP] = get_PCA_transformation_matrix (X');
-
- save_rp_data = strcat('./', FV_folder, '/pca_projection_data_run', num2str(run));
- save(char(save_rp_data),'W', 'U','S','V', 'NP');
-

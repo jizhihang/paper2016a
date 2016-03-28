@@ -20,7 +20,7 @@ for y=1:n_years
         load_video_i=  strcat( path_features, 'MissUniverse', year, '/', countries(c), '_view', num2str(view), '.h5');
         S = char(load_video_i);
         vectors_one_video= hdf5info(S);
-        Xi = hdf5read(vectors_one_video.GroupHierarchy.Datasets(1)); % One covariance point
+        Xi = hdf5read(vectors_one_video.GroupHierarchy.Datasets(1)); 
         %size(Xi)
         %pause
         

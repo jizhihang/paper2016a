@@ -67,8 +67,19 @@ if strcmp( pc, 'home')
     %Fisher Vector
     addpath('/media/johanna/HD1T/Toolbox/yael/matlab');
     
-    %libSVM
-    addpath('/media/johanna/HD1T/Toolbox/libsvm-3.20/matlab');
+    
+    if strcmp( svm_type, 'libsvm')
+        %libSVM
+        addpath('/media/johanna/HD1T/Toolbox/libsvm-3.20/matlab');
+    end
+    
+    
+    if strcmp( svm_type, 'linear')
+        %libLinear
+        addpath('/media/johanna/HD1T/Toolbox/liblinear-2.1/matlab');
+        
+    end
+     
     
     
     %Path for Original dataset

@@ -35,7 +35,9 @@ for y=1:n_years
         vectors_one_video= hdf5info(S);
         one_video = hdf5read(vectors_one_video.GroupHierarchy.Datasets(1));
         
-        load_fr_video_i=  strcat( path_features, 'MissUniverse', year, '/lab_', countries(c), '_view', num2str(view), '.h5');
+        %load_fr_video_i=  strcat( path_features, 'MissUniverse', year, '/lab_', countries(c), '_view', num2str(view), '.h5');
+        load_fr_video_i=  strcat( path_features, 'MissUniverse', year, '/lab_', countries(c), '.h5');
+        
         S = char(load_fr_video_i);
         frames_one_video= hdf5info(S);
         list_fr_video = hdf5read(frames_one_video.GroupHierarchy.Datasets(1));
