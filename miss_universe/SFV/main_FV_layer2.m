@@ -1,6 +1,7 @@
 function main_FV_layer2(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder, FV_folder_ly2, GMM_folder  )
 
 
+
 view = 1;
 
 
