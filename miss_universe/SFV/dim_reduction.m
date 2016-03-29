@@ -46,5 +46,6 @@ end
 
 
  save_rp_data = strcat('./', FV_folder, '/pca_projection_data_run', num2str(run));
- save(char(save_rp_data),'W', 'U','S','V', 'NP');
+ %save(char(save_rp_data),'W', 'U','S','V', 'NP');
+ save(char(save_rp_data),'W', 'NP');
 
