@@ -6,7 +6,7 @@ clc
 dbstop error;
 %dbstop in  get_universalGMM at 14
 %dbstop in FV_layers_1 at 89
-%dbstop in dim_reduction at 41
+dbstop in dim_reduction at 48
 
 %%Setting paths for libs and features and original dataset
 pc = 'wanda'; % uq wanda home
@@ -17,9 +17,9 @@ svm_type = 'linear'; %'svm';    %libsvm
 
 all_years = [  2010 2007 2003 2002 2001 ];
 
-prompt = 'K? ';
-K = input(prompt);
-%K = 128;
+%prompt = 'K? ';
+%K = input(prompt);
+K = 1024;
 view = 1;
 
 %Parameters
