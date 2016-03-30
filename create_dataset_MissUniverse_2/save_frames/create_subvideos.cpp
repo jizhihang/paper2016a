@@ -86,7 +86,7 @@ main(int argc, char** argv)
   
   /// Step 3: 
   //Creating Folders and Using 2 views per participant. Saving frames in each folder
-  //step_3( path, video_name);
+  step_3( path, video_name);
   
   
 

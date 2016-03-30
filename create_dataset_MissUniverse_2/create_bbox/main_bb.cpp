@@ -145,10 +145,10 @@ main(int argc, char** argv)
   
   
   //Path @Home
-  //const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/EveningGownCompetition/MissUniverse2007/";
+  const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/MissUniverse/MissUniverse1996/";
   
   //Path @UQ
-  const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2010/";
+  //const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2000/";
   
   std::string country;
   
@@ -271,7 +271,7 @@ creating_bbox(const std::string path, std::string country)
       if(c=='f') { cropRect.x++; cropRect.width--;}
       if(c=='p') { fr=fr-2;break;}
       
-      if(c==27) break;
+      if(c==27) { fr = n_frames; break;}
       if(c=='r') {cropRect.x=0;cropRect.y=0;cropRect.width=0;cropRect.height=0;}     imshow(winName, src);
       showImage();
       
@@ -281,10 +281,29 @@ creating_bbox(const std::string path, std::string country)
     
   }
   
+  destroyAllWindows();
+  bb_frames.print();
+  
+   
+  int ask_save;
+  cout << "Do you want to save it: \n 1.Yes \n 2. No \n ";
+  cin >> ask_save;
+  getchar();
+  
+  if (ask_save == 1)
+  {
+  
   std::stringstream bb_name;
   bb_name << path << country <<  "/BB_all_frames.txt";
   cout<< "  Saving " <<bb_name.str() <<endl;
   bb_frames.save( bb_name.str(), raw_ascii );
+  }
+  
+  if (ask_save != 1)
+  {
+    cout<< "It wasn't saved "<< endl;
+    
+  }
   
   
 }
