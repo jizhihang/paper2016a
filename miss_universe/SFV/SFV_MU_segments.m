@@ -15,7 +15,9 @@ svm_type = 'linear'; %'svm';    %libsvm
 
 %MU_years = importdata('miss_universe_list.txt');
 
-all_years = [  2010 2007 2003 2002 2001 ];
+%all_years = [  2010 2007 2003 2002 2001 ];
+all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
+
 
 %prompt = 'K? ';
 %K = input(prompt);

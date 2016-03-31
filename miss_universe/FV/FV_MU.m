@@ -19,9 +19,9 @@ vec_c = [ 0.1 1 10 100];
 n_iterGMM = 10; % For GMM
 
 
-MU_years = importdata('miss_universe_list.txt');
+%MU_years = importdata('miss_universe_list.txt');
 
-all_years = [  2010 2007 2003 2002 2001 ];
+all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
 
 
 if  strcmp( svm_type, 'linear')
