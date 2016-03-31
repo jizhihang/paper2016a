@@ -25,12 +25,12 @@ opt_feat::features_all_videos(int view )
     field <std::string> country_list ;
     country_list.load( ss_country_list.str() );
     
-    cout << country_list.n_rows << endl;
+    //cout << country_list.n_rows << endl;
     total_videos = total_videos + country_list.n_rows;
     
   }
   
-  cout << "total_videos " << total_videos << endl;
+  //cout << "total_videos " << total_videos << endl;
   //getchar();
   field <std::string> load_save_names (total_videos,3); 
   int k =0;
@@ -373,8 +373,8 @@ opt_feat::feature_video( std::string one_folder, Struct_feat_lab &my_Struct_feat
     std::swap(prevgray, gray);
     std::swap(prevflow, flow);
     
-    //cv::imshow("color", frame);
-    //cv::waitKey(1);
+    cv::imshow("color", frame);
+    cv::waitKey(1);
     
   }
   

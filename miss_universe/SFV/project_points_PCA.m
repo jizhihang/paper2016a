@@ -8,7 +8,7 @@ total_segments = 0;
 
 
  load_rp_data = strcat('./', FV_folder, '/pca_projection_data_run', num2str(run));
- load(char(load_rp_data),'W', 'U','S','V', 'NP');
+ load(char(load_rp_data),'W', 'NP');
     
     %NP New dimensionality
     %pause
