@@ -145,10 +145,10 @@ main(int argc, char** argv)
   
   
   //Path @Home
-  const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/MissUniverse/MissUniverse1996/";
+  //const std::string path =  "/media/johanna/HD1T/codes/datasets_codes/MissUniverse/MissUniverse1996/";
   
   //Path @UQ
-  //const std::string path = "/home/johanna-uq/codes/datasets_codes/EveningGownCompetition/MissUniverse2000/";
+  const std::string path = "/home/johanna-uq/codes/datasets_codes/MissUniverse/MissUniverse2000/";
   
   std::string country;
   
@@ -165,7 +165,7 @@ main(int argc, char** argv)
   {
     country = oriVideo_info(q,0);       
     list_frames(path, country);
-    creating_bbox(path, country);
+    //creating_bbox(path, country);
     
     //getchar();
   }
