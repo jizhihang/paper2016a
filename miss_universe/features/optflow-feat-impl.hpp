@@ -100,7 +100,7 @@ opt_feat::features_all_videos(int view )
   {
     
     std::string one_folder = load_save_names(i,0);
-    int tid=omp_get_thread_num();
+    //int tid=omp_get_thread_num();
     
     //#pragma omp critical
     //cout<< "Processor " << tid <<" doing "<< one_folder << endl;
@@ -381,6 +381,119 @@ opt_feat::feature_video( std::string one_folder, Struct_feat_lab &my_Struct_feat
   
 }
 
+
+
+/// See all videos with Bboxes
+inline
+void
+opt_feat::see_all_videos(int view ) 
+{
+  int n_years = list_missUni.n_rows;
+
+  for (int y = 0; y< n_years; ++y)    
+  {
+    
+    std::stringstream ss_country_list;
+    ss_country_list << path << list_missUni(y) << "/country_list.txt";
+    field <std::string> country_list ;
+    country_list.load( ss_country_list.str() );
+    
+    int n_queens = country_list.n_rows;
+
+
+    for (int q=0; q<n_queens; ++q)
+    {
+
+      std::stringstream one_folder;
+      cout << list_missUni(y) << "/" << country_list(q) << endl;
+
+      one_folder << path << list_missUni(y) << "/" << country_list(q) << "-" << view;
+      visualise( one_folder.str() ); // It's not a video is a set of frames
+
+    }
+    getchar();
+  }
+
+}
+
+
+inline 
+void
+opt_feat::visualise( std::string one_folder  )
+{
+ 
+  
+  std::stringstream ss_frames_list;
+  std::stringstream ss_bbox_list;
+      
+  ss_frames_list <<  one_folder << "/list.txt";
+  ss_bbox_list << one_folder << "/BB_all_frames.txt";
+  
+  field<std::string> frames_list;
+  frames_list.load( ss_frames_list.str() );
+  
+  mat bb_list;
+  bb_list.load( ss_bbox_list.str() );
+  
+  int n_frames = frames_list.n_rows;
+  
+
+  
+  
+  cv::Mat frame,  frame_tmp, gray;
+  std::string text;
+  rowvec BB;
+  
+  
+	
+  cout << frames_list.n_rows << " - " << bb_list.n_rows << endl;
+  
+  
+  for(int fr=0; fr<n_frames; fr++){
+    
+    //cout << fr << " " ;
+    
+    std::stringstream  ss_frame_name;
+    ss_frame_name << one_folder << "/" << frames_list(fr);
+    
+    //cout << ss_frame_name.str() << endl;
+    
+    
+    
+    frame_tmp = cv::imread( ss_frame_name.str());
+    
+    BB = bb_list.row(fr);
+    //BB.print();
+
+    
+    cv::Rect rec;
+    rec.x = BB(0);
+    rec.y = BB(1);
+    rec.width = BB(2);
+    rec.height = BB(3);
+
+    frame=frame_tmp(rec);
+    
+    cv::resize(frame, frame, cvSize(50, 100));
+
+    cv::cvtColor(frame, gray, CV_BGR2GRAY);
+    
+    int new_row = frame.rows;
+    int new_col = frame.cols;
+    
+    //cv::rectangle( frame_tmp, rec, cvScalar(0,255,0), 2 );
+
+    cv::imshow("color", frame_tmp);
+    cv::waitKey( 30);
+
+  
+}
+
+}
+
+
+
+///Auxiliary Functions
 
 inline
 void

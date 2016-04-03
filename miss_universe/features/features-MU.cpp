@@ -20,7 +20,7 @@ using namespace arma;
 
 
 //Home
-//const std::string path = "/media/johanna/HD1T/codes/datasets_codes/MissUniverse/";
+const std::string path = "/media/johanna/HD1T/codes/datasets_codes/MissUniverse/";
 
 
 //WANDA
@@ -28,7 +28,7 @@ using namespace arma;
 
 
 // UQ
-const std::string path = "/home/johanna-uq/codes/datasets_codes/MissUniverse/";
+//const std::string path = "/home/johanna-uq/codes/datasets_codes/MissUniverse/";
 
 
 const std::string MissUniverseList = "miss_universe_list.txt";
@@ -46,7 +46,8 @@ main(int argc, char** argv)
   int view = 1;
     
   opt_feat get_features(path,  MissUniverseList);
-  get_features.features_all_videos( view  ) ;
+  //get_features.features_all_videos( view  ) ;
+  //get_features.see_all_videos( view  ) ;
   
   
   

@@ -5,7 +5,9 @@ public:
 		  const std::string in_MissUniverse
   );
   
+  
   inline void features_all_videos( int view );
+  inline void see_all_videos( int view );
 
   
   
@@ -31,6 +33,7 @@ private:
   
   
   inline void feature_video( std::string one_video, Struct_feat_lab &my_Struct_feat_lab );
+  inline void visualise( std::string one_folder  );
   inline void create_folder( const std::string path, std::string folder_name);
   inline void create_folder( std::string folder_name );
 

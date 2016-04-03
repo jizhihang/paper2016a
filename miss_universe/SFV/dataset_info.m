@@ -2,7 +2,14 @@
 
 
 %Path for Original dataset
-path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
+
+%WANDA
+%path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
+
+%UQ
+path_dataset  = '/home/johanna-uq/codes/datasets_codes/MissUniverse/';
+
+
 all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
 
 dataset_description = cell{105,3};
