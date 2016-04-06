@@ -25,8 +25,8 @@ path_pcnn_joints ='/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/joint_po
 
 %%
 
-all_years = [ 2010 ];
-%all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
+%all_years = [ 2010 ];
+all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
 
 
 n_years = length(all_years);
