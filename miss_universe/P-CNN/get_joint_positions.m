@@ -54,9 +54,9 @@ warning off
 addpath(path_pose_code);
 addpath( [path_pose_code 'visualization'] );
 if isunix()
-  addpath ( [path_pose_code 'mex_unix'] );
+    addpath ( [path_pose_code 'mex_unix'] );
 elseif ispc()
-  addpath ( [path_pose_code 'mex_pc'] );
+    addpath ( [path_pose_code 'mex_pc'] );
 end
 
 run([path_pose_code 'compile']);
@@ -67,7 +67,7 @@ n_countries = length(countries);
 for c = 1:n_countries
     
     folder_pcnn_joints = strcat(path_pcnn_joints, '/MissUniverse', year,'/', countries(c), '-', num2str(view),'/');
-     folder_pcnn = strcat(path_pcnn, '/MissUniverse', year,'/', countries(c), '-', num2str(view),'/');
+    folder_pcnn = strcat(path_pcnn, '/MissUniverse', year,'/', countries(c), '-', num2str(view),'/');
     
     if ~exist( char(folder_pcnn_joints) )
         mkdir( char(folder_pcnn_joints) );
@@ -83,10 +83,10 @@ for c = 1:n_countries
         
         %[char(folder_pcnn)  imlist(i,1).name ]
         im = imread( [char(folder_pcnn)  imlist(i,1).name ] );
-        %clf; 
-        %imagesc(im); 
-        %axis image; 
-        %axis off; 
+        %clf;
+        %imagesc(im);
+        %axis image;
+        %axis off;
         %drawnow;
         
         % call detect function
@@ -97,10 +97,12 @@ for c = 1:n_countries
         colorset = {'g','g','y','m','m','m','m','y','y','y','r','r','r','r','y','c','c','c','c','y','y','y','b','b','b','b'};
         if  size(boxes) == [0,0]
             %[char(folder_pcnn)  imlist(i,1).name ]
-            %size(boxes) 
-            pos_img(:,:,i) = pos_img(:,:,i-1);
-        else            
-        pos_img(:,:,i) = my_showboxes(im, boxes(1,:),colorset); % show the best detection
+            %size(boxes)
+            if i~=0
+                pos_img(:,:,i) = pos_img(:,:,i-1);
+            end
+        else
+            pos_img(:,:,i) = my_showboxes(im, boxes(1,:),colorset); % show the best detection
         end
         
         %showboxes(im, boxes,colorset);  % show all detections
