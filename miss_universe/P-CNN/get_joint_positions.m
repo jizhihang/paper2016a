@@ -1,5 +1,7 @@
 function get_joint_positions
 
+dbstop error;
+
 
 view = 1;
 
@@ -98,7 +100,7 @@ for c = 1:n_countries
         if  size(boxes) == [0,0]
             %[char(folder_pcnn)  imlist(i,1).name ]
             %size(boxes)
-            if i~=0
+            if i~=1
                 pos_img(:,:,i) = pos_img(:,:,i-1);
             end
         else
