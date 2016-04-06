@@ -18,7 +18,10 @@ all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
 n_years = length(all_years);
 
 for y=1:n_years
-   
+    
+    fprintf('Processing Miss Universe %d \n', all_years(y));
+
+    
     year = num2str( all_years(y) );
     load_year_list =  strcat(path_dataset, 'MissUniverse', year, '/country_list.txt');
     
