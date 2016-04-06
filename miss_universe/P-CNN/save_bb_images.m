@@ -3,15 +3,20 @@ function save_bb_images
 view = 1;
 
 %UQ
-path_dataset  = '/home/johanna-uq/codes/datasets_codes/MissUniverse/';
-path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn';
+%path_dataset  = '/home/johanna-uq/codes/datasets_codes/MissUniverse/';
+%path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/';
 
 %wanda
-path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
-path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/';
+%path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
+%path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/';
  
 
-all_years = [ 2010 ];
+%home
+path_dataset = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse/';
+path_pcnn = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/images';
+
+
+%all_years = [ 2010 ];
 all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
 
 
@@ -62,6 +67,7 @@ function save_BB(path_dataset, year, countries, view, path_pcnn )
             %rectangle('Position', BB_list(i,:), 'EdgeColor','r', 'LineWidth', 3)
             rect = BB_list(i,:);
             cropped_im= imcrop(im,rect);
+            %BB_im = cropped_im;
             BB_im = imresize(cropped_im,[100 50], 'nearest');
             %imagesc(BB_im);
             %truesize
