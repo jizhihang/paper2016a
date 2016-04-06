@@ -47,7 +47,7 @@ main(int argc, char** argv)
     
   opt_feat get_features(path,  MissUniverseList);
   //get_features.features_all_videos( view  ) ;
-  //get_features.see_all_videos( view  ) ;
+  get_features.see_all_videos( view  ) ;
   
   
   
