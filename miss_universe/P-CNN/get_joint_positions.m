@@ -1,27 +1,29 @@
 function get_joint_positions
 
 
-%Pose_Code:
-addpath('/media/johanna/HD1T/Toolbox/Pose/images/pose_v1.3/code-basic');
-
-
-
-
 view = 1;
 
-%UQ
+%% UQ
 %path_dataset  = '/home/johanna-uq/codes/datasets_codes/MissUniverse/';
 %path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/';
+%path_pcnn_joints ='/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
 
-%wanda
-%path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
-%path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/';
+%% wanda
+%Pose_Code:
+path_pose_code ='/home/johanna/toolbox/pose/images/pami2013/pose_v1.3/code-basic/';
+path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
+path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/';
+path_pcnn_joints ='/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
 
+%% home
+%Pose_Code:
+%path_pose_code = '/media/johanna/HD1T/Toolbox/Pose/images/pose_v1.3/code-basic/';
 
-%home
-path_dataset = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse/';
-path_pcnn = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/images/';
-path_pcnn_joints = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
+%path_dataset = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse/';
+%path_pcnn = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/images/';
+%path_pcnn_joints = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
+
+%%
 
 all_years = [ 2010 ];
 %all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
@@ -38,7 +40,7 @@ for y=1:n_years
     load_year_list =  strcat(path_dataset, 'MissUniverse', year, '/country_list.txt');
     
     countries = importdata(load_year_list);
-    human_pose_estimation(path_dataset, year, countries, view, path_pcnn,path_pcnn_joints)
+    human_pose_estimation(year, countries, view, path_pcnn,path_pcnn_joints, path_pose_code)
     
     
 end
@@ -46,16 +48,18 @@ end
 
 
 
-function human_pose_estimation(path_dataset, year, countries, view, path_pcnn,path_pcnn_joints )
+function human_pose_estimation(year, countries, view, path_pcnn,path_pcnn_joints, path_pose_code )
 
-addpath /media/johanna/HD1T/Toolbox/Pose/images/pose_v1.3/code-basic/visualization;
+warning off
+addpath(path_pose_code);
+addpath( [path_pose_code 'visualization'] );
 if isunix()
-  addpath /media/johanna/HD1T/Toolbox/Pose/images/pose_v1.3/code-basic/mex_unix;
+  addpath ( [path_pose_code 'mex_unix'] );
 elseif ispc()
-  addpath /media/johanna/HD1T/Toolbox/Pose/images/pose_v1.3/code-basic/mex_pc;
+  addpath ( [path_pose_code 'mex_pc'] );
 end
 
-run('/media/johanna/HD1T/Toolbox/Pose/images/pose_v1.3/code-basic/compile')
+run([path_pose_code 'compile']);
 load('PARSE_model');
 n_countries = length(countries);
 
@@ -102,12 +106,12 @@ for c = 1:n_countries
         %showboxes(im, boxes,colorset);  % show all detections
         %fprintf('detection took %.1f seconds\n',dettime);
         %disp('press any key to continue');
-        pause(0.01);
+        %pause(0.01);
     end
+    [char(folder_pcnn_joints) joint_positions ]
+    save([char(folder_pcnn_joints) joint_positions ],'pos_img' );
     
-    
-    
-    close all
+    %close all
     
 end
 
