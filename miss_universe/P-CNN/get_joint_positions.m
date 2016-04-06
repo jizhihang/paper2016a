@@ -83,7 +83,7 @@ for c = 1:n_countries
         
         %[char(folder_pcnn)  imlist(i,1).name ]
         im = imread( [char(folder_pcnn)  imlist(i,1).name ] );
-        clf; 
+        %clf; 
         %imagesc(im); 
         %axis image; 
         %axis off; 
@@ -108,8 +108,8 @@ for c = 1:n_countries
         %disp('press any key to continue');
         %pause(0.01);
     end
-    [char(folder_pcnn_joints) joint_positions ]
-    save([char(folder_pcnn_joints) joint_positions ],'pos_img' );
+    [char(folder_pcnn_joints) 'joint_positions' ]
+    save([char(folder_pcnn_joints) 'joint_positions' ],'pos_img' );
     
     %close all
     
