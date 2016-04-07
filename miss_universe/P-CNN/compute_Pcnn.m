@@ -9,6 +9,7 @@ dbstop error;
 
 %%WANDA
 addpath('/home/johanna/toolbox/BroxOpticalFlow_2004');
+addpath('/home/johanna/toolbox/pose/features_for_videos/P-CNN-master');
 
 matconvpath = '/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/matconvnet-1.0-beta11'; % MatConvNet
 run([matconvpath '/my_build.m']); % compile: modify this file to enable GPU support (much faster)
