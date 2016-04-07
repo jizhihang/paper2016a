@@ -10,8 +10,21 @@ dbstop error;
 %%WANDA
 addpath('/home/johanna/toolbox/BroxOpticalFlow_2004');
 addpath('/home/johanna/toolbox/pose/features_for_videos/P-CNN-master');
-
+dataset_path = '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/';
+toolbox_path = '/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/';
 matconvpath = '/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/matconvnet-1.0-beta11'; % MatConvNet
+
+%% Home
+%addpath('/media/johanna/HD1T/Toolbox/BroxOpticalFlow2004/eccv2004Matlab');
+%addpath('/media/johanna/HD1T/Toolbox/Pose/video_features/P-CNN-master');
+%dataset_path = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/';
+%toolbox_path = '/media/johanna/HD1T/Toolbox/Pose/video_features/P-CNN-master/';
+
+%matconvpath = '/media/johanna/HD1T/Toolbox/Pose/video_features/P-CNN-master/matconvnet-1.0-beta11'; % MatConvNet
+
+
+
+%%
 run([matconvpath '/my_build.m']); % compile: modify this file to enable GPU support (much faster)
 run([matconvpath '/matlab/vl_setupnn.m']) ; % setup  
 
@@ -23,15 +36,15 @@ param.lhandposition=7; % pose joints positions in the structure (JHMDB pose form
 param.rhandposition=19;
 param.upbodypositions=[1 2 3 4 5 6 7 8 9 10 15 16 17 18 19 20 21 22];
 param.lside = 120 ; % length of part box side (also depends on the human scale)
-param.savedir = '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/features'; % P-CNN results directory
-param.impath = '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn' ; % input images path (one folder per video)
+param.savedir = [ dataset_path 'features']; % P-CNN results directory
+param.impath = [dataset_path 'images']; % input images path (one folder per video)
 param.imext = '.jpg' ; % input image extension type
-param.jointpath = '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/joint_positions' ; % human pose (one folder per video in which there is a file called 'joint_positions.mat')
-param.trainsplitpath = '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/splits/MU_train.txt'; % split paths
-param.testsplitpath = '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/splits/MU_test.txt';
+param.jointpath = [ dataset_path 'joint_positions']; % human pose (one folder per video in which there is a file called 'joint_positions.mat')
+param.trainsplitpath = [dataset_path 'splits/MU_train.txt']; % split paths
+param.testsplitpath =  [dataset_path 'splits/MU_test.txt'];
 param.cachepath = 'cache'; % cache folder path
-param.net_app  = load('/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/models/imagenet-vgg-f.mat') ; % appearance net path
-param.net_flow = load('/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/models/flow_net.mat') ; % flow net path
+param.net_app  = load([toolbox_path '/models/imagenet-vgg-f.mat']) ; % appearance net path
+param.net_flow = load([ toolbox_path '/models/flow_net.mat']) ; % flow net path
 param.batchsize = 128 ; % size of CNN batches
 param.use_gpu = false ; % use GPU or CPUs to run CNN?
 param.nbthreads_netinput_loading = 20 ; % nb of threads used to load input images

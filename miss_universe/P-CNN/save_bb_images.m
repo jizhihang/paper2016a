@@ -7,13 +7,13 @@ view = 1;
 %path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/images/';
 
 %wanda
-path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
-path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/images/';
+%path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
+%path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/images/';
  
 
 %home
-%path_dataset = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse/';
-%path_pcnn = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/images/';
+path_dataset = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse/';
+path_pcnn = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/images/';
 
 
 %all_years = [ 2010 ];

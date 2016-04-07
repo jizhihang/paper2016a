@@ -6,10 +6,10 @@ dbstop error;
 view = 1;
 
 %% UQ
-path_pose_code ='/home/johanna-uq/Toolbox/pose/images/pami2013/pose_v1.3/code-basic/';
-path_dataset  = '/home/johanna-uq/codes/datasets_codes/MissUniverse/';
-path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/images/';
-path_pcnn_joints ='/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
+%path_pose_code ='/home/johanna-uq/Toolbox/pose/images/pami2013/pose_v1.3/code-basic/';
+%path_dataset  = '/home/johanna-uq/codes/datasets_codes/MissUniverse/';
+%path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/images/';
+%path_pcnn_joints ='/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
 
 %% wanda
 %Pose_Code:
@@ -20,11 +20,10 @@ path_pcnn_joints ='/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/joint
 
 %% home
 %Pose_Code:
-%path_pose_code = '/media/johanna/HD1T/Toolbox/Pose/images/pose_v1.3/code-basic/';
-
-%path_dataset = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse/';
-%path_pcnn = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/images/';
-%path_pcnn_joints = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
+path_pose_code = '/media/johanna/HD1T/Toolbox/Pose/images/pose_v1.3/code-basic/';
+path_dataset = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse/';
+path_pcnn = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/images/';
+path_pcnn_joints = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
 
 %%
 
