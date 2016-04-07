@@ -4,16 +4,16 @@ view = 1;
 
 %UQ
 %path_dataset  = '/home/johanna-uq/codes/datasets_codes/MissUniverse/';
-%path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/';
+%path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/images/';
 
 %wanda
-%path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
-%path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/';
+path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
+path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/images/';
  
 
 %home
-path_dataset = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse/';
-path_pcnn = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/images';
+%path_dataset = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse/';
+%path_pcnn = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/images/';
 
 
 %all_years = [ 2010 ];
@@ -46,7 +46,7 @@ function save_BB(path_dataset, year, countries, view, path_pcnn )
     
     for c = 1:n_countries
         
-        folder_pcnn = strcat(path_pcnn, '/MissUniverse', year,'/', countries(c), '-', num2str(view),'/');
+        folder_pcnn = strcat(path_pcnn, year,'_', countries(c), '-', num2str(view),'/');
         
         if ~exist( char(folder_pcnn) )    
             mkdir( char(folder_pcnn) );
