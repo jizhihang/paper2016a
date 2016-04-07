@@ -68,7 +68,7 @@ n_countries = length(countries);
 
 for c = 1:n_countries
     
-    folder_pcnn_joints = strcat(path_pcnn_joints, year,'/', countries(c), '-', num2str(view),'/');
+    folder_pcnn_joints = strcat(path_pcnn_joints, year,'_', countries(c), '-', num2str(view),'/');
     folder_pcnn = strcat(path_pcnn, year,'_', countries(c), '-', num2str(view),'/');
     
     if ~exist( char(folder_pcnn_joints) )
