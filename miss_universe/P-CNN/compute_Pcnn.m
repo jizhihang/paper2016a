@@ -59,10 +59,11 @@ video_names=video_names(~ismember(video_names,{'.','..'}));
 if ~exist(param.cachepath,'dir'); mkdir(param.cachepath) ; end % create cache folder
 
 % 1 - pre-compute OF images for all videos
-compute_OF(video_names,param); % compute optical flow between adjacent frames
+%compute_OF(video_names,param); % compute optical flow between adjacent frames
 
 % 2 - extract part patches
-extract_cnn_patches(video_names,param)
+my_scale = 1;
+my_extract_cnn_patches(video_names,param,my_scale)
 
 % 3 - extract CNN features for each patch and group per video
 extract_cnn_features(video_names,param)
