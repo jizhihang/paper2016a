@@ -22,7 +22,9 @@ parfor vi = 1:length(video_names)
     
     % get video joint positions and human scales
     positions=load(sprintf('%s/%s/joint_positions',param.jointpath,vidname)) ;
-    scale=in_scale;
+    
+    num_images = length(images);
+    scale=ones(1,num_images)*in_scale;
     positions=positions.pos_img ;
     
     suf={'app','flow'} ;
