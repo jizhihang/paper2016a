@@ -7,15 +7,15 @@ view = 1;
 
 %% UQ
 %path_dataset  = '/home/johanna-uq/codes/datasets_codes/MissUniverse/';
-%path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/';
+%path_pcnn = '/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/images/';
 %path_pcnn_joints ='/home/johanna-uq/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
 
 %% wanda
 %Pose_Code:
 path_pose_code ='/home/johanna/toolbox/pose/images/pami2013/pose_v1.3/code-basic/';
 path_dataset  = '/home/johanna/codes/datasets_codes/MissUniverse/';
-path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/';
-path_pcnn_joints ='/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/joint_positions';
+path_pcnn =  '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/images/';
+path_pcnn_joints ='/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/joint_positions/';
 
 %% home
 %Pose_Code:
@@ -68,17 +68,17 @@ n_countries = length(countries);
 
 for c = 1:n_countries
     
-    folder_pcnn_joints = strcat(path_pcnn_joints, '/MissUniverse', year,'/', countries(c), '-', num2str(view),'/');
-    folder_pcnn = strcat(path_pcnn, '/MissUniverse', year,'/', countries(c), '-', num2str(view),'/');
+    folder_pcnn_joints = strcat(path_pcnn_joints, year,'/', countries(c), '-', num2str(view),'/');
+    folder_pcnn = strcat(path_pcnn, year,'_', countries(c), '-', num2str(view),'/');
     
     if ~exist( char(folder_pcnn_joints) )
         mkdir( char(folder_pcnn_joints) );
     end
     
-    country_folder = strcat(path_pcnn, 'MissUniverse', year, '/', countries(c), '-', num2str(view),'/*.jpg');
-    imlist = dir(char(country_folder));
+    country_folder = [ char(folder_pcnn) '/*.jpg'];
+    imlist = dir( country_folder );
     
-    numparts = 26; %As pr paper description
+    numparts = 26; %As per paper description
     pos_img = zeros(2,numparts,length(imlist));
     for i = 1:length(imlist)
         % load and display image
