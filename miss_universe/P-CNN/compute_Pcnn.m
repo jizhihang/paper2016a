@@ -4,15 +4,16 @@
 % 
 % ENABLE GPU support (in my_build.m) and MATLAB Parallel Pool to speed up computation (parpool) 
 
-if ~isdeployed
-    addpath('brox_OF'); % Brox 2004 optical flow
-end
-matconvpath = 'matconvnet-1.0-beta11'; % MatConvNet
+
+dbstop error;
+
+%%WANDA
+addpath('/home/johanna/toolbox/BroxOpticalFlow_2004');
+
+matconvpath = '/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/matconvnet-1.0-beta11'; % MatConvNet
 run([matconvpath '/my_build.m']); % compile: modify this file to enable GPU support (much faster)
 run([matconvpath '/matlab/vl_setupnn.m']) ; % setup  
 
-%% reproduce paper (ICCV 15) results (-0.9% acc, see README.md)
-%reproduce_ICCV15_results 
 
 %% P-CNN computation
 % ----- PARAMETERS --------
@@ -33,7 +34,7 @@ param.net_flow = load('models/flow_net.mat') ; % flow net path
 param.batchsize = 128 ; % size of CNN batches
 param.use_gpu = false ; % use GPU or CPUs to run CNN?
 param.nbthreads_netinput_loading = 20 ; % nb of threads used to load input images
-param.compute_kernel = true ; % compute linear kernel and save it. If false, save raw features instead.
+param.compute_kernel = false ; % compute linear kernel and save it. If false, save raw features instead.
 
 
 % get video names
