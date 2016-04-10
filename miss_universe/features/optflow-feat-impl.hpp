@@ -399,18 +399,58 @@ opt_feat::see_all_videos(int view )
     country_list.load( ss_country_list.str() );
     
     int n_queens = country_list.n_rows;
-
-
+    
+    std::stringstream scores;
+    scores << path << list_missUni(y) << "/" << "scores.txt";
+    field <std::string> scores_list;
+    
+    scores_list.load( scores.str() );
+    float one_score;
+    //scores_list.print();
+    
+    
+    vec vec_scores;
+    vec_scores.zeros(scores_list.n_rows);
+    
+    for (int s = 0; s<scores_list.n_rows; ++s)
+    {
+      
+      double temp = ::atof(scores_list(s,1).c_str());
+      vec_scores(s) = temp;
+      
+    }
+    
+    //vec_scores.print();
+    uword  index_min;
+    double min_val = vec_scores.min(index_min);
+    uword  index_max;
+    double max_val = vec_scores.max(index_max);
+    
+    cout << "***********************" << endl;
+    cout <<  list_missUni(y)<< endl;
+    cout << country_list(index_max) << " got max " << max_val << endl; 
+    cout << country_list(index_min) << " got min " << min_val << endl;
+    cout << "***********************" << endl;
+   
+    
+/*
     for (int q=0; q<n_queens; ++q)
     {
 
-      std::stringstream one_folder;
-      cout << list_missUni(y) << "/" << country_list(q) << endl;
+      
+      
 
+      std::stringstream one_folder;
       one_folder << path << list_missUni(y) << "/" << country_list(q) << "-" << view;
-      visualise( one_folder.str() ); // It's not a video is a set of frames
+      
+      one_score = vec_scores(q);
+      cout << list_missUni(y) << "/" << country_list(q) << ". Score: "<< one_score << endl;
+      
+      //getchar();
+      //visualise( one_folder.str(), one_score); // It's not a video is a set of frames
 
     }
+    */
     getchar();
   }
 
@@ -419,9 +459,10 @@ opt_feat::see_all_videos(int view )
 
 inline 
 void
-opt_feat::visualise( std::string one_folder  )
+opt_feat::visualise( std::string one_folder, float one_score )
 {
  
+  
   
   std::stringstream ss_frames_list;
   std::stringstream ss_bbox_list;
@@ -446,7 +487,7 @@ opt_feat::visualise( std::string one_folder  )
   
   
 	
-  cout << frames_list.n_rows << " - " << bb_list.n_rows << endl;
+  //cout << frames_list.n_rows << " - " << bb_list.n_rows << endl;
   
   
   for(int fr=0; fr<n_frames; fr++){
@@ -484,7 +525,7 @@ opt_feat::visualise( std::string one_folder  )
     //cv::rectangle( frame_tmp, rec, cvScalar(0,255,0), 2 );
 
     cv::imshow("color", frame_tmp);
-    cv::waitKey( 30);
+    cv::waitKey( 60);
 
   
 }

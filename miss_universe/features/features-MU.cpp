@@ -42,6 +42,10 @@ int
 main(int argc, char** argv)
 {
   
+  //field<std::string> scores_2001;
+  //scores_2001.load("/media/johanna/HD1T/codes/datasets_codes/MissUniverse/MissUniverse2001/scores.txt");
+  //scores_2001.print();
+  
      
   int view = 1;
     
