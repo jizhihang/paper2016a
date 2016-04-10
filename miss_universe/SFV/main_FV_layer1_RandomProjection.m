@@ -1,4 +1,4 @@
-function main_FV_layer1_RandomProjection(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder, red_FV_folder_randomProjection, GMM_folder   )
+function main_FV_layer1_RandomProjection(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder, red_FV_folder_RP, GMM_folder   )
 
 view = 1;
 
@@ -30,7 +30,7 @@ for i = 1: length( all_years)
     save(char(save_rp_data),'RandomMatrix');
     %pause
     
-    project_points_RandomProjection( path_dataset, view, all_years, FV_folder, red_FV_folder_randomProjection, run)
+    project_points_RandomProjection( path_dataset, view, all_years, FV_folder, red_FV_folder_RP, run)
 
     
     

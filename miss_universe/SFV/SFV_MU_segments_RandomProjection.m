@@ -33,7 +33,7 @@ n_iterGMM = 10; % For GMM
 
 
 FV_folder_ly1 = strcat('layer1/FV_K', num2str(K));
-red_FV_folder_randomProjection = strcat('layer1/RP_red_FV_K', num2str(K));
+red_FV_folder_RP = strcat('layer1/RP_red_FV_K', num2str(K));
 GMM_folder_1 = 'layer1/universal_GMM'; %No debe cambiar
 create_folders_FV(FV_folder_ly1, red_FV_folder_randomProjection, GMM_folder_1);
 
@@ -46,8 +46,8 @@ create_folders_FV_ly2(FV_folder_ly2, svm_folder, GMM_folder_2);
 
 
 
-main_FV_layer1_RandomProjection(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder_randomProjection, GMM_folder_1  );
-main_FV_layer2(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder_randomProjection, FV_folder_ly2, GMM_folder_2)
+main_FV_layer1_RandomProjection(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder_RP, GMM_folder_1  );
+main_FV_layer2(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder_RP, FV_folder_ly2, GMM_folder_2)
 
 
 

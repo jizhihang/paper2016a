@@ -1,4 +1,4 @@
-function project_points_RandomProjection (path_dataset, view, all_years, FV_folder, red_FV_folder_randomProjection, run)
+function project_points_RandomProjection (path_dataset, view, all_years, FV_folder, red_FV_folder_RP, run)
 
 
 n_years = length(all_years);
@@ -23,7 +23,7 @@ for y=1:n_years
     load_n_segments = strcat('./', FV_folder, '/MissUniverse', year, '/n_segments_view', num2str(view), '_run', num2str(run) , '.mat');
     load(load_n_segments, 'n_segments');
     
-    red_FV_MU = strcat(red_FV_folder, '/MissUniverse', year);
+    red_FV_MU = strcat(red_FV_folder_RP, '/MissUniverse', year);
     
     if ~exist(red_FV_MU, 'dir')
         
@@ -47,7 +47,7 @@ for y=1:n_years
             
             new_FV = FV_v_segm_i'*W;
             
-            save_red_FV=  strcat('./', red_FV_folder_randomProjection, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run), '_segm', num2str(i), '.h5' );
+            save_red_FV=  strcat('./', red_FV_folder_RP, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run), '_segm', num2str(i), '.h5' );
             char(save_red_FV);
             hdf5write(char(save_red_FV), '/dataset1', new_FV);
 
