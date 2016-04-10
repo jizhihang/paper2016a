@@ -19,9 +19,10 @@ for i = 1: length( all_years)
     %Matrix
     load_rp_data = strcat('./', FV_folder, '/pca_projection_data_run', num2str(run));
     load(char(load_rp_data),'W', 'NP');
-    size(W)
-    NP
-    pause
+    FV_folder
+    [dim_FV dim_red] = size(W);
+    clear W NP;
+    RandomMatrix = randn(dim_FV, dim_red);
     
     
     %project_points_PCA( path_dataset, view, all_years, FV_folder, red_FV_folder, run)
