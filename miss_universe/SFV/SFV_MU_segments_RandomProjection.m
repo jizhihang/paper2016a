@@ -35,7 +35,7 @@ n_iterGMM = 10; % For GMM
 FV_folder_ly1 = strcat('layer1/FV_K', num2str(K));
 red_FV_folder_RP = strcat('layer1/RP_red_FV_K', num2str(K));
 GMM_folder_1 = 'layer1/universal_GMM'; %No debe cambiar
-create_folders_FV(FV_folder_ly1, red_FV_folder_randomProjection, GMM_folder_1);
+create_folders_FV(FV_folder_ly1, red_FV_folder_RP, GMM_folder_1);
 
 
 
