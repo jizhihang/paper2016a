@@ -57,8 +57,8 @@ if  strcmp( svm_type, 'linear')
     s = 1; % L2-regularized L2-loss support vector classification (dual)
     all_accuracy = zeros(length(all_years), length(vec_c) );
 end
-all_predicted_order = zeros(1,length( all_years) );
-
+all_predicted_order = zeros(length( all_years),length( all_years) );
+all_read_order = zeros(length( all_years),length( all_years) );
 for i = 1: length( all_years)
     
     run = i;
@@ -101,8 +101,8 @@ for i = 1: length( all_years)
     end
     
     %SOlo lo puedo hacer cuando vec_c tiene un solo elemento:
-     all_predicted_order (i) =  predicted_order;
-    
+    all_predicted_order (i,:) =  predicted_order;
+    all_read_order(i,:) = real_order;
 end
 
 
