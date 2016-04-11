@@ -57,7 +57,7 @@ if  strcmp( svm_type, 'linear')
     s = 1; % L2-regularized L2-loss support vector classification (dual)
     all_accuracy = zeros(length(all_years), length(vec_c) );
 end
-
+all_predicted_order = zeros(1,length( all_years) );
 
 for i = 1: length( all_years)
     
@@ -96,10 +96,12 @@ for i = 1: length( all_years)
         [a real_order]  = sort(scores', 'descend');
         BB  = [ predicted_output n_labels_test];
         predicted_order = get_predicted_list(BB, n_countries);
+       
         
     end
     
-    
+    %SOlo lo puedo hacer cuando vec_c tiene un solo elemento:
+     all_predicted_order (i) =  predicted_order;
     
 end
 
