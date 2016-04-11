@@ -25,8 +25,8 @@ K = input(prompt);
 view = 1;
 
 %Parameters
-vec_c = [ 0.1 1 10 100];
-%vec_c = [ 10 ] ;
+%vec_c = [ 0.1 1 10 100];
+vec_c = [ 10 ] ;
 
 segm_length = 5;
 n_iterGMM = 10; % For GMM
