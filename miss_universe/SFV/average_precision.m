@@ -1,5 +1,6 @@
-function AP = average_precision(predicted_output, labels_test)
 
+function AP = average_precision(predicted_output, labels_test)
+%% Forget about this
 %Precision at position n (P@n)
 %Mean average precision (MAP)
 %LETOR: Benchmark Dataset for Research on Learning to Rank for Information Retrieval
