@@ -144,20 +144,20 @@ all_ndcg
 mean(all_ndcg)
 
 
-% Top:
-
-top_k = 7;
-acc = 0;
-for m =1:length( all_years)
-    info_results{m,1};real= info_results{m,2};pred=info_results{m,3};
-    winner = real(1);
-    top = pred(1:top_k);
-    acc = acc + length(find(top ==winner));
-    %disp('**************')
-    %pause
-end
-
-acc = acc/ length( all_years)
+% % Top:
+% 
+% top_k = 1; %1 or 3 or 5
+% acc = 0;
+% for m =1:length( all_years)
+%     info_results{m,1};real= info_results{m,2};pred=info_results{m,3};
+%     winner = real(1);
+%     top = pred(1:top_k);
+%     acc = acc + length(find(top ==winner));
+%     %disp('**************')
+%     %pause
+% end
+% 
+% acc = acc/ length( all_years)
    
 
 
