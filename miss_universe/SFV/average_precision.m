@@ -9,7 +9,7 @@ function AP = average_precision(predicted_output, labels_test)
 
 list_Pn = [];
 tmp_sum = 0;
-tmp = zeros(1,ength(predicted_output));
+tmp = zeros(1,length(predicted_output));
 for b=1:length(predicted_output)
     
   tmp(b) = (predicted_output(b) == labels_test(b));
