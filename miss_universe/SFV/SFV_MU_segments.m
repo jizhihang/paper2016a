@@ -58,9 +58,12 @@ if  strcmp( svm_type, 'linear')
     all_accuracy = zeros(length(all_years), length(vec_c) );
 end
 
-all_predicted_order = cell(length( all_years),1);
 
+
+info_results = cell(length( all_years), 3);
+all_predicted_order = cell(length( all_years),1);
 all_real_order = cell(length( all_years),1);
+
 
 
 for i = 1: length( all_years)
@@ -107,6 +110,7 @@ for i = 1: length( all_years)
     %Solo lo puedo hacer cuando vec_c tiene un solo elemento:
     all_predicted_order(i) = {predicted_order};
     all_real_order(i) = {real_order};
+    
 end
 
 
