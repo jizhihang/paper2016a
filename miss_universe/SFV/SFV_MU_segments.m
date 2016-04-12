@@ -131,15 +131,33 @@ pred=info_results{m,3};
 p = length(real);
 real_scores = p:-1:1; %pred_scores = zeros(1,p);
 
+k=5;
 for v=1:p
     pred_scores(v) = real_scores(find(real==pred(v))); 
 end
 
-c_ndcg = [ ndcg(pred_scores,real_scores,p, 1) ndcg(pred_scores,real_scores,p, 2) ndcg(pred_scores,real_scores,p, 3)];
+c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
 all_ndcg = [all_ndcg;c_ndcg];
 end
 all_ndcg
 mean(all_ndcg)
+
+
+% Top:
+
+top_k = 7;
+acc = 0;
+for m =1:length( all_years)
+    info_results{m,1};real= info_results{m,2};pred=info_results{m,3};
+    winner = real(1);
+    top = pred(1:top_k);
+    acc = acc + length(find(top ==winner));
+    %disp('**************')
+    %pause
+end
+
+acc = acc/ length( all_years)
+   
 
 
 
