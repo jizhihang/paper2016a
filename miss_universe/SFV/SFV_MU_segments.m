@@ -56,6 +56,7 @@ create_folders_FV_ly2(FV_folder_ly2, svm_folder, GMM_folder_2);
 if  strcmp( svm_type, 'linear')
     s = 1; % L2-regularized L2-loss support vector classification (dual)
     all_accuracy = zeros(length(all_years), length(vec_c) );
+    all_AP = zeros(length(all_years), length(vec_c) );
 end
 
 
@@ -98,7 +99,7 @@ for i = 1: length( all_years)
         [predicted_output, accuracy, dec_values, labels_test,  n_labels_test, scores, n_countries]  = FV_test_rankSVM(path_dataset, view, years_test, K, dim_FV, FV_folder_ly2, svm_folder, svm_type, run);
         AA = [predicted_output  labels_test];
         all_accuracy(i,j) = accuracy(1);
-        
+        all_AP(i,j) = average_precision(predicted_output, labels_test);
         
         [a real_order]  = sort(scores', 'descend');
         BB  = [ predicted_output n_labels_test];
