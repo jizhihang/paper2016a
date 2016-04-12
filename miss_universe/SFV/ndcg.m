@@ -2,8 +2,8 @@ function my_ndcg = ndcg(pred,real,p, opt)
 
 %opt:
 %1 -> Wikipedia
-%2 ->
-%3 ->
+%2 -> for YAHOO LTRC.
+%3 -> for MSLR and LETOR 4.0
 
 %Example in Wikipedia
 %https://en.wikipedia.org/wiki/Discounted_cumulative_gain

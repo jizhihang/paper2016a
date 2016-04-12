@@ -140,7 +140,7 @@ end
 c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
 all_ndcg = [all_ndcg;c_ndcg];
 end
-all_ndcg
+all_ndcg = all_ndcg*100
 mean(all_ndcg)
 
 
