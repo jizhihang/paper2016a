@@ -122,6 +122,16 @@ end
 %To visualise
 %all_predicted_order{i}
 
+%p = length(real);
+%m=1, info_results{m,1}, real= info_results{m,2}, pred=info_results{m,3};
+%real_scores = p:-1:1
+%pred_scores = zeros(1,p) 
+
+%for v=1:p
+%    pred_scores(v) = real_scores(find(real==pred(v)));
+%end
+
+
 
 
 
