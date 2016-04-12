@@ -111,6 +111,11 @@ for i = 1: length( all_years)
     all_predicted_order(i) = {predicted_order};
     all_real_order(i) = {real_order};
     
+    info_results(i,1) = {accuracy(1)};
+    info_results(i,2) = {real_order};
+    info_results(i,3) = {predicted_order};
+    
+    
 end
 
 
