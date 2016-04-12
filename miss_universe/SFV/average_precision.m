@@ -16,7 +16,7 @@ for b=1:length(predicted_output)
   list_Pn = [list_Pn  tmp_sum/b*tmp ];
     
 end
-AP = sum(list_Pn);
+AP = sum(list_Pn/tmp_sum);
 
 %Example from 
 %LETOR: Benchmark Dataset for Research on Learning to Rank for Information Retrieval
