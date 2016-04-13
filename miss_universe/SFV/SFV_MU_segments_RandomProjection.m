@@ -25,8 +25,8 @@ K = input(prompt);
 view = 1;
 
 %Parameters
-vec_c = [ 0.1 1 10 100];
-%vec_c = [ 10 ] ;
+%vec_c = [ 0.1 1 10 100];
+vec_c = [ 10 ] ;
 
 segm_length = 5;
 n_iterGMM = 10; % For GMM
@@ -46,8 +46,8 @@ create_folders_FV_ly2(FV_folder_ly2, svm_folder, GMM_folder_2);
 
 
 
-main_FV_layer1_RandomProjection(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder_RP, GMM_folder_1  );
-main_FV_layer2(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder_RP, FV_folder_ly2, GMM_folder_2)
+%main_FV_layer1_RandomProjection(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder_RP, GMM_folder_1  );
+%main_FV_layer2(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder_RP, FV_folder_ly2, GMM_folder_2)
 
 
 
