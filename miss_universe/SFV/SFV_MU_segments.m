@@ -132,7 +132,7 @@ pred=info_results{m,3};
 p = length(real);
 real_scores = p:-1:1; %pred_scores = zeros(1,p);
 
-k=5;
+k = p;
 for v=1:p
     pred_scores(v) = real_scores(find(real==pred(v))); 
 end

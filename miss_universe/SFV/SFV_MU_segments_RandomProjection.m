@@ -59,6 +59,10 @@ if  strcmp( svm_type, 'linear')
 end
 
 
+info_results = cell(length( all_years), 3);
+
+
+
 for i = 1: length( all_years)
     
     run = i;
@@ -99,9 +103,34 @@ for i = 1: length( all_years)
         
     end
     
+     %Solo lo puedo hacer cuando vec_c tiene un solo elemento:
+    info_results(i,1) = {accuracy(1)};
+    info_results(i,2) = {real_order};
+    info_results(i,3) = {predicted_order};
+    
     
     
 end
+
+%% ndcg
+all_ndcg = [];
+for m=1:length( all_years)
+info_results{m,1}; 
+real= info_results{m,2}; 
+pred=info_results{m,3};
+p = length(real);
+real_scores = p:-1:1; %pred_scores = zeros(1,p);
+
+k = p;
+for v=1:p
+    pred_scores(v) = real_scores(find(real==pred(v))); 
+end
+
+c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
+all_ndcg = [all_ndcg;c_ndcg];
+end
+all_ndcg = all_ndcg*100
+mean(all_ndcg)
 
 
 
