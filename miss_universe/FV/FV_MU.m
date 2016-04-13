@@ -15,7 +15,8 @@ svm_type = 'linear'; %'svm';    %libsvm
 prompt = 'K? ';
 K = input(prompt);
 
-vec_c = [ 0.1 1 10 100];
+%vec_c = [ 0.1 1 10 100];
+vec_c =  [ 0.1 ];
 n_iterGMM = 10; % For GMM
 
 
@@ -31,6 +32,9 @@ end
 
 
 
+info_results = cell(length( all_years), 3);
+
+
 for i = 1: length( all_years)
     
     run = i;
@@ -44,51 +48,104 @@ for i = 1: length( all_years)
     dim = 14;
     
     GMM_folder = 'universal_GMM';
-    svm_folder = 'svm_models'; 
+    svm_folder = 'svm_models';
     
-         
-         FV_folder = strcat('FV_K', num2str(K));
-         dim_FV = 2*dim*K;
-         create_folders_FV(FV_folder, svm_folder, GMM_folder);
-         
-         get_universalGMM(path_dataset,  path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run)
-         FV_MU_all_videos(path_dataset, path_features, view, all_years, K, GMM_folder, FV_folder, run)
-   
+    
+    FV_folder = strcat('FV_K', num2str(K));
+    dim_FV = 2*dim*K;
+    create_folders_FV(FV_folder, svm_folder, GMM_folder);
+    
+    %get_universalGMM(path_dataset,  path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run)
+    %FV_MU_all_videos(path_dataset, path_features, view, all_years, K, GMM_folder, FV_folder, run)
+    
     
     %top_n = 1;
-
-
-        FV_folder = strcat('FV_K', num2str(K));
-        dim_FV = 2*dim*K;
-        for j = 1: length(vec_c)
-            c = vec_c (j);
-            
-              if strcmp( svm_type, 'linear')
-                  params =  sprintf('-s %f  -c %f -q', s, c);
-              end
+    
+    
+    FV_folder = strcat('FV_K', num2str(K));
+    dim_FV = 2*dim*K;
+    
+    for j = 1: length(vec_c)
+        c = vec_c (j);
         
-            
-            %FV_train(path_dataset, view, years_train, K, dim_FV, FV_folder, svm_folder, params, top_n);
-            %[predicted_output, accuracy, dec_values, labels_test]  = FV_test(path_dataset, view, years_test, K, dim, dim_FV, FV_folder, svm_folder, top_n);
-            
-            %Training
-            FV_train_rankSVM(path_dataset, view, years_train, K, dim_FV, FV_folder, svm_folder, svm_type, params, run);
-            
-            %Testing
-            [predicted_output, accuracy, dec_values, labels_test,  n_labels_test, scores, n_countries]  = FV_test_rankSVM(path_dataset, view, years_test, K, dim_FV, FV_folder, svm_folder, svm_type, run);
-            AA = [predicted_output  labels_test];
-            all_accuracy(i,j) = accuracy(1);
-            
-            
-            [a real_order]  = sort(scores', 'descend'); 
-            BB  = [ predicted_output n_labels_test]; 
-            predicted_order = get_predicted_list(BB, n_countries);
-            %all_mean_sq_error(k, j) = mean_sq_error(2);
-            %[a1 best_3_predicted] = sort(predicted_output'); best_3_predicted(1:3)
-            %[a2 best_3_real] = sort(labels_test'); best_3_real(1:3)
-            
+        if strcmp( svm_type, 'linear')
+            params =  sprintf('-s %f  -c %f -q', s, c);
         end
-
+        
+        
+        %FV_train(path_dataset, view, years_train, K, dim_FV, FV_folder, svm_folder, params, top_n);
+        %[predicted_output, accuracy, dec_values, labels_test]  = FV_test(path_dataset, view, years_test, K, dim, dim_FV, FV_folder, svm_folder, top_n);
+        
+        %Training
+        FV_train_rankSVM(path_dataset, view, years_train, K, dim_FV, FV_folder, svm_folder, svm_type, params, run);
+        
+        %Testing
+        [predicted_output, accuracy, dec_values, labels_test,  n_labels_test, scores, n_countries]  = FV_test_rankSVM(path_dataset, view, years_test, K, dim_FV, FV_folder, svm_folder, svm_type, run);
+        AA = [predicted_output  labels_test];
+        all_accuracy(i,j) = accuracy(1);
+        
+        
+        [a real_order]  = sort(scores', 'descend');
+        BB  = [ predicted_output n_labels_test];
+        predicted_order = get_predicted_list(BB, n_countries);
+        %all_mean_sq_error(k, j) = mean_sq_error(2);
+        %[a1 best_3_predicted] = sort(predicted_output'); best_3_predicted(1:3)
+        %[a2 best_3_real] = sort(labels_test'); best_3_real(1:3)
+        
+    end
+    
+    %Solo lo puedo hacer cuando vec_c tiene un solo elemento:
+    info_results(i,1) = {accuracy(1)};
+    info_results(i,2) = {real_order};
+    info_results(i,3) = {predicted_order};
+    
 end
+
+
+%To visualise
+%all_predicted_order{i}
+
+disp('Top @ p = length(real)')
+all_ndcg = [];
+for m=1:length( all_years)
+info_results{m,1}; 
+real= info_results{m,2}; 
+pred=info_results{m,3};
+p = length(real);
+real_scores = p:-1:1; %pred_scores = zeros(1,p);
+
+k = p;
+for v=1:p
+    pred_scores(v) = real_scores(find(real==pred(v))); 
+end
+
+c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
+all_ndcg = [all_ndcg;c_ndcg];
+end
+all_ndcg = all_ndcg*100
+mean(all_ndcg)
+
+
+% % Top:
+% 
+% top_k = 1; %1 or 3 or 5
+% acc = 0;
+% for m =1:length( all_years)
+%     info_results{m,1};real= info_results{m,2};pred=info_results{m,3};
+%     winner = real(1);
+%     top = pred(1:top_k);
+%     acc = acc + length(find(top ==winner));
+%     %disp('**************')
+%     %pause
+% end
+% 
+% acc = acc/ length( all_years)
+   
+
+
+
+
+
+
 
 
