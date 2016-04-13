@@ -53,7 +53,8 @@ end
 
 %% for MSLR and LETOR 4.0
 %See Large-scale Linear RankSVM
-
+% Metric used in Collaborative Fashio Recommendation: A functional 
+%Tensor Factorisation Approach
 if (opt ==3)
     dcg_p = 0;
     
