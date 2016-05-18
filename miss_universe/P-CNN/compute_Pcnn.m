@@ -6,7 +6,9 @@
 
 
 dbstop error;
-dbstop in compute_Pcnn at 59
+%dbstop in compute_Pcnn at 59
+
+
 %%WANDA
 addpath('/home/johanna/toolbox/BroxOpticalFlow_2004');
 addpath('/home/johanna/toolbox/pose/features_for_videos/P-CNN-master');
