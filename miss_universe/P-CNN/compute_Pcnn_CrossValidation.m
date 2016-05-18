@@ -4,7 +4,8 @@
 % 
 % ENABLE GPU support (in my_build.m) and MATLAB Parallel Pool to speed up computation (parpool) 
 
-
+clear all
+clc
 dbstop error;
 %dbstop in compute_Pcnn at 59
 
