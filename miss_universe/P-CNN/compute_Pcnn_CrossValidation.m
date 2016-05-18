@@ -10,19 +10,19 @@ dbstop error;
 
 
 %%WANDA
-%addpath('/home/johanna/toolbox/BroxOpticalFlow_2004');
-%addpath('/home/johanna/toolbox/pose/features_for_videos/P-CNN-master');
-%dataset_path = '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/';
-%toolbox_path = '/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/';
-%matconvpath = '/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/matconvnet-1.0-beta11'; % MatConvNet
+addpath('/home/johanna/toolbox/BroxOpticalFlow_2004');
+addpath('/home/johanna/toolbox/pose/features_for_videos/P-CNN-master');
+dataset_path = '/home/johanna/codes/datasets_codes/MissUniverse_Pcnn/';
+toolbox_path = '/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/';
+matconvpath = '/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/matconvnet-1.0-beta11'; % MatConvNet
 
 %% Home
-addpath('/media/johanna/HD1T/Toolbox/BroxOpticalFlow2004/eccv2004Matlab');
-addpath('/media/johanna/HD1T/Toolbox/Pose/video_features/P-CNN-master');
-dataset_path = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/';
-toolbox_path = '/media/johanna/HD1T/Toolbox/Pose/video_features/P-CNN-master/';
+%addpath('/media/johanna/HD1T/Toolbox/BroxOpticalFlow2004/eccv2004Matlab');
+%addpath('/media/johanna/HD1T/Toolbox/Pose/video_features/P-CNN-master');
+%dataset_path = '/media/johanna/HD1T/codes/datasets_codes/MissUniverse_Pcnn/';
+%toolbox_path = '/media/johanna/HD1T/Toolbox/Pose/video_features/P-CNN-master/';
 
-matconvpath = '/media/johanna/HD1T/Toolbox/Pose/video_features/P-CNN-master/matconvnet-1.0-beta11'; % MatConvNet
+%matconvpath = '/media/johanna/HD1T/Toolbox/Pose/video_features/P-CNN-master/matconvnet-1.0-beta11'; % MatConvNet
 
 
 
