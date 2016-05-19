@@ -98,14 +98,17 @@ for i = 1: length( all_years)
     end
     
     %Solo lo puedo hacer cuando vec_c tiene un solo elemento:
-    info_results(i,1) = {accuracy(1)};
-    info_results(i,2) = {real_order};
-    info_results(i,3) = {predicted_order};
+    info_results_FV(i,1) = {accuracy(1)};
+    info_results_FV(i,2) = {real_order};
+    info_results_FV(i,3) = {predicted_order};
+    info_results_FV(i,4) = {labels_test};
+    info_results_FV(i,5) = {predicted_output };
     
 end
 
 %Save dec_values for best c & K
 save('dec_values_FV', 'all_dec_values_FV')
+save('info_results_FV', 'info_results_FV');
 
 %To visualise
 %all_predicted_order{i}
