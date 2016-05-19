@@ -73,14 +73,25 @@ if ~exist(param.cachepath,'dir'); mkdir(param.cachepath) ; end % create cache fo
 
 all_years = [ 2010 2007 2003 2002 2001 2000 1999 1998 1997 1996 ];
 
-for run=1:10
-param.savedir = [ dataset_path 'features/features_' num2str(all_years(run))]; % P-CNN results directory
+
+% compute P-CNN for one split. 
+%I doesn't make sense. 
+%Just run one time
+
+run =1;
+savedir = [ dataset_path 'features/features_' num2str(all_years(run))]; % P-CNN results directory
 param.trainsplitpath = [dataset_path 'splits/MU_train_' num2str(run) '.txt']; % split paths
 param.testsplitpath =  [dataset_path 'splits/MU_test_'  num2str(run) '.txt'];
-my_compute_pcnn_features(param); % compute P-CNN for split 1
+%my_compute_pcnn_features(param); 
+save_pcnn_vectors(param);
 
 
-end
+
+%for run=1:10
+%param.savedir = [ dataset_path 'features/features_' num2str(all_years(run))]; % P-CNN results directory
+%param.trainsplitpath = [dataset_path 'splits/MU_train_' num2str(run) '.txt']; % split paths
+%param.testsplitpath =  [dataset_path 'splits/MU_test_'  num2str(run) '.txt'];
+%end
 
 
 
