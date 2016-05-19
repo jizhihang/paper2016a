@@ -12,9 +12,9 @@ svm_type = 'linear'; %'svm';    %libsvm
 [path_dataset path_features] = set_paths(pc, svm_type);
 
 %% Parameters
-prompt = 'K? ';
-K = input(prompt);
-
+%prompt = 'K? ';
+%K = input(prompt);
+K = 256;
 %vec_c = [ 0.1 1 10 100];
 vec_c =  [ 0.1 ];
 n_iterGMM = 10; % For GMM
@@ -55,8 +55,8 @@ for i = 1: length( all_years)
     dim_FV = 2*dim*K;
     create_folders_FV(FV_folder, svm_folder, GMM_folder);
     
-    get_universalGMM(path_dataset,  path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run)
-    FV_MU_all_videos(path_dataset, path_features, view, all_years, K, GMM_folder, FV_folder, run)
+    %get_universalGMM(path_dataset,  path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run)
+    %FV_MU_all_videos(path_dataset, path_features, view, all_years, K, GMM_folder, FV_folder, run)
     
     
     %top_n = 1;
@@ -105,27 +105,27 @@ end
 %To visualise
 %all_predicted_order{i}
 
-disp('Top @ p = length(real)')
-all_ndcg = [];
-for m=1:length( all_years)
-info_results{m,1}; 
-real= info_results{m,2}; 
-pred=info_results{m,3};
-p = length(real);
-real_scores = p:-1:1; %pred_scores = zeros(1,p);
-
-k = p;
-for v=1:p
-    pred_scores(v) = real_scores(find(real==pred(v))); 
-end
-
-% There 3 metrics for ndcg. opt can be 1,2 or 3.
-%I'm obtaining all of them 
-c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
-all_ndcg = [all_ndcg;c_ndcg];
-end
-all_ndcg = all_ndcg*100
-mean(all_ndcg)
+% disp('Top @ p = length(real)')
+% all_ndcg = [];
+% for m=1:length( all_years)
+% info_results{m,1}; 
+% real= info_results{m,2}; 
+% pred=info_results{m,3};
+% p = length(real);
+% real_scores = p:-1:1; %pred_scores = zeros(1,p);
+% 
+% k = p;
+% for v=1:p
+%     pred_scores(v) = real_scores(find(real==pred(v))); 
+% end
+% 
+% % There 3 metrics for ndcg. opt can be 1,2 or 3.
+% %I'm obtaining all of them 
+% c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
+% all_ndcg = [all_ndcg;c_ndcg];
+% end
+% all_ndcg = all_ndcg*100
+% mean(all_ndcg)
 
 
 % % Top:
