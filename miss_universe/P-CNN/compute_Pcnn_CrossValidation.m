@@ -105,6 +105,12 @@ if ~exist(svm_folder, 'dir')
     mkdir(svm_folder);
 end
 
+if  strcmp( svm_type, 'linear')
+    s = 1; % L2-regularized L2-loss support vector classification (dual)
+    %all_accuracy = zeros(length(all_years), length(vec_c) );   
+    all_accuracy = zeros(length(all_years), 1 );
+
+end
 
     
 
