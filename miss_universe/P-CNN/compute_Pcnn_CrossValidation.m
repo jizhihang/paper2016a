@@ -156,11 +156,14 @@ for i = 1: length( all_years)
     info_results(i,1) = {accuracy(1)};
     info_results(i,2) = {real_order};
     info_results(i,3) = {predicted_order};
+    info_results(i,4) = {labels_test};
+    info_results(i,5) = {predicted_output };
 
 end
 
 %Save dec_values for best c
 save('dec_values_Pcnn', 'all_dec_values_Pcnn')
+save('info_results_Pcnn', 'info_results', 'all_years');
 
 % disp('Top @ p = length(real)')
 % all_ndcg = [];
