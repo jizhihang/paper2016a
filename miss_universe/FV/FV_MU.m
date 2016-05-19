@@ -7,7 +7,7 @@ dbstop error;
 %dbstop in  get_universalGMM at 14
 
 
-pc = 'uq'; % uq wanda home
+pc = 'wanda'; % uq wanda home
 svm_type = 'linear'; %'svm';    %libsvm
 [path_dataset path_features] = set_paths(pc, svm_type);
 
