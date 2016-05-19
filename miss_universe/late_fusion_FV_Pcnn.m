@@ -3,7 +3,7 @@ load ./P-CNN/dec_values_Pcnn.mat
 
 load('./P-CNN/info_results_Pcnn', 'info_results', 'all_years');
 
-%De Info Results I only need real_order
+%De Info Results I only need labels_test
 %info_results(i,1) -> accuracy(1)
 %info_results(i,2) -> real_order
 %info_results(i,3) -> predicted_order
@@ -11,7 +11,7 @@ load('./P-CNN/info_results_Pcnn', 'info_results', 'all_years');
 %info_results(i,5) -> predicted_output;
 
 
-real_labels = info_results(i,2)
+all_labels_test = info_results(i,4)
 
 
 late_fusion = cell( length(all_dec_values_Pcnn),1);
