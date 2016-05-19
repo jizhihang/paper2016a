@@ -1,4 +1,4 @@
-save_pcnn_vectors(param);
+save_pcnn_vectors(param)
 
 
 loadname=sprintf('%s/Xn_test.mat',param.savedir);

@@ -8,7 +8,7 @@ clear all
 clc
 dbstop error;
 %dbstop in compute_Pcnn at 59
-dbstop in my_compute_pcnn_features at 107
+%dbstop in my_compute_pcnn_features at 107
 
 %%WANDA
 addpath('/home/johanna/toolbox/BroxOpticalFlow_2004');
