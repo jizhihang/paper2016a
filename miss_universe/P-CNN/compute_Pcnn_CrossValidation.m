@@ -132,7 +132,7 @@ for i = 1: length( all_years)
     
     
     if strcmp( svm_type, 'linear')
-        params =  sprintf('-s %f  -c %f -q', s, c)
+        params =  sprintf('-s %f  -c %f -q', s, c);
     end
     
     %Training
