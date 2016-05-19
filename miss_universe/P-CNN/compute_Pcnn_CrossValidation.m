@@ -89,7 +89,7 @@ all_years = [ 2010 2007 2003 2002 2001 2000 1999 1998 1997 1996 ];
 
 
 %% RankSVM
-pc = 'uq'; % uq wanda home
+pc = 'wanda'; % uq wanda home
 svm_type = 'linear'; %'svm';    %libsvm
 features_folder = 'pcnn_vectors';
 view = 1;
