@@ -8,6 +8,7 @@ clear all
 clc
 warning off
 dbstop error;
+dbstop in compute_Pcnn_CrossValidation at 143
 %dbstop in save_pcnn_vectors at 32
 %dbstop in compute_Pcnn at 59
 %dbstop in my_compute_pcnn_features at 107
@@ -130,6 +131,7 @@ for i = 1: length( all_years)
     
     %Training
     train_rankSVM(path_dataset, view, years_train,  dim_pcnn, features_folder, svm_folder, svm_type, params, run);
+    
     %Testing
     [predicted_output, accuracy,  dec_values, labels_test, n_labels_test, scores, n_countries]  = test_rankSVM(path_dataset, features_folder, view, years_test, dim_pcnn,  svm_folder, svm_type, run);
     
@@ -148,27 +150,27 @@ for i = 1: length( all_years)
 
 end
 
-disp('Top @ p = length(real)')
-all_ndcg = [];
-for m=1:length( all_years)
-info_results{m,1}; 
-real= info_results{m,2}; 
-pred=info_results{m,3};
-p = length(real);
-real_scores = p:-1:1; %pred_scores = zeros(1,p);
-
-k = p;
-for v=1:p
-    pred_scores(v) = real_scores(find(real==pred(v))); 
-end
-
-% There 3 metrics for ndcg. opt can be 1,2 or 3.
-%I'm obtaining all of them 
-c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
-all_ndcg = [all_ndcg;c_ndcg];
-end
-all_ndcg = all_ndcg*100
-mean(all_ndcg)
+% disp('Top @ p = length(real)')
+% all_ndcg = [];
+% for m=1:length( all_years)
+% info_results{m,1}; 
+% real= info_results{m,2}; 
+% pred=info_results{m,3};
+% p = length(real);
+% real_scores = p:-1:1; %pred_scores = zeros(1,p);
+% 
+% k = p;
+% for v=1:p
+%     pred_scores(v) = real_scores(find(real==pred(v))); 
+% end
+% 
+% % There 3 metrics for ndcg. opt can be 1,2 or 3.
+% %I'm obtaining all of them 
+% c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
+% all_ndcg = [all_ndcg;c_ndcg];
+% end
+% all_ndcg = all_ndcg*100
+% mean(all_ndcg)
 
 
 
