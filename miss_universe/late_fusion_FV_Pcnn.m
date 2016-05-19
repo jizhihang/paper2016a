@@ -23,9 +23,14 @@ end
 %late_predicted_output = sign(late_fusion{1}') ;
 
 i =1;
-late_predicted_output_i = sign(late_fusion{i}');
 real_labels_i = all_labels_test{i}'; 
+
 predicted_output_Pcnn_i = all_predicted_output_Pcnn{i}';
+acc_Pcnn = length(find(real_labels_i==predicted_output_Pcnn_i))*100/length(real_labels_i);
+
+
+late_predicted_output_i = sign(late_fusion{i}');
+acc_late_fusion = length(find(real_labels_i==late_predicted_output_i))*100/length(real_labels_i);
 
 
 
