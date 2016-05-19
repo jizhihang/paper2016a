@@ -23,7 +23,7 @@ end
 %late_predicted_output = sign(late_fusion{1}') ;
 
 i =1;
-late_predicted_output_i = sign(late_fusion{i}') 
+late_predicted_output_i = sign(late_fusion{i}');
 real_labels_i = all_labels_test{i}'; 
 predicted_output_Pcnn_i = all_predicted_output_Pcnn{i}';
 
