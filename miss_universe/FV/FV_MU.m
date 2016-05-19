@@ -106,7 +106,7 @@ end
 
 %Save dec_values for best c & K
 save('dec_values_FV', 'all_dec_values_FV')
-
+save('info_results_Pcnn', 'info_results', 'all_years');
 
 %To visualise
 %all_predicted_order{i}
