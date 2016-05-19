@@ -6,6 +6,7 @@
 
 clear all
 clc
+warning off
 dbstop error;
 %dbstop in save_pcnn_vectors at 32
 %dbstop in compute_Pcnn at 59
