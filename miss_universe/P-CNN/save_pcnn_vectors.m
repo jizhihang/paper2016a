@@ -3,10 +3,10 @@ function save_pcnn_vectors(param)
 
 loadname=sprintf('%s/Xn_test.mat',param.savedir);
 disp(['Load test features in: ',loadname])
-load(loadname,'Xn_test','-v7.3')
+load(loadname,'Xn_test')
 loadname=sprintf('%s/Xn_train.mat',param.savedir);
 disp(['Load train features in: ',loadname])
-load(loadname,'Xn_train','-v7.3')
+load(loadname,'Xn_train')
 
 
 
