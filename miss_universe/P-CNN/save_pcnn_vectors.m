@@ -30,10 +30,17 @@ for i=1:length(split_train)
     
     namesave_vector  = [ './' features_folder '/' split_train(i)  '.h5'];
     hdf5write(char(namesave_vector), '/dataset1', pcnn_vector);
-    
-    
-    
-    
 end
+
+for i=1:length(split_test)
+    split_test(i)
+    
+    pcnn_vector = Xn_test(:,i);
+    
+    namesave_vector  = [ './' features_folder '/' split_test(i)  '.h5'];
+    hdf5write(char(namesave_vector), '/dataset1', pcnn_vector);
+end
+
+
 
 
