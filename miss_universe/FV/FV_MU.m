@@ -34,6 +34,7 @@ end
 
 info_results = cell(length( all_years), 3);
 
+all_dec_values = cell( length( all_years),1);
 
 for i = 1: length( all_years)
     
@@ -84,6 +85,8 @@ for i = 1: length( all_years)
         AA = [predicted_output  labels_test];
         all_accuracy(i,j) = accuracy(1);
         
+        all_dec_values {i} =dec_values;
+
         
         [a real_order]  = sort(scores', 'descend');
         BB  = [ predicted_output n_labels_test];
