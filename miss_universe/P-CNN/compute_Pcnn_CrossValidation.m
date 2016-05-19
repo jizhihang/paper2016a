@@ -99,10 +99,10 @@ dim_pcnn = 163840;
 [path_dataset] = set_paths(pc, svm_type);
 %vec_c = [ 0.1 1 10 100];
 
-prompt = 'c? ';
-c = input(prompt);
+%prompt = 'c? ';
+%c = input(prompt);
 
-%c =  0.1 ;
+c =  0.1 ;
 
 
 svm_folder = 'svm_models';
@@ -118,7 +118,9 @@ if  strcmp( svm_type, 'linear')
 
 end
 
-    
+all_dec_values = zeros(length(all_years), 1 );
+
+
 
 for i = 1: length( all_years)
     
@@ -138,6 +140,9 @@ for i = 1: length( all_years)
     
     %Testing
     [predicted_output, accuracy,  dec_values, labels_test, n_labels_test, scores, n_countries]  = test_rankSVM(path_dataset, features_folder, view, years_test, dim_pcnn,  svm_folder, svm_type, run);
+    
+    all_dec_values(i,1) = dec_values;
+    
     
     AA = [predicted_output  labels_test];
     all_accuracy(i,1) = accuracy(1); % only one c
