@@ -118,7 +118,7 @@ if  strcmp( svm_type, 'linear')
 
 end
 
-all_dec_values = [];
+all_dec_values = cell( length( all_years),1);
 
 
 
@@ -141,7 +141,7 @@ for i = 1: length( all_years)
     %Testing
     [predicted_output, accuracy,  dec_values, labels_test, n_labels_test, scores, n_countries]  = test_rankSVM(path_dataset, features_folder, view, years_test, dim_pcnn,  svm_folder, svm_type, run);
     
-    all_dec_values = [ all_dec_values dec_values];
+    all_dec_values {i} =dec_values;
     
     
     AA = [predicted_output  labels_test];
