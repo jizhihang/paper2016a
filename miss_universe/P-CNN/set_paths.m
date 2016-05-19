@@ -3,7 +3,7 @@ function [path_dataset] = set_paths(pc, svm_type)
 %% wanda
 if strcmp( pc, 'wanda')
     %VL
-    run('/home/johanna/toolbox/vlfeat-0.9.20/toolbox/vl_setup');
+    %run('/home/johanna/toolbox/vlfeat-0.9.20/toolbox/vl_setup');
     
        
     %libSVM
