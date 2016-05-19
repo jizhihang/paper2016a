@@ -34,7 +34,7 @@ end
 
 info_results = cell(length( all_years), 3);
 
-all_dec_values = cell( length( all_years),1);
+all_dec_values_FV = cell( length( all_years),1);
 
 for i = 1: length( all_years)
     
@@ -85,7 +85,7 @@ for i = 1: length( all_years)
         AA = [predicted_output  labels_test];
         all_accuracy(i,j) = accuracy(1);
         
-        all_dec_values {i} =dec_values;
+        all_dec_values_FV {i} =dec_values;
 
         
         [a real_order]  = sort(scores', 'descend');
@@ -103,6 +103,9 @@ for i = 1: length( all_years)
     info_results(i,3) = {predicted_order};
     
 end
+
+%Save dec_values for best c & K
+save('dec_values_FV', 'all_dec_values_FV')
 
 
 %To visualise
