@@ -1,4 +1,10 @@
-function save_pcnn_vectors(param)
+function save_pcnn_vectors(param, features_folder)
+
+if ~exist(features_folder, 'dir')
+    mkdir(features_folder);
+end
+
+
 
 
 loadname=sprintf('%s/Xn_test.mat',param.savedir);
@@ -19,7 +25,12 @@ split_test = importdata(param.testsplitpath) ;
 
 for i=1:length(split_train)
     split_train(i)
-    pause
+    
+    pcnn_vector = Xn_train(:,i);
+    
+    namesave_vector  = [ './' features_folder '/' split_train(i)  '.h5'];
+    hdf5write(char(namesave_vector), '/dataset1', pcnn_vector);
+    
     
     
     

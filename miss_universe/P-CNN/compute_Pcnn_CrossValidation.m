@@ -7,6 +7,7 @@
 clear all
 clc
 dbstop error;
+dbstop in save_pcnn_vectors at 32
 %dbstop in compute_Pcnn at 59
 %dbstop in my_compute_pcnn_features at 107
 
@@ -83,7 +84,8 @@ param.savedir = [ dataset_path 'features/features_' num2str(all_years(run))]; % 
 param.trainsplitpath = [dataset_path 'splits/MU_train_' num2str(run) '.txt']; % split paths
 param.testsplitpath =  [dataset_path 'splits/MU_test_'  num2str(run) '.txt'];
 %my_compute_pcnn_features(param); 
-save_pcnn_vectors(param);
+features_folder = 'pcnn_vectors';
+save_pcnn_vectors(param, features_folder);
 
 
 
