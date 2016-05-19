@@ -42,7 +42,16 @@ param.savedir = [ dataset_path 'features']; % P-CNN results directory
 param.impath = [dataset_path 'images']; % input images path (one folder per video)
 param.imext = '.jpg' ; % input image extension type
 param.jointpath = [ dataset_path 'joint_positions']; % human pose (one folder per video in which there is a file called 'joint_positions.mat')
-param.trainsplitpath = [dataset_path 'splits/MU_train.txt']; % split paths
+% split paths. 
+%Joha: As I only need the features w/o kernels:
+%The MU_train.txt  contain the list with all versions of MU
+%MU_test.tx: Contains one version and it's only used because otherwise the
+%code wouldn't run
+%File Xn_train.mat contain features for all versions of MU and all
+%participants
+
+
+param.trainsplitpath = [dataset_path 'splits/MU_train.txt']; 
 param.testsplitpath =  [dataset_path 'splits/MU_test.txt'];
 param.cachepath = 'cache'; % cache folder path
 param.net_app  = load([toolbox_path '/models/imagenet-vgg-f.mat']) ; % appearance net path

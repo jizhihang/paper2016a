@@ -7,7 +7,7 @@ clc
 %dbstop in  get_universalGMM at 14
 
 
-pc = 'wanda'; % uq wanda home
+pc = 'uq'; % uq wanda home
 svm_type = 'linear'; %'svm';    %libsvm
 [path_dataset path_features] = set_paths(pc, svm_type);
 
@@ -55,8 +55,8 @@ for i = 1: length( all_years)
     dim_FV = 2*dim*K;
     create_folders_FV(FV_folder, svm_folder, GMM_folder);
     
-    %get_universalGMM(path_dataset,  path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run)
-    %FV_MU_all_videos(path_dataset, path_features, view, all_years, K, GMM_folder, FV_folder, run)
+    get_universalGMM(path_dataset,  path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run)
+    FV_MU_all_videos(path_dataset, path_features, view, all_years, K, GMM_folder, FV_folder, run)
     
     
     %top_n = 1;
@@ -119,6 +119,8 @@ for v=1:p
     pred_scores(v) = real_scores(find(real==pred(v))); 
 end
 
+% There 3 metrics for ndcg. opt can be 1,2 or 3.
+%I'm obtaining all of them 
 c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
 all_ndcg = [all_ndcg;c_ndcg];
 end
