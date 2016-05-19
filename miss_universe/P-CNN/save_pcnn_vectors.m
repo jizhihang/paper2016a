@@ -13,8 +13,8 @@ load(loadname,'Xn_train')
 param.trainsplitpath; 
 param.testsplitpath;
 
-split_train = fopen(param.trainsplitpath) ;
-split_test = fopen(param.testsplitpath) ;
+split_train = importdata(param.trainsplitpath) ;
+split_test = importdata(param.testsplitpath) ;
 
 
 for i=1:length(split_train)
