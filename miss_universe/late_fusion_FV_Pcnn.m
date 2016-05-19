@@ -11,8 +11,8 @@ load('./P-CNN/info_results_Pcnn', 'info_results', 'all_years');
 %info_results(i,5) -> predicted_output;
 
 
-all_labels_test = info_results(i,4)
-
+all_labels_test = info_results(:,4);
+all_predicted_output_Pcnn =  info_results(:,5);
 
 late_fusion = cell( length(all_dec_values_Pcnn),1);
 
@@ -21,3 +21,12 @@ late_fusion{i} = all_dec_values_Pcnn{i} + all_dec_values_FV{i};
 end
 
 %late_predicted_output = sign(late_fusion{1}') ;
+
+i =1;
+late_predicted_output_i = sign(late_fusion{i}') 
+real_labels_i = all_labels_test{i}'; 
+predicted_output_Pcnn_i = all_predicted_output_Pcnn{i}';
+
+
+
+
