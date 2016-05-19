@@ -1,4 +1,4 @@
-save_pcnn_vectors(param)
+function save_pcnn_vectors(param)
 
 
 loadname=sprintf('%s/Xn_test.mat',param.savedir);
@@ -19,6 +19,7 @@ split_test = fopen(param.testsplitpath) ;
 
 for i=1:length(split_train)
     split_train(i)
+    pause
     
     
     
