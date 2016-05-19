@@ -98,7 +98,11 @@ view = 1;
 dim_pcnn = 163840;
 [path_dataset] = set_paths(pc, svm_type);
 %vec_c = [ 0.1 1 10 100];
-c =  0.1 ;
+
+prompt = 'c? ';
+c = input(prompt);
+
+%c =  0.1 ;
 
 
 svm_folder = 'svm_models';
