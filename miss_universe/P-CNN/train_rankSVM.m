@@ -41,20 +41,20 @@ for y=1:n_years
     
     for c = 1:n_countries
         
-        load_FV =  strcat('./', features_folder, '/', year, '_', countries(c), '-', num2str(view), '.h5' );
-        S = char(load_FV);
-        FV_one_video= hdf5info(S);
-        FV1 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
+        load_vector =  strcat('./', features_folder, '/', year, '_', countries(c), '-', num2str(view), '.h5' );
+        S = char(load_vector);
+        pcnn_vector_one_video= hdf5info(S);
+        V1 = hdf5read(pcnn_vector_one_video.GroupHierarchy.Datasets(1)); 
         
         %for c2 = 1 : n_countries %case A
         for c2 = c + 1 : n_countries %case B
          
-                load_FV =  strcat('./', features_folder, '/', year, '_', countries(c2),  '-', num2str(view) , '.h5' );
-                S = char(load_FV);
-                FV_one_video= hdf5info(S);
-                FV2 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
+                load_vector =  strcat('./', features_folder, '/', year, '_', countries(c2),  '-', num2str(view) , '.h5' );
+                S = char(load_vector);
+                pcnn_vector_one_video= hdf5info(S);
+                V2 = hdf5read(pcnn_vector_one_video.GroupHierarchy.Datasets(1)); 
                 
-                X_train(:,j) = FV1-FV2;
+                X_train(:,j) = V1-V2;
                 
                 n_labels_train (j,1)  = c;
                 n_labels_train (j,2)  = c2;
@@ -80,8 +80,3 @@ if strcmp( svm_type, 'linear')
     save(save_svm_model, 'model');
 end
 
-
-    %data_train = X_train';
-    %model = svmtrain(labels_train, data_train, [params]);
-    %save_svm_model = strcat( './',svm_folder, '/FV_K', num2str(K), '_view', num2str(view) , '_run', num2str(run), '.mat');
-    %save(save_svm_model, 'model');
