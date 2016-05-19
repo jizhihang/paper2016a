@@ -49,7 +49,7 @@ for y=1:n_years
         %for c2 = 1 : n_countries %case A
         for c2 = c + 1 : n_countries %case B
          
-                load_FV =  strcat('./', features_folder, '/', year, '-', countries(c2),  '-', num2str(view) , '.h5' );
+                load_FV =  strcat('./', features_folder, '/', year, '_', countries(c2),  '-', num2str(view) , '.h5' );
                 S = char(load_FV);
                 FV_one_video= hdf5info(S);
                 FV2 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
