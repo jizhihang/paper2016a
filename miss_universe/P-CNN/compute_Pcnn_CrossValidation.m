@@ -1,8 +1,8 @@
 %% Demo to compute P-CNN
 % Report bugs to guilhem.cheron@inria.fr
 %
-% 
-% ENABLE GPU support (in my_build.m) and MATLAB Parallel Pool to speed up computation (parpool) 
+%
+% ENABLE GPU support (in my_build.m) and MATLAB Parallel Pool to speed up computation (parpool)
 
 clear all
 clc
@@ -30,7 +30,7 @@ matconvpath = '/home/johanna/toolbox/pose/features_for_videos/P-CNN-master/matco
 
 %%
 run([matconvpath '/my_build.m']); % compile: modify this file to enable GPU support (much faster)
-run([matconvpath '/matlab/vl_setupnn.m']) ; % setup  
+run([matconvpath '/matlab/vl_setupnn.m']) ; % setup
 
 
 %% P-CNN computation
@@ -75,25 +75,56 @@ if ~exist(param.cachepath,'dir'); mkdir(param.cachepath) ; end % create cache fo
 all_years = [ 2010 2007 2003 2002 2001 2000 1999 1998 1997 1996 ];
 
 
-% compute P-CNN for one split. 
-%I doesn't make sense. 
+%% compute P-CNN for one split.
+%I doesn't make sense.
 %Just run one time
 
-run =1;
-param.savedir = [ dataset_path 'features/features_' num2str(all_years(run))]; % P-CNN results directory
-param.trainsplitpath = [dataset_path 'splits/MU_train_' num2str(run) '.txt']; % split paths
-param.testsplitpath =  [dataset_path 'splits/MU_test_'  num2str(run) '.txt'];
-%my_compute_pcnn_features(param); 
-features_folder = 'pcnn_vectors';
-save_pcnn_vectors(param, features_folder);
-
-
-
-%for run=1:10
+%run =1;
 %param.savedir = [ dataset_path 'features/features_' num2str(all_years(run))]; % P-CNN results directory
 %param.trainsplitpath = [dataset_path 'splits/MU_train_' num2str(run) '.txt']; % split paths
 %param.testsplitpath =  [dataset_path 'splits/MU_test_'  num2str(run) '.txt'];
-%end
+%my_compute_pcnn_features(param);
+%features_folder = 'pcnn_vectors';
+%save_pcnn_vectors(param, features_folder);
+
+
+%% RankSVM
+pc = 'uq'; % uq wanda home
+svm_type = 'linear'; %'svm';    %libsvm
+features_folder = 'pcnn_vectors';
+view = 1;
+dim_pcnn = 163840;
+[path_dataset] = set_paths(pc, svm_type);
+%vec_c = [ 0.1 1 10 100];
+c =  0.1 ;
+
+
+svm_folder = 'svm_models';
+
+if ~exist(svm_folder, 'dir')
+    mkdir(svm_folder);
+end
+
+
+    
+
+for i = 1: length( all_years)
+    
+    run = i;
+    years_train  =  all_years;
+    years_train(i) = [];
+    years_test  = all_years(i) ;
+   
+    
+    
+    if strcmp( svm_type, 'linear')
+        params =  sprintf('-s %f  -c %f -q', s, c);
+    end
+    
+    train_rankSVM(path_dataset, view, years_train,  dim_pcnn, features_folder, svm_folder, svm_type, params, run);
+    
+    
+end
 
 
 
