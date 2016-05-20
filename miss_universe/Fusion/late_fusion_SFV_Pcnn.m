@@ -5,8 +5,8 @@ project_path = fileparts(my_path);
 load( [ project_path '/SFV/dec_values_SFV.mat' ]);
 load( [ project_path '/P-CNN/dec_values_Pcnn.mat' ]);
 
-load([ project_path '/P-CNN/info_results_Pcnn', 'info_results', 'all_years') ];
-load([ project_path '/SFV/info_results_SFV', 'info_results_SFV') ];
+load([ project_path '/P-CNN/info_results_Pcnn', 'info_results', 'all_years'] ) ;
+load([ project_path '/SFV/info_results_SFV', 'info_results_SFV' ] ) ;
 
 %De Info Results I only need labels_test
 %info_results(i,1) -> accuracy(1)
