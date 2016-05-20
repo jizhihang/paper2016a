@@ -88,7 +88,7 @@ for i = 1: length( all_years)
         
         
         %Training
-        train_rankSVM_both(params, params_svm, svm_folder, svm_type);
+        train_rankSVM_both(params, params_svm, svm_type);
         
         %Testing
         %[predicted_output, accuracy, dec_values, labels_test,  n_labels_test, scores, n_countries]  = FV_test_rankSVM(path_dataset, view, years_test, K, dim_FV, FV_folder_ly2, svm_folder, svm_type, run);
