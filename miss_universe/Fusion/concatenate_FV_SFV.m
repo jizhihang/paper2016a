@@ -39,7 +39,7 @@ end
 
 
 
-info_results = cell(length( all_years), 5);
+info_results = cell(length( all_years), 3);
 all_predicted_order = cell(length( all_years),1);
 all_real_order = cell(length( all_years),1);
 
@@ -91,29 +91,28 @@ for i = 1: length( all_years)
         train_rankSVM_both(params, params_svm, svm_type);
         
         %Testing
-        %[predicted_output, accuracy, dec_values, labels_test,  n_labels_test, scores, n_countries]  = FV_test_rankSVM(path_dataset, view, years_test, K, dim_FV, FV_folder_ly2, svm_folder, svm_type, run);
-        %AA = [predicted_output  labels_test];
-        %all_accuracy(i,j) = accuracy(1);
+        [predicted_output, accuracy, dec_values, labels_test,  n_labels_test, scores, n_countries]  = test_rankSVM_both(params,  svm_type);
+        AA = [predicted_output  labels_test];
+        all_accuracy(i,j) = accuracy(1);
         
     
         
         
-        %[a real_order]  = sort(scores', 'descend');
-        %BB  = [ predicted_output n_labels_test];
-        %predicted_order = get_predicted_list(BB, n_countries);
+        [a real_order]  = sort(scores', 'descend');
+        BB  = [ predicted_output n_labels_test];
+        predicted_order = get_predicted_list(BB, n_countries);
        
         
     end
     
 % Solo lo puedo hacer cuando vec_c tiene un solo elemento:
-%     all_predicted_order(i) = {predicted_order};
-%     all_real_order(i) = {real_order};
-%     
-%     info_results_SFV(i,1) = {accuracy(1)};
-%     info_results_SFV(i,2) = {real_order};
-%     info_results_SFV(i,3) = {predicted_order};
-%     info_results_SFV(i,4) = {labels_test};
-%     info_results_SFV(i,5) = {predicted_output };
+     all_predicted_order(i) = {predicted_order};
+     all_real_order(i) = {real_order};
+     
+     info_results(i,1) = {accuracy(1)};
+     info_results(i,2) = {real_order};
+     info_results(i,3) = {predicted_order};
+
 %     
     
 end
