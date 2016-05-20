@@ -97,7 +97,7 @@ end
 
 %% libLinear
 if strcmp( svm_type, 'linear')
-    load_svm_model = strcat( './svm_models',  '/FV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat');
+    load_svm_model = strcat( './svm_models',  '/concFV_SFV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat');
     load(load_svm_model) % Loading  model obtained with libLinear
     sparse_X_test =  sparse(X_test');
     [predicted_output, accuracy, dec_values] = predict(labels_test,sparse_X_test , model);
