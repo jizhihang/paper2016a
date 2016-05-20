@@ -18,7 +18,7 @@ all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
 
 %prompt = 'K? ';
 %K = input(prompt);
-K = 256;
+K = 128;
 view = 1;
 
 %Parameters
