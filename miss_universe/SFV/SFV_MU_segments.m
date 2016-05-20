@@ -61,10 +61,12 @@ end
 
 
 
-info_results = cell(length( all_years), 3);
+info_results = cell(length( all_years), 5);
 all_predicted_order = cell(length( all_years),1);
 all_real_order = cell(length( all_years),1);
 
+
+all_dec_values_SFV = cell( length( all_years),1);
 
 
 for i = 1: length( all_years)
@@ -101,6 +103,9 @@ for i = 1: length( all_years)
         all_accuracy(i,j) = accuracy(1);
         %all_AP(i,j) = average_precision(predicted_output, labels_test);
         
+        all_dec_values_SFV {i} =dec_values;
+        
+        
         [a real_order]  = sort(scores', 'descend');
         BB  = [ predicted_output n_labels_test];
         predicted_order = get_predicted_list(BB, n_countries);
@@ -112,36 +117,42 @@ for i = 1: length( all_years)
     all_predicted_order(i) = {predicted_order};
     all_real_order(i) = {real_order};
     
-    info_results(i,1) = {accuracy(1)};
-    info_results(i,2) = {real_order};
-    info_results(i,3) = {predicted_order};
+    info_results_SFV(i,1) = {accuracy(1)};
+    info_results_SFV(i,2) = {real_order};
+    info_results_SFV(i,3) = {predicted_order};
+    info_results_SFV(i,4) = {labels_test};
+    info_results_SFV(i,5) = {predicted_output };
     
     
 end
+
+
+save('dec_values_SFV', 'all_dec_values_SFV')
+save('info_results_SFV', 'info_results_SFV');
 
 
 %To visualise
 %all_predicted_order{i}
 
-disp('Top @ p = length(real)')
-all_ndcg = [];
-for m=1:length( all_years)
-info_results{m,1}; 
-real= info_results{m,2}; 
-pred=info_results{m,3};
-p = length(real);
-real_scores = p:-1:1; %pred_scores = zeros(1,p);
-
-k = p;
-for v=1:p
-    pred_scores(v) = real_scores(find(real==pred(v))); 
-end
-
-c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
-all_ndcg = [all_ndcg;c_ndcg];
-end
-all_ndcg = all_ndcg*100
-mean(all_ndcg)
+% disp('Top @ p = length(real)')
+% all_ndcg = [];
+% for m=1:length( all_years)
+% info_results{m,1}; 
+% real= info_results{m,2}; 
+% pred=info_results{m,3};
+% p = length(real);
+% real_scores = p:-1:1; %pred_scores = zeros(1,p);
+% 
+% k = p;
+% for v=1:p
+%     pred_scores(v) = real_scores(find(real==pred(v))); 
+% end
+% 
+% c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
+% all_ndcg = [all_ndcg;c_ndcg];
+% end
+% all_ndcg = all_ndcg*100
+% mean(all_ndcg)
 
 
 % % Top:
