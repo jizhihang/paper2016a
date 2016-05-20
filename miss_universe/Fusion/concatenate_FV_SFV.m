@@ -68,8 +68,8 @@ for i = 1: length( all_years)
     years_train(i) = [];
     years_test  = all_years(i) ;
     
-   
-
+    
+    
     
     
     % Dimensionality of SFV
@@ -82,51 +82,43 @@ for i = 1: length( all_years)
     
     params.years_train = years_train;
     params.years_test = years_test;
-
-    params.dim_SFV = dim_SFV;    
+    
+    params.dim_SFV = dim_SFV;
     params.dim_FV  = dim_FV;
-
+    
     params.run = run;
-
-
     
-    
-    for j = 1: length(vec_c)
-        c = vec_c (j);
-        
-        if strcmp( svm_type, 'linear')
-            params_svm =  sprintf('-s %f  -c %f -q', s, c);
-        end
-        
-        
-        
-        %Training
-        train_rankSVM_both(params, params_svm, svm_type);
-        
-        %Testing
-        [predicted_output, accuracy, dec_values, labels_test,  n_labels_test, scores, n_countries]  = test_rankSVM_both(params,  svm_type);
-        AA = [predicted_output  labels_test];
-        all_accuracy(i,j) = accuracy(1);
-        
-    
-        
-        
-        [a real_order]  = sort(scores', 'descend');
-        BB  = [ predicted_output n_labels_test];
-        predicted_order = get_predicted_list(BB, n_countries);
-       
-        
+    if strcmp( svm_type, 'linear')
+        params_svm =  sprintf('-s %f  -c %f -q', s, c);
     end
     
-% Solo lo puedo hacer cuando vec_c tiene un solo elemento:
-     all_predicted_order(i) = {predicted_order};
-     all_real_order(i) = {real_order};
-     
-     info_results(i,1) = {accuracy(1)};
-     info_results(i,2) = {real_order};
-     info_results(i,3) = {predicted_order};
-
-%     
+    
+    
+    %Training
+    train_rankSVM_both(params, params_svm, svm_type);
+    
+    %Testing
+    [predicted_output, accuracy, dec_values, labels_test,  n_labels_test, scores, n_countries]  = test_rankSVM_both(params,  svm_type);
+    AA = [predicted_output  labels_test];
+    all_accuracy(i,1) = accuracy(1);
+    
+    
+    
+    
+    [a real_order]  = sort(scores', 'descend');
+    BB  = [ predicted_output n_labels_test];
+    predicted_order = get_predicted_list(BB, n_countries);
+    
+    
+    % Solo lo puedo hacer cuando vec_c tiene un solo elemento:
+    all_predicted_order(i) = {predicted_order};
+    all_real_order(i) = {real_order};
+    
+    info_results(i,1) = {accuracy(1)};
+    info_results(i,2) = {real_order};
+    info_results(i,3) = {predicted_order};
+    
+    %
     
 end
 
@@ -139,17 +131,17 @@ end
 % disp('Top @ p = length(real)')
 % all_ndcg = [];
 % for m=1:length( all_years)
-% info_results{m,1}; 
-% real= info_results{m,2}; 
+% info_results{m,1};
+% real= info_results{m,2};
 % pred=info_results{m,3};
 % p = length(real);
 % real_scores = p:-1:1; %pred_scores = zeros(1,p);
-% 
+%
 % k = p;
 % for v=1:p
-%     pred_scores(v) = real_scores(find(real==pred(v))); 
+%     pred_scores(v) = real_scores(find(real==pred(v)));
 % end
-% 
+%
 % c_ndcg = [ ndcg(pred_scores,real_scores,k, 1) ndcg(pred_scores,real_scores,k, 2) ndcg(pred_scores,real_scores,k, 3)];
 % all_ndcg = [all_ndcg;c_ndcg];
 % end
@@ -158,7 +150,7 @@ end
 
 
 % % Top:
-% 
+%
 % top_k = 1; %1 or 3 or 5
 % acc = 0;
 % for m =1:length( all_years)
@@ -169,9 +161,9 @@ end
 %     %disp('**************')
 %     %pause
 % end
-% 
+%
 % acc = acc/ length( all_years)
-   
+
 
 
 
