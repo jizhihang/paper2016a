@@ -84,8 +84,8 @@ for y=1:n_years
 end
    
 
-if ~exist(svm_models, 'dir')
-    mkdir(svm_models);
+if ~exist('svm_models', 'dir')
+    mkdir('svm_models');
 end
 
 
