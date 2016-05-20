@@ -2,7 +2,7 @@ load ./SFV/dec_values_SFV.mat
 load ./P-CNN/dec_values_Pcnn.mat
 
 load('./P-CNN/info_results_Pcnn', 'info_results', 'all_years');
-load('./SFV/info_results_FV', 'info_results_FV');
+load('./SFV/info_results_SFV', 'info_results_SFV');
 
 %De Info Results I only need labels_test
 %info_results(i,1) -> accuracy(1)
