@@ -1,8 +1,9 @@
 
 %% Only useful for Leave-One-Out Cross Validation
-function [predicted_output, project_path, accuracy,  dec_values, labels_test, n_labels_test, scores, n_countries]  = test_rankSVM_both(params,  svm_type)
+function [predicted_output, , accuracy,  dec_values, labels_test, n_labels_test, scores, n_countries]  = test_rankSVM_both(params,  svm_type)
 
 path_dataset = params.path_dataset;
+project_path = params.project_path;
 view = params.view;
 years_test = params.years_test;
 K = params.K;
