@@ -82,7 +82,13 @@ for y=1:n_years
         end
     end
 end
-      
+   
+
+if ~exist(svm_models, 'dir')
+    mkdir(svm_models);
+end
+
+
 
 if strcmp( svm_type, 'linear')
     %svm_type
