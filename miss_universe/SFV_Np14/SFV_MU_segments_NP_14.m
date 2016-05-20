@@ -51,7 +51,7 @@ create_folders_FV_ly2(FV_folder_ly2, svm_folder, GMM_folder_2);
 
 
 
-% crear params using libSVM
+% create params using libSVM
 
 if  strcmp( svm_type, 'linear')
     s = 1; % L2-regularized L2-loss support vector classification (dual)
