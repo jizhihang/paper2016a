@@ -6,10 +6,12 @@ project_path = params.project_path;
 view = params.view;
 years_train = params.years_train;
 K = params.K;
+dim_SFV = params.dim_SFV;
 dim_FV = params.dim_FV;
+
 FV_folder_ly2 = params.FV_folder_ly2;
 run = params.run;
-
+FV_folder = params.FV_folder;
 
 
 
@@ -29,7 +31,7 @@ for y=1:n_years
 end
 
 
-X_train = zeros( dim_FV,  n_comparisons );
+X_train = zeros( dim_FV + dim_SFV,  n_comparisons );
 labels_train = zeros(n_comparisons,1);
 n_labels_train = zeros(n_comparisons,2);
 j = 1;
@@ -53,20 +55,40 @@ for y=1:n_years
     
     for c = 1:n_countries
         
+        %SFV
         load_FV =  strcat(project_path, '/SFV/', FV_folder_ly2, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run),'.h5' );
+        S = char(load_FV);
+        FV_one_video= hdf5info(S);
+        SFV1 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
+        
+        %FV
+        load_FV =  strcat(project_path, '/FV/', FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run),'.h5' );
         S = char(load_FV);
         FV_one_video= hdf5info(S);
         FV1 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
         
+        
+        V1 = [FV1 SFV1];
+        
+        
         %for c2 = 1 : n_countries %case A
         for c2 = c + 1 : n_countries %case B
-         
+                 
+                %SFV
                 load_FV =  strcat(project_path, '/SFV/', FV_folder_ly2, '/MissUniverse', year, '/', countries(c2),  '_view', num2str(view) , '_run', num2str(run) ,'.h5' );
+                S = char(load_FV);
+                FV_one_video= hdf5info(S);
+                SFV2 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
+                
+                %FV
+                load_FV =  strcat(project_path, '/FV/', FV_folder, '/MissUniverse', year, '/', countries(c2),  '_view', num2str(view) , '_run', num2str(run) ,'.h5' );
                 S = char(load_FV);
                 FV_one_video= hdf5info(S);
                 FV2 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
                 
-                X_train(:,j) = FV1-FV2;
+                V2 = [FV2 SFV2];
+                
+                X_train(:,j) = V1-V2;
                 
                 n_labels_train (j,1)  = c;
                 n_labels_train (j,2)  = c2;

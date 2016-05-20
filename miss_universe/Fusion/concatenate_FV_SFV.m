@@ -27,6 +27,9 @@ view = 1;
 FV_folder_ly1 = strcat('layer1/FV_K', num2str(K));
 FV_folder_ly2 = strcat('layer2/FV_K', num2str(K));
 
+%For FV
+FV_folder = strcat('FV_K', num2str(K));
+
 
 
 % crear params using libSVM
@@ -49,6 +52,10 @@ project_path = fileparts(my_path);
 
 params.path_dataset = path_dataset;
 params.project_path = project_path;
+params.FV_folder_ly2 = FV_folder_ly2;
+params.FV_folder = FV_folder;
+
+
 params.view = view;
 params.K = K;
 
@@ -68,13 +75,15 @@ for i = 1: length( all_years)
     load(char(load_rp_data),'NP');
     
     dim = NP;
-    dim_FV = 2*dim*K;
+    dim_SFV = 2*dim*K;
+    dim_FV = 2*14*K;
     
     params.years_train = years_train;
     params.years_test = years_test;
 
-    params.dim_FV = dim_FV;
-    params.FV_folder_ly2 = FV_folder_ly2;
+    params.dim_SFV = dim_SFV;    
+    params.dim_FV  = dim_FV;
+
     params.run = run;
 
 
