@@ -13,9 +13,6 @@ pc = 'wanda'; % uq wanda home
 svm_type = 'linear'; %'svm';    %libsvm
 [path_dataset path_features] = set_paths(pc, svm_type);
 
-%MU_years = importdata('miss_universe_list.txt');
-
-%all_years = [  2010 2007 2003 2002 2001 ];
 all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
 
 
@@ -44,9 +41,8 @@ svm_folder = 'layer2/svm_models';
 FV_folder_ly2 = strcat('layer2/FV_K', num2str(K));
 create_folders_FV_ly2(FV_folder_ly2, svm_folder, GMM_folder_2);
 
-
-%main_FV_layer1(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder, GMM_folder_1  );
-%main_FV_layer2(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder, FV_folder_ly2, GMM_folder_2)
+main_FV_layer1_NP_14(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder, GMM_folder_1  );
+main_FV_layer2_NP_14(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder, FV_folder_ly2, GMM_folder_2)
 
 
 

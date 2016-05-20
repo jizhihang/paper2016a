@@ -1,4 +1,4 @@
-function FV_train_rankSVM(path_dataset, view, years_train, K, dim_FV, FV_folder, svm_folder, svm_type, params, run)
+function FV_train_rankSVM(path_dataset, view, years_train, K, dim_FV, FV_folder_ly2, svm_folder, svm_type, params, run)
 
 
 n_years = length(years_train);
@@ -41,7 +41,7 @@ for y=1:n_years
     
     for c = 1:n_countries
         
-        load_FV =  strcat('./', FV_folder, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run),'.h5' );
+        load_FV =  strcat('./', FV_folder_ly2, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run),'.h5' );
         S = char(load_FV);
         FV_one_video= hdf5info(S);
         FV1 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
@@ -49,13 +49,10 @@ for y=1:n_years
         %for c2 = 1 : n_countries %case A
         for c2 = c + 1 : n_countries %case B
          
-                load_FV =  strcat('./', FV_folder, '/MissUniverse', year, '/', countries(c2),  '_view', num2str(view) , '_run', num2str(run) ,'.h5' );
+                load_FV =  strcat('./', FV_folder_ly2, '/MissUniverse', year, '/', countries(c2),  '_view', num2str(view) , '_run', num2str(run) ,'.h5' );
                 S = char(load_FV);
                 FV_one_video= hdf5info(S);
                 FV2 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
-                
-                
-                
                 
                 X_train(:,j) = FV1-FV2;
                 
@@ -73,20 +70,18 @@ for y=1:n_years
         end
     end
 end
+      
 
 if strcmp( svm_type, 'linear')
     %svm_type
     sparse_X_train =  sparse(X_train');
     model = train(labels_train, sparse_X_train, [params]);
-    save_svm_model = strcat( './', svm_folder, '/libLinear_FV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat');
+    save_svm_model = strcat( './', svm_folder, '/FV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat');
     save(save_svm_model, 'model');
 end
-      
 
-if strcmp( svm_type, 'svm')
 
-    data_train = X_train';
-    model = svmtrain(labels_train, data_train, [params]);
-    save_svm_model = strcat( './',svm_folder, '/FV_K', num2str(K), '_view', num2str(view) , '_run', num2str(run), '.mat');
-    save(save_svm_model, 'model');
-end
+    %data_train = X_train';
+    %model = svmtrain(labels_train, data_train, [params]);
+    %save_svm_model = strcat( './',svm_folder, '/FV_K', num2str(K), '_view', num2str(view) , '_run', num2str(run), '.mat');
+    %save(save_svm_model, 'model');
