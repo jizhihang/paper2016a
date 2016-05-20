@@ -1,3 +1,6 @@
+clear all
+clc
+
 my_path = pwd;
 project_path = fileparts(my_path);
 
