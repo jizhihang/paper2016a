@@ -17,7 +17,9 @@ all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
 
 %Parameters
 %vec_c = [ 0.1 1 10 100];
-vec_c = [ 10 ] ;
+%vec_c = [ 10 ] ;
+prompt = 'c? ';
+c = input(prompt);
 K = 256;
 view = 1;
 
