@@ -1,5 +1,8 @@
-load ./FV/dec_values_FV.mat 
-load ./P-CNN/dec_values_Pcnn.mat
+my_path = pwd;
+project_path = fileparts(my_path);
+
+load( [ project_path './FV/dec_values_FV.mat '])
+load( [project_path './P-CNN/dec_values_Pcnn.mat'])
 
 load('./P-CNN/info_results_Pcnn', 'info_results', 'all_years');
 load('./FV/info_results_FV', 'info_results_FV');
