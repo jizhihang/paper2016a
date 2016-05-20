@@ -47,7 +47,7 @@ all_real_order = cell(length( all_years),1);
 my_path = pwd;
 project_path = fileparts(my_path);
 
-params.path_datasets = path_dataset;
+params.path_dataset = path_dataset;
 params.project_path = project_path;
 params.view = view;
 params.K = K;
