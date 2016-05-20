@@ -100,9 +100,9 @@ for i = 1: length( all_years)
     
         
         
-        %[a real_order]  = sort(scores', 'descend');
-        %BB  = [ predicted_output n_labels_test];
-        %predicted_order = get_predicted_list(BB, n_countries);
+        [a real_order]  = sort(scores', 'descend');
+        BB  = [ predicted_output n_labels_test];
+        predicted_order = get_predicted_list(BB, n_countries);
        
         
     end

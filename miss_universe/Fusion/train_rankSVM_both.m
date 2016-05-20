@@ -94,6 +94,6 @@ if strcmp( svm_type, 'linear')
     %svm_type
     sparse_X_train =  sparse(X_train');
     model = train(labels_train, sparse_X_train, [params_svm]);
-    save_svm_model = strcat( './svm_models', '/concFV_SFV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat')
+    save_svm_model = strcat( './svm_models', '/concFV_SFV_K', num2str(K), '_view', num2str(view), '_run', num2str(run), '.mat');
     save(save_svm_model, 'model');
 end
