@@ -68,7 +68,7 @@ for y=1:n_years
         FV1 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
         
         
-        V1 = [FV1 SFV1];
+        V1 = [FV1; SFV1];
         
         
         %for c2 = 1 : n_countries %case A
@@ -86,7 +86,7 @@ for y=1:n_years
                 FV_one_video= hdf5info(S);
                 FV2 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
                 
-                V2 = [FV2 SFV2];
+                V2 = [FV2; SFV2];
                 
                 X_train(:,j) = V1-V2;
                 
