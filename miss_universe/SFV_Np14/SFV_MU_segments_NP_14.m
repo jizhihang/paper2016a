@@ -41,6 +41,8 @@ svm_folder = 'layer2/svm_models';
 FV_folder_ly2 = strcat('layer2/FV_K', num2str(K));
 create_folders_FV_ly2(FV_folder_ly2, svm_folder, GMM_folder_2);
 
+
+
 main_FV_layer1_NP_14(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder, GMM_folder_1  );
 main_FV_layer2_NP_14(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder, FV_folder_ly2, GMM_folder_2)
 
