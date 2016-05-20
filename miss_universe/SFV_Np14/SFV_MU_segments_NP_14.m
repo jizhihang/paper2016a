@@ -46,8 +46,8 @@ create_folders_FV_ly2(FV_folder_ly2, svm_folder, GMM_folder_2);
 
 
 
-%main_FV_layer1_NP_14(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder, GMM_folder_1  );
-%main_FV_layer2_NP_14(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder, FV_folder_ly2, GMM_folder_2)
+main_FV_layer1_NP_14(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder, GMM_folder_1  );
+main_FV_layer2_NP_14(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder, FV_folder_ly2, GMM_folder_2)
 
 
 
@@ -92,7 +92,7 @@ for i = 1: length( all_years)
             params =  sprintf('-s %f  -c %f -q', s, c);
         end
         
-        
+        sprintf('year %d  -c %f ',  years_test, c)
         
         %Training
         FV_train_rankSVM(path_dataset, view, years_train, K, dim_FV, FV_folder_ly2, svm_folder, svm_type, params, run)
