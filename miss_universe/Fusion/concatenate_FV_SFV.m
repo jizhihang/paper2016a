@@ -71,6 +71,8 @@ for i = 1: length( all_years)
     dim_FV = 2*dim*K;
     
     params.years_train = years_train;
+    params.years_test = years_test;
+
     params.dim_FV = dim_FV;
     params.FV_folder_ly2 = FV_folder_ly2;
     params.run = run;
