@@ -1,11 +1,11 @@
 my_path = pwd;
 project_path = fileparts(my_path);
 
-load( [ project_path './FV/dec_values_FV.mat '])
-load( [project_path './P-CNN/dec_values_Pcnn.mat'])
+load( [ project_path '/FV/dec_values_FV.mat ']);
+load( [project_path '/P-CNN/dec_values_Pcnn.mat']);
 
-load('./P-CNN/info_results_Pcnn', 'info_results', 'all_years');
-load('./FV/info_results_FV', 'info_results_FV');
+load([ project_path '/P-CNN/info_results_Pcnn', 'info_results', 'all_years']);
+load([ project_path '/FV/info_results_FV', 'info_results_FV'] );
 
 %De Info Results I only need labels_test
 %info_results(i,1) -> accuracy(1)
@@ -50,6 +50,8 @@ for i=1:num_years
 
 end
 
+acc_FV_PCNN_lateFusion
+mean(acc_FV_PCNN_lateFusion)
 
 
 
