@@ -38,7 +38,7 @@ FV_folder = strcat('FV_K', num2str(K));
 
 if  strcmp( svm_type, 'linear')
     s = 1; % L2-regularized L2-loss support vector classification (dual)
-    all_accuracy = zeros(length(all_years), length(vec_c) );
+    all_accuracy = zeros(length(all_years), 1 ); %Only one value of c
     %all_AP = zeros(length(all_years), length(vec_c) );
 end
 
