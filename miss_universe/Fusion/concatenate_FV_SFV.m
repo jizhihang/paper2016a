@@ -64,7 +64,7 @@ for i = 1: length( all_years)
     
     
     % Dimensionality of SFV
-    load_rp_data = strcat(project_path, '/', FV_folder_ly1, '/pca_projection_data_run', num2str(run));
+    load_rp_data = strcat(project_path, '/SFV/', FV_folder_ly1, '/pca_projection_data_run', num2str(run));
     load(char(load_rp_data),'NP');
     
     dim = NP;
