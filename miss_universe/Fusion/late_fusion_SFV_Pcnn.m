@@ -3,7 +3,6 @@ clc
 my_path = pwd;
 project_path = fileparts(my_path);
 
-
 load( [ project_path '/SFV/dec_values_SFV.mat' ]);
 load( [ project_path '/P-CNN/dec_values_Pcnn.mat' ]);
 

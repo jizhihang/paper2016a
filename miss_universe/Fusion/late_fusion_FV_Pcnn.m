@@ -1,10 +1,9 @@
 clear all
 clc
-
 my_path = pwd;
 project_path = fileparts(my_path);
 
-load( [ project_path '/FV/dec_values_FV.mat ']);
+load( [ project_path '/FV/dec_values_FV.mat']);
 load( [project_path '/P-CNN/dec_values_Pcnn.mat']);
 
 load([ project_path '/P-CNN/info_results_Pcnn'], 'info_results', 'all_years');
