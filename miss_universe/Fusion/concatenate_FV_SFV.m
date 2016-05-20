@@ -47,10 +47,10 @@ all_real_order = cell(length( all_years),1);
 my_path = pwd;
 project_path = fileparts(my_path);
 
-param.path_datasets = path_dataset;
-param.project_path = project_path;
-param.view = view;
-param.K = K;
+params.path_datasets = path_dataset;
+params.project_path = project_path;
+params.view = view;
+params.K = K;
 
 for i = 1: length( all_years)
     
@@ -70,10 +70,10 @@ for i = 1: length( all_years)
     dim = NP;
     dim_FV = 2*dim*K;
     
-    param.years_train = years_train;
-    param.dim_FV = dim_FV;
-    param.FV_folder_ly2 = FV_folder_ly2;
-    param.run = run;
+    params.years_train = years_train;
+    params.dim_FV = dim_FV;
+    params.FV_folder_ly2 = FV_folder_ly2;
+    params.run = run;
 
 
     
