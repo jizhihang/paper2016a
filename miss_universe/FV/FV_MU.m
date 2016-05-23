@@ -14,9 +14,9 @@ svm_type = 'linear'; %'svm';    %libsvm
 %% Parameters
 %prompt = 'K? ';
 %K = input(prompt);
-K = 256;
-%vec_c = [ 0.1 1 10 100];
-vec_c =  [ 0.1 ];
+K = 2048
+vec_c = [ 0.1 1 10 100];
+%vec_c =  [ 0.1 ];
 n_iterGMM = 10; % For GMM
 
 
@@ -56,8 +56,8 @@ for i = 1: length( all_years)
     dim_FV = 2*dim*K;
     create_folders_FV(FV_folder, svm_folder, GMM_folder);
     
-    %get_universalGMM(path_dataset,  path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run)
-    %FV_MU_all_videos(path_dataset, path_features, view, all_years, K, GMM_folder, FV_folder, run)
+    get_universalGMM(path_dataset,  path_features, view, years_train,  K,  n_iterGMM, GMM_folder, run)
+    FV_MU_all_videos(path_dataset, path_features, view, all_years, K, GMM_folder, FV_folder, run)
     
     
     %top_n = 1;
@@ -98,17 +98,17 @@ for i = 1: length( all_years)
     end
     
     %Solo lo puedo hacer cuando vec_c tiene un solo elemento:
-    info_results_FV(i,1) = {accuracy(1)};
-    info_results_FV(i,2) = {real_order};
-    info_results_FV(i,3) = {predicted_order};
-    info_results_FV(i,4) = {labels_test};
-    info_results_FV(i,5) = {predicted_output };
+    %info_results_FV(i,1) = {accuracy(1)};
+    %info_results_FV(i,2) = {real_order};
+    %info_results_FV(i,3) = {predicted_order};
+    %info_results_FV(i,4) = {labels_test};
+    %info_results_FV(i,5) = {predicted_output };
     
 end
 
 %Save dec_values for best c & K
-save('dec_values_FV', 'all_dec_values_FV')
-save('info_results_FV', 'info_results_FV');
+%save('dec_values_FV', 'all_dec_values_FV')
+%save('info_results_FV', 'info_results_FV');
 
 %To visualise
 %all_predicted_order{i}
