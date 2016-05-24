@@ -18,7 +18,7 @@ all_years = [  2010 2007 2003 2002 2001 2000 1999 1998 1997 1996];
 
 %prompt = 'K? ';
 %K = input(prompt);
-K = 2048
+K = 1024
 view = 1;
 
 %Parameters
@@ -46,8 +46,8 @@ create_folders_FV_ly2(FV_folder_ly2, svm_folder, GMM_folder_2);
 
 
 
-main_FV_layer1_NP_14(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder, GMM_folder_1  );
-main_FV_layer2_NP_14(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder, FV_folder_ly2, GMM_folder_2)
+%main_FV_layer1_NP_14(path_dataset, path_features, all_years, K, segm_length, n_iterGMM, FV_folder_ly1, red_FV_folder, GMM_folder_1  );
+%main_FV_layer2_NP_14(path_dataset, all_years, K,  n_iterGMM, FV_folder_ly1, red_FV_folder, FV_folder_ly2, GMM_folder_2)
 
 
 
