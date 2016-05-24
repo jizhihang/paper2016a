@@ -56,7 +56,7 @@ for y=1:n_years
     for c = 1:n_countries
         
         %SFV
-        load_FV =  strcat(project_path, '/SFV/', FV_folder_ly2, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run),'.h5' );
+        load_FV =  strcat(project_path, '/SFV_Np14/', FV_folder_ly2, '/MissUniverse', year, '/', countries(c), '_view', num2str(view), '_run', num2str(run),'.h5' );
         S = char(load_FV);
         FV_one_video= hdf5info(S);
         SFV1 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
@@ -75,7 +75,7 @@ for y=1:n_years
         for c2 = c + 1 : n_countries %case B
                  
                 %SFV
-                load_FV =  strcat(project_path, '/SFV/', FV_folder_ly2, '/MissUniverse', year, '/', countries(c2),  '_view', num2str(view) , '_run', num2str(run) ,'.h5' );
+                load_FV =  strcat(project_path, '/SFV_Np14/', FV_folder_ly2, '/MissUniverse', year, '/', countries(c2),  '_view', num2str(view) , '_run', num2str(run) ,'.h5' );
                 S = char(load_FV);
                 FV_one_video= hdf5info(S);
                 SFV2 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
