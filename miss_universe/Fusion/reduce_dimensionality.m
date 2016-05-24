@@ -24,7 +24,7 @@ for y=1:n_years
     load_year_list =  strcat(path_dataset, 'MissUniverse', year, '/country_list.txt');
     countries = importdata(load_year_list);
     n_countries = length(countries);
-    n_samples = n_samples_train + n_countries;
+    n_samples = n_samples + n_countries;
        
 end
 
