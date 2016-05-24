@@ -85,6 +85,6 @@ NP = dim_FV; % Both has the same dimensionality. Reducing by a factor of 2
 W = U(:,1:NP);
 
 
-save_rp_data = strcat('./projected_points/pca_projection_data_run', num2str(run));
+save_rp_data = strcat('./projected_points/pca_projection_data_run', num2str(run))
 save(char(save_rp_data),'W', 'NP');
 

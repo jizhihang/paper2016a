@@ -92,7 +92,7 @@ for i = 1: length( all_years)
     end
     
     %Reducing dim
-    %reduce_dimensionality(params);
+    reduce_dimensionality(params);
     
     %Training
     train_rankSVM_both(params, params_svm, svm_type);
