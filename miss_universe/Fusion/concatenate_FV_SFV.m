@@ -4,7 +4,7 @@ close all
 clc
 
 dbstop error;
-dbstop in train_rankSVM_both at 76
+%dbstop in train_rankSVM_both at 76
 
 %%Setting paths for libs and features and original dataset
 pc = 'wanda'; % uq wanda home
