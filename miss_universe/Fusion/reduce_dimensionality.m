@@ -78,7 +78,7 @@ end
 
 
 
-Sigma=cov(X_trainX');
+Sigma=cov(X_train');
 [U,S,V] = svd(Sigma);
 NP = dim_FV; % Both has the same dimensionality. Reducing by a factor of 2
 
