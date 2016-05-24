@@ -78,10 +78,22 @@ end
 
 
 
-Sigma=cov(X_train');
-[U,S,V] = svd(Sigma);
-NP = dim_FV; % Both has the same dimensionality. Reducing by a factor of 2
+% Out of Memory
+%Sigma=cov(X_train');
+%[U,S,V] = svd(Sigma);
+%NP = dim_FV; % Both has the same dimensionality. Reducing by a factor of 2
+%W = U(:,1:NP);
 
+
+% as per 
+%http://stackoverflow.com/questions/12698433/matlab-how-to-compute-pca-on-a-huge-data-set
+
+Sigma = cov(X_train');
+[V D] = eig(Sigma.' * Sigma);
+S = sqrt(D);
+U = Sigma*V*S^(-1);
+
+NP = dim_FV; % Both has the same dimensionality. Reducing by a factor of 2
 W = U(:,1:NP);
 
 
