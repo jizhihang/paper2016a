@@ -4,9 +4,7 @@ close all
 clc
 
 dbstop error;
-%dbstop in  get_universalGMM at 14
-%dbstop in FV_layers_1 at 89
-%dbstop in dim_reduction at 48
+dbstop in train_rankSVM_both at 76
 
 %%Setting paths for libs and features and original dataset
 pc = 'wanda'; % uq wanda home
@@ -93,7 +91,8 @@ for i = 1: length( all_years)
         params_svm =  sprintf('-s %f  -c %f -q', s, c);
     end
     
-    
+    %Reducing dim
+    %reduce_dimensionality(params);
     
     %Training
     train_rankSVM_both(params, params_svm, svm_type);
