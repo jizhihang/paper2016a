@@ -31,7 +31,7 @@ for y=1:n_years
 end
 
 
-load_pca_data = strcat('./projected_points/pca_projection_data_run', num2str(run));
+load_pca_data = strcat('./projected_points/pca_projection_data_run', num2str(run), '_K', num2str(K));
 load(char(load_pca_data),'W', 'NP');
 
 
