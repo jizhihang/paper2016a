@@ -32,7 +32,11 @@ for y=1:n_years
 end
 
 
-X_test = zeros(dim_FV + dim_SFV, n_comparisons );
+load_pca_data = strcat('./projected_points/pca_projection_data_run', num2str(run));
+load(char(load_pca_data),'W', 'NP');
+
+
+X_test = zeros(NP, n_comparisons );  % NP dim after PCA
 labels_test = zeros(n_comparisons,1);
 n_labels_test = zeros(n_comparisons,2);
 j = 1;
@@ -68,6 +72,7 @@ for y=1:n_years
         FV1 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
         
         V1 = [FV1; SFV1];
+        V1 = V1'*W; %PCA
         
         
         %for c2 = 1 : n_countries %case A
@@ -87,6 +92,7 @@ for y=1:n_years
                 FV2 = hdf5read(FV_one_video.GroupHierarchy.Datasets(1)); 
                 
                 V2 = [FV2; SFV2];
+                V2 = V2'*W; %PCA
                 
                 X_test(:,j) = V1-V2;
                 
